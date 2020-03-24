@@ -13,33 +13,33 @@
               <div class="item">
                 <label for="name">Nome <span>*</span></label>
                 <input class="form-control" placeholder="Digite seu nome" [(ngModel)]="data.name" name="name"
-                  type="text">
+                  type="text" required>
               </div>
             </div>
             <div>
               <div class="item">
                 <label for="name">Username <span>*</span></label>
                 <input class="form-control" placeholder="Digite seu username" [(ngModel)]="data.username"
-                  name="username" type="text">
+                  name="username" type="text" required>
               </div>
               <div class="item">
                 <label for="email">E-mail <span>*</span></label>
                 <input class="form-control" placeholder="Digite seu e-mail" [(ngModel)]="data.email" name="email"
-                  type="text">
+                  type="text" required>
               </div>
               <div class="item">
                 <label for="cpf">CPF <span>*</span></label>
-                <input class="form-control" placeholder="Digite seu CPF" [(ngModel)]="data.cpf" name="cpf" type="text">
+                <input class="form-control" placeholder="Digite seu CPF" [(ngModel)]="data.cpf" name="cpf" type="text" required>
               </div>
               <div class="item">
                 <label for="paswd">Senha <span>*</span></label>
                 <input class="form-control" placeholder="Digite sua senha" [(ngModel)]="data.pwd.password" name="paswd"
-                  type="password">
+                  type="password" required>
               </div>
               <div class="item">
                 <label for="confirm_pwd">Confirmação <span>*</span></label>
                 <input class="form-control" placeholder="Confirme sua senha" [(ngModel)]="data.pwd.confirm_password"
-                  name="confirm_pwd" type="password">
+                  name="confirm_pwd" type="password" required>
               </div>
             </div>
             <div class="actions">
