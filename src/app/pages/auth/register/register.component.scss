@@ -1,0 +1,108 @@
+.register {
+  display: flex;
+  align-items: center;
+  background: #f8f8f8;
+  min-height: 100vh;
+  padding: 60px 0px;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+
+    h3 {
+      font-weight: 200;
+      margin: 0px;
+      color: gray;
+    }
+
+    span {
+      padding: 2px;
+      font-size: 25px;
+      margin-right: 2px;
+      color: gray;
+      user-select: none;
+    }
+  }
+
+  .content {
+    margin-top: 20px;
+    padding-top: 30px;
+    padding: 25px;
+    background: #fff;
+    box-shadow: 0 2px 40px -4px rgba(159, 159, 159, 0.1);
+    border-radius: 20px;
+
+    .avatar {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+      padding: 0.375rem 0.75rem;
+      padding-right: unset;
+
+      img {
+        height: 60px;
+        width: 60px;
+        margin-right: 10px;
+      }
+
+      .item {
+        margin: 0px;
+        width: 100%;
+        box-shadow: 0 5px 13px -13px rgba(0, 0, 0, 0.4);
+
+        input {
+          padding-right: unset;
+        }
+      }
+    }
+
+    .item {
+      margin-bottom: 30px;
+      box-shadow: 0 5px 13px -13px rgba(0, 0, 0, 0.4);
+
+      label {
+        font-family: "Baloo Chettan 2";
+        font-weight: 500;
+        color: gray;
+        margin: 0px;
+        padding: 0.375rem 0.75rem;
+        padding-bottom: 0px;
+
+        span {
+          color: #f05d5d;
+        }
+      }
+    }
+
+    .actions {
+      button {
+        border: 0px solid gainsboro;
+        border-radius: 25px;
+        width: 100%;
+        padding: 8px;
+        font-family: "Montserrat";
+        outline: none;
+        background: linear-gradient(45deg, #f05d5d, #4e1681);
+        color: #fff;
+      }
+    }
+  }
+}
+
+.form-control {
+  border: unset;
+  min-height: 40px;
+  font-family: "Montserrat";
+  font-weight: 200;
+  margin-top: -10px;
+  transition: 0.3s;
+}
+
+.form-control:focus {
+  border: unset;
+  box-shadow: unset;
+  border: 2px solid gainsboro;
+    margin-top: 0px;
+}

@@ -1,0 +1,53 @@
+<div class="register">
+  <div class="container">
+    <div class="row justify-content-center ">
+      <div class="col-lg-5">
+        <div class="header">
+          <span class="material-icons">how_to_reg</span>
+          <h3>Novo usuário</h3>
+        </div>
+        <div class="content">
+          <form #register="ngForm">
+            <div class="avatar">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/avatar-380-456332.png" alt="">
+              <div class="item">
+                <label for="name">Nome <span>*</span></label>
+                <input class="form-control" placeholder="Digite seu nome" [(ngModel)]="data.name" name="name"
+                  type="text">
+              </div>
+            </div>
+            <div>
+              <div class="item">
+                <label for="name">Username <span>*</span></label>
+                <input class="form-control" placeholder="Digite seu username" [(ngModel)]="data.username"
+                  name="username" type="text">
+              </div>
+              <div class="item">
+                <label for="email">E-mail <span>*</span></label>
+                <input class="form-control" placeholder="Digite seu e-mail" [(ngModel)]="data.email" name="email"
+                  type="text">
+              </div>
+              <div class="item">
+                <label for="cpf">CPF <span>*</span></label>
+                <input class="form-control" placeholder="Digite seu CPF" [(ngModel)]="data.cpf" name="cpf" type="text">
+              </div>
+              <div class="item">
+                <label for="paswd">Senha <span>*</span></label>
+                <input class="form-control" placeholder="Digite sua senha" [(ngModel)]="data.pwd.password" name="paswd"
+                  type="password">
+              </div>
+              <div class="item">
+                <label for="confirm_pwd">Confirmação <span>*</span></label>
+                <input class="form-control" placeholder="Confirme sua senha" [(ngModel)]="data.pwd.confirm_password"
+                  name="confirm_pwd" type="password">
+              </div>
+            </div>
+            <div class="actions">
+              <button>Concluir</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
