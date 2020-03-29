@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HomeModule } from './pages/home/home.module';
 import { SessionService } from './controllers/session/session.service';
 import { ComponentsModule } from './shared/components/components.module';
+import { AuthModule } from './pages/auth/auth.module';
+import { ProfileModule } from './pages/profile/profile.module';
 
 @NgModule({
   declarations: [
@@ -14,8 +16,10 @@ import { ComponentsModule } from './shared/components/components.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ComponentsModule,
     HomeModule,
-    ComponentsModule
+    AuthModule,
+    ProfileModule
   ],
   providers: [SessionService],
   bootstrap: [AppComponent]
