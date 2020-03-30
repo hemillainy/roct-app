@@ -1,3 +1,40 @@
-<p>
-  login works!
-</p>
+
+<div class="login">
+  <div class="container">
+    <div class="row justify-content-center ">
+      <div class="col-lg-5">
+        <div class="center">
+            <img src="./assets/images/logo.png" alt="ROCT" width="280" height="260">
+        </div>
+        <div class="header">
+					<span class="material-icons">how_to_reg</span>
+					<h3>Login</h3>
+				</div>
+        <div class="content">
+          <form #login="ngForm">
+            <div>
+              <div class="item">
+								<label for="username">Username<span>*</span></label>
+								<input class="form-control" placeholder="Digite seu username"
+									[(ngModel)]="data.nickname" name="username" type="text" required>
+              </div>
+              <div class="item">
+								<label for="paswd">Senha <span>*</span></label>
+								<input class="form-control" placeholder="Digite sua senha"
+									[(ngModel)]="data.pwd.password" name="paswd" type="password" required>
+							</div>
+            </div>
+            <div class="actions">
+              <button (click)="submit()">Entrar</button>
+              <div class="empty-div"></div>
+              <button (click)="goToRegister()" @fadeOut>Cadastrar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="error-alert" *ngIf="status.error" @fadeOut>
+		<p>Usuário e/ou senha inválidos, tente novamente</p>
+	</div>
+</div>
