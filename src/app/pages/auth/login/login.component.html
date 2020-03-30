@@ -14,20 +14,21 @@
           <form #login="ngForm">
             <div>
               <div class="item">
-								<label for="username">Username<span>*</span></label>
-								<input class="form-control" placeholder="Digite seu username"
-									[(ngModel)]="data.nickname" name="username" type="text" required>
+								<label for="email">Email<span>*</span></label>
+								<input class="form-control" placeholder="Digite seu email"
+									[(ngModel)]="data.email" name="email" type="text" required>
               </div>
               <div class="item">
 								<label for="paswd">Senha <span>*</span></label>
 								<input class="form-control" placeholder="Digite sua senha"
 									[(ngModel)]="data.pwd.password" name="paswd" type="password" required>
-							</div>
+                  <a href="{{goToRecovery()}}" >Esqueceu sua senha?</a>
+              </div>
             </div>
             <div class="actions">
               <button (click)="submit()">Entrar</button>
-              <div class="empty-div"></div>
-              <button (click)="goToRegister()" @fadeOut>Cadastrar</button>
+              <hr>
+              <button (click)="goToRegister()" >Cadastrar</button>
             </div>
           </form>
         </div>

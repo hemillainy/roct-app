@@ -12,7 +12,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
     trigger('fadeOut', [
       transition(':enter', [
         style({}),
-        animate('250ms', style({ })),
+        animate('250ms', style({})),
       ]),
       transition(':leave', [
         animate('250ms ease-in-out', style({ opacity: 0 }))
@@ -28,51 +28,55 @@ export class LoginComponent implements OnInit {
   public status: any;
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private session: SessionService,
     private userController: UserService
-    ) { 
-      this.data = {
-        nickname: undefined,
-        pwd: {
-          password: undefined
-        }
-      },
+  ) {
+    this.data = {
+      email: undefined,
+      pwd: {
+        password: undefined
+      }
+    },
       this.status = {
         loading: false,
         error: false
       }
-    }
+  }
 
   ngOnInit() {
   }
 
   goToRegister() {
     this.router.navigate(['/user/new']);
-}
+  }
 
-public resetStatus(): void {
-  this.status = {
-    loading: false,
-    error: false
-  };
-}
+  //Configurar rota correta
+  goToRecovery() {
+    return '/user/new';
+  }
 
-//Talvez esse método esteja errado
-public submit(): void {
-  this.resetStatus();
-  this.status.loading = true;
-  this.userController.create({ ...this.data, password: this.data.pwd.password })
-    .then(res => {
-      this.session.logIn(res.data.auth_token);
-      this.router.navigate(['/profile']);
-    }).catch(err => {
-      this.status.loading = false;
-      this.status.error = true;
-      setTimeout(() => {
-        this.status.error = false;
-      }, 3500);
-    });
-}
+  public resetStatus(): void {
+    this.status = {
+      loading: false,
+      error: false
+    };
+  }
 
+  //Talvez esse método esteja errado
+  public submit(): void {
+    this.resetStatus();
+    this.status.loading = true;
+    this.userController.create({ ...this.data, password: this.data.pwd.password })
+      .then(res => {
+        this.session.logIn(res.data.auth_token);
+        this.router.navigate(['/profile']);
+      }).catch(err => {
+        this.status.loading = false;
+        this.status.error = true;
+        setTimeout(() => {
+          this.status.error = false;
+        }, 3500);
+      });
+  }
 }
