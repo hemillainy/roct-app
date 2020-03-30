@@ -112,6 +112,14 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "https://osuniversitarios.github.io/roct-app/",
+            "name": "Roct App",
+            "email": "roct@app"
+          }
         }
       }
     },
