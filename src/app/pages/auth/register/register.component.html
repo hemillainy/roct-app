@@ -23,7 +23,7 @@
 							<div>
 								<div class="item">
 									<label for="name">Username <span>*</span></label>
-									<input class="form-control" placeholder="Digite seu username" [(ngModel)]="data.username"
+									<input class="form-control" placeholder="Digite seu username" [(ngModel)]="data.nickname"
                   name="username" type="text" required>
               </div>
 									<div class="item">
@@ -47,14 +47,14 @@
               </div>
 												</div>
 												<div class="actions">
-													<button>Concluir</button>
+													<button (click)="submit()">{{ status.loading ? 'Aguarde': 'Concluir' }}</button>
 												</div>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="pop-up-avatar" *ngIf="boxAvatar">
+	<div class="pop-up-avatar" *ngIf="boxAvatar" @fadeOut>
 		<div class="box">
 			<div class="header">
 				<h4>Escolha seu avatar</h4>
@@ -88,4 +88,7 @@
 										</div>
 									</div>
 								</div>
+                <div class="error-alert" *ngIf="status.error" @fadeOut>
+                  <p>Algo de errado aconteceu, tente novamente</p>
+                </div>
 							</div>

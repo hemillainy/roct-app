@@ -228,6 +228,36 @@
       transform: scale(1);
     }
   }
+
+  .error-alert {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(0deg, red 6%, #F44336 0%);
+    border: 2px solid ghostwhite;
+    border-radius: 10px;
+    margin: 30px;
+    box-shadow: 0 20px 50px -7px rgba(0, 0, 0, 0.3);
+    animation-name: translate;
+    animation-fill-mode: backwards;
+    animation-duration: 0.3s;
+
+    p {
+      margin: 0px;
+      padding: 10px 15px;
+      width: 230px;
+      color: #fff;
+    }
+  }
+
+  @keyframes translate {
+    0% {
+      right: -300px;
+    }
+    100% {
+      right: 0px;
+    }
+  }
 }
 
 
