@@ -4,7 +4,7 @@
     <div class="row justify-content-center ">
       <div class="col-lg-4">
         <div class="center">
-          <img src="./assets/images/logo.png" alt="ROCT" width="280" height="260">
+          <img src="./assets/images/logo.png" alt="ROCT">
         </div>
         <div class="content">
           <div class="header">
@@ -22,7 +22,7 @@
 							<input class="form-control" placeholder="Digite sua senha"
 								[(ngModel)]="data.pwd.password" name="paswd" type="password" required>
             </div>
-            <a href="{{goToRecovery()}}" >Esqueceu sua senha?</a>
+            <a href="{{ goToRecovery() }}" >Esqueceu sua senha?</a>
             <div class="actions">
               <button (click)="submit()">Entrar</button>
               <hr>
