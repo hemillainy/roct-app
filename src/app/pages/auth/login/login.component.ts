@@ -47,12 +47,12 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  goToRegister() {
+  public goToRegister(): void {
     this.router.navigate(['/user/new']);
   }
 
   //Configurar rota correta
-  goToRecovery() {
+  public goToRecovery(): string {
     return '/user/new';
   }
 
