@@ -1,0 +1,41 @@
+
+<div class="login">
+  <div class="container">
+    <div class="row justify-content-center ">
+      <div class="col-lg-4">
+        <div class="center">
+          <img src="./assets/images/logo.png" alt="ROCT">
+        </div>
+        <div class="content">
+          <div class="header">
+            <span class="material-icons">person</span>
+            <h3>Login</h3>
+          </div>
+          <form #login="ngForm">
+            <div class="item">
+							<label for="email">Email</label>
+							<input class="form-control" placeholder="Digite seu email"
+								[(ngModel)]="data.email" name="email" type="text" required>
+            </div>
+            <div class="item">
+							<label for="paswd">Senha</label>
+							<input class="form-control" placeholder="Digite sua senha"
+								[(ngModel)]="data.pwd.password" name="paswd" type="password" required>
+            </div>
+            <a href="{{ goToRecovery() }}" >Esqueceu sua senha?</a>
+            <div class="actions">
+              <button (click)="submit()">Entrar</button>
+              <hr>
+              <button class="second" (click)="goToRegister()">
+                <p>Cadastrar</p>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="error-alert" *ngIf="status.error" @fadeOut>
+		<p>Usuário e/ou senha inválidos, tente novamente</p>
+	</div>
+</div>
