@@ -1,0 +1,48 @@
+header.home-header {
+  height: 350px;
+  background-image: url("./../../../../assets/images/header.jpg");
+  background-position-y: -110px;
+  background-size: cover;
+  // border-radius: 0px 0px 50px 50px;
+  overflow: hidden;
+
+  .overlay {
+    background-color: #00000080;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 60px;
+
+    .content {
+      display: flex;
+      align-items: flex-start;
+
+      .item {
+        width: calc(100%/3);
+        color: #fff;
+        padding-left: 40px;
+        margin-left: 40px;
+        border-left: 1px solid;
+
+        h5 {
+          font-family: 'Montserrat';
+          font-weight: bold;
+          color: inherit;
+        }
+
+        p {
+          margin: 0px;
+          color: inherit;
+          font-weight: 100;
+          font-family: 'Montserrat';
+        }
+      }
+
+      .item:first-child {
+        padding-left: 0px;
+        margin-left: 0px;
+        border-left: 0px solid;
+      }
+    }
+  }
+}
