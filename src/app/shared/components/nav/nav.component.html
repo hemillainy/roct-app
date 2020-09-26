@@ -1,3 +1,16 @@
-<p>
-  nav works!
-</p>
+<nav class="navbar" [class.fixed]="fixed()" *ngIf="show()">
+  <div class="logo">
+    <img src="./assets/images/logo.png" alt="ROCT">
+  </div>
+  <div class="menu">
+
+  </div>
+  <div class="account">
+    <span class="material-icons">account_circle</span>
+    <div class="menu">
+      <div>
+        <a routerLink="/user/login">Entrar</a>
+      </div>
+    </div>
+  </div>
+</nav>

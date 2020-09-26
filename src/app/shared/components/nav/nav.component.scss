@@ -1,0 +1,113 @@
+nav.navbar {
+  background: #0000004d;
+  height: 60px;
+  padding: 5px 20px;
+  margin-bottom: -60px;
+  transition: 0.3s;
+
+  .logo {
+    img {
+      width: 50px;
+      transition: 0.3s;
+    }
+  }
+
+  .account {
+    display: flex;
+    position: relative;
+    padding: 10px;
+    padding-right: 0px;
+
+    span {
+      color: #fff;
+      margin: 0px;
+      padding: 0px;
+      user-select: none;
+    }
+
+    .menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      background: #fff;
+      width: 200px;
+      right: calc(100% - 34px);
+      top: 40px;
+      border-radius: 3px;
+      box-shadow: 0 5px 10px -6px #0000001a;
+      overflow: hidden;
+      transition: 0.3s;
+
+      div:last-child {
+        display: flex;
+        flex-direction: column;
+      }
+
+      a {
+        cursor: pointer;
+        font-family: 'Montserrat';
+        font-weight: bold;
+        font-size: 14px;
+        color: #525252;
+        text-decoration: none;
+        padding: 10px 15px;
+        user-select: none;
+        transition: 0.3s;
+        width: 100%;
+      }
+
+      a:hover {
+        color: #3aa4e5;
+      }
+    }
+  }
+
+  .account:hover {
+    padding-left: 200px;
+
+    .menu {
+      display: flex;
+      right: calc(100% - 224px);
+      animation: account-menu-anim 0.3s ease backwards;
+    }
+
+    @keyframes account-menu-anim {
+      0% {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0px);
+      }
+    }
+  }
+}
+
+nav.fixed {
+  position: fixed;
+  z-index: 30;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 5px -2px #0000001a;
+  padding: 5px 20px;
+  height: unset;
+
+  .logo {
+    img {
+      width: 40px;
+    }
+  }
+
+  .account {
+    span {
+      color: #525252;
+    }
+
+    .menu {
+      border: 1px solid ghostwhite;
+      box-shadow: 0 -8px 15px -5px #0000001a;
+    }
+  }
+}
