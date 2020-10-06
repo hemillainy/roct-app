@@ -21,11 +21,15 @@ export class NavComponent implements OnInit {
   public fixed(event: any): boolean {
     const st = window.pageYOffset || document.documentElement.scrollTop;
     this.scroll = st <= 0 ? 0 : st;
-    return st > 200;
+    return st > 80;
   }
 
   public show(): boolean {
     return !this.router.url.includes('user/login') && !this.router.url.includes('user/new');
+  }
+
+  public main(): boolean {
+    return this.router.url === '/';
   }
 
 }

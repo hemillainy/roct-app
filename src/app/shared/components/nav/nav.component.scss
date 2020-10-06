@@ -18,69 +18,13 @@ nav.navbar {
     padding: 10px;
     padding-right: 0px;
 
-    span {
-      color: #fff;
-      margin: 0px;
-      padding: 0px;
-      user-select: none;
-    }
-
-    .menu {
-      display: none;
-      flex-direction: column;
-      position: absolute;
-      background: #fff;
-      width: 200px;
-      right: calc(100% - 34px);
-      top: 40px;
-      border-radius: 3px;
-      box-shadow: 0 5px 10px -6px #0000001a;
-      overflow: hidden;
+    a {
+      font-family: 'Montserrat';
+      font-weight: bold;
+      text-decoration: none;
       transition: 0.3s;
-
-      div:last-child {
-        display: flex;
-        flex-direction: column;
-      }
-
-      a {
-        cursor: pointer;
-        font-family: 'Montserrat';
-        font-weight: bold;
-        font-size: 14px;
-        color: #525252;
-        text-decoration: none;
-        padding: 10px 15px;
-        user-select: none;
-        transition: 0.3s;
-        width: 100%;
-      }
-
-      a:hover {
-        color: #3aa4e5;
-      }
-    }
-  }
-
-  .account:hover {
-    padding-left: 200px;
-
-    .menu {
-      display: flex;
-      right: calc(100% - 224px);
-      animation: account-menu-anim 0.3s ease backwards;
-    }
-
-    @keyframes account-menu-anim {
-      0% {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0px);
-      }
+      color: #fff;
+      font-size: 14px;
     }
   }
 }
@@ -93,6 +37,7 @@ nav.fixed {
   box-shadow: 0 2px 5px -2px #0000001a;
   padding: 5px 20px;
   height: unset;
+  animation: slide-nav-fixed ease 0.4s backwards;
 
   .logo {
     img {
@@ -101,13 +46,33 @@ nav.fixed {
   }
 
   .account {
-    span {
+    a {
       color: #525252;
     }
+  }
+}
 
-    .menu {
-      border: 1px solid ghostwhite;
-      box-shadow: 0 -8px 15px -5px #0000001a;
+@keyframes slide-nav-fixed {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px)
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px)
+  }
+}
+
+nav.main {
+  background: #fff;
+  box-shadow: 0 2px 5px -2px #0000001a;
+  margin: 0px;
+  height: 70px;
+  transition: 0.3s;
+
+  .account {
+    a {
+      color: #525252;
     }
   }
 }
