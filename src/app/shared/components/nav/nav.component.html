@@ -1,4 +1,4 @@
-<nav class="navbar" [class.fixed]="fixed()" *ngIf="show()">
+<nav class="navbar" [class.fixed]="fixed()" [class.main]="!main()" *ngIf="show()">
   <div class="logo">
     <img src="./assets/images/logo.png" alt="ROCT">
   </div>
@@ -6,11 +6,6 @@
 
   </div>
   <div class="account">
-    <span class="material-icons">account_circle</span>
-    <div class="menu">
-      <div>
-        <a routerLink="/user/login">Entrar</a>
-      </div>
-    </div>
+    <a routerLink="/user/login">Entrar</a>
   </div>
 </nav>
