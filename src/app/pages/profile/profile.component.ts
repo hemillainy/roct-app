@@ -11,18 +11,23 @@ export class ProfileComponent implements OnInit {
   public user: any;
   public compras: any;
 
-  constructor(private profileService : ProfileService) { 
+  // Scenes Menu
+  public sectionOption = 'account';
+
+  constructor(
+    private profileService: ProfileService
+  ) {
     this.user = {
       username: undefined,
       email: undefined,
       pwd: {
         password: undefined
       }
-    }
+    };
   }
 
   ngOnInit() {
     this.compras = this.profileService.getCompras();
   }
- 
-} 
+
+}

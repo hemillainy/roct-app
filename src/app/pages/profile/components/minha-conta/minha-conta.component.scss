@@ -1,0 +1,26 @@
+.my-account {
+  header {
+    h2 {
+      font-weight: bold;
+      color: #525252;
+    }
+  }
+
+  .account-content {
+    padding-top: 20px;
+
+    section {
+      padding: 10px 15px;
+      background: ghostwhite;
+      border-radius: 5px;
+      margin-bottom: 20px;
+
+      h5 {
+        font-weight: 300;
+        color: #525252;
+        font-size: 20px;
+        margin: 0px;
+      }
+    }
+  }
+}

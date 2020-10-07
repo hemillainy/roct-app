@@ -1,0 +1,45 @@
+.profile {
+  padding: 30px 0px;
+  min-height: 100vh;
+
+  .menu {
+    background: ghostwhite;
+    border-radius: 5px;
+    padding: 10px;
+
+    li {
+      cursor: pointer;
+      font-family: "Baloo Chettan 2";
+      font-size: 14px;
+      list-style: none;
+      padding: 12px 10px;
+      border-bottom: 1px solid #dcdcdc33;
+      user-select: none;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      transition: 0.2s;
+
+      span {
+        font-size: inherit;
+        margin-right: 5px;
+        color: inherit;
+      }
+    }
+
+    li:hover {
+      background: #3aa4e5;
+      border-radius: 4px;
+      color: #fff;
+    }
+
+    li:last-child {
+      border-bottom: unset;
+    }
+  }
+
+  .profile-content {
+    padding-left: 30px;
+    border-left: 1px solid gainsboro;
+  }
+}
