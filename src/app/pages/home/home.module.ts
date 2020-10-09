@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { HeaderComponent } from './header/header.component';
 import { PartnersComponent } from './partners/partners.component';
+import { ItemsComponent } from './items/items.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     HeaderComponent,
-    PartnersComponent
+    PartnersComponent,
+    ItemsComponent
   ],
   imports: [
     CommonModule
