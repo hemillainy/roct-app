@@ -23,7 +23,6 @@
 
   .items-content {
     min-height: 60vh;
-    background: #fff;
     padding: 40px;
     box-shadow: -12px 20px 24px -2px #0000000d;
 
@@ -31,13 +30,14 @@
       h4 {
         font-weight: 200;
         display: flex;
+        justify-content: flex-end;
         color: #6c45a7;
         margin-bottom: 10px;
         font-size: 35px;
 
         h4 {
           font-weight: bold;
-          margin-left: 3px;
+          margin-left: 6px;
           color: inherit;
         }
       }
@@ -48,7 +48,6 @@
 
       .item {
         width: 25%;
-        border: 1px solid ghostwhite;
         margin-right: 20px;
         border-radius: 7px;
         overflow: hidden;
@@ -89,7 +88,7 @@
             padding: 0px 10px;
             font-weight: 100;
             color: #fff;
-						font-size: 12px;
+            font-size: 12px;
             transition: 0.3s;
           }
 
@@ -128,8 +127,8 @@
 
         .header {
           div.img {
-						box-shadow: inset 0 0 80px #6c45a7;
-						filter: blur(2px);
+            box-shadow: inset 0 0 80px #6c45a7;
+            filter: blur(2px);
           }
 
           span {
@@ -174,26 +173,26 @@
         display: flex;
         align-items: center;
         background: #3aa4e5;
-				color: #fff;
-				transition: 0.3s;
+        color: #fff;
+        transition: 0.3s;
 
         span {
           font-size: 20px;
-					padding-left: 5px;
-					width: 0px;
-					opacity: 0;
-					transition: 0.3s;
+          padding-left: 5px;
+          width: 0px;
+          opacity: 0;
+          transition: 0.3s;
         }
-			}
-			
-			button:hover {
-				background: #6c45a7;
+      }
 
-				span {
-					width: 25px;
-					opacity: 1;
-				}
-			}
+      button:hover {
+        background: #6c45a7;
+
+        span {
+          width: 25px;
+          opacity: 1;
+        }
+      }
     }
   }
 }
