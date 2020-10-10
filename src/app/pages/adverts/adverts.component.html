@@ -4,7 +4,7 @@
     <h5>Filtros</h5>
     <div class="item">
       <p>Servidor</p>
-      <select name="server" id="server_filter">
+      <select name="server" id="server_filter" [(ngModel)]="filter.server">
         <option value="">Todos</option>
         <option value="a">Servidor A</option>
         <option value="b">Servidor B</option>
@@ -13,7 +13,7 @@
     </div>
     <div class="item">
       <p>Jogo</p>
-      <select name="game" id="game_filter">
+      <select name="game" id="game_filter" [(ngModel)]="filter.game">
         <option value="">Todos</option>
         <option value="a">Jogo A</option>
         <option value="b">Jogo B</option>
@@ -22,26 +22,28 @@
     </div>
     <div class="item">
       <p>Tipo do item</p>
-      <select name="type" id="type_filter">
+      <select name="type" id="type_filter" [(ngModel)]="filter.type">
         <option value="">Todos</option>
-        <option value="a">Skin</option>
+        <option value="skins">Skins</option>
+        <option value="orbes">Orbes</option>
+        <option value="icones">Ícones</option>
       </select>
     </div>
-    <span>
+    <span (click)="resetFilter()" *ngIf="filter.filtered && clearFilter()">
       <span class="material-icons">label</span>
       Limpar filtros
     </span>
-    <button>Filtrar</button>
+    <button (click)="search()">Filtrar</button>
   </div>
   <div class="content">
     <div class="search">
       <div>
-        <input type="text" placeholder="Procurar itens">
-        <button><span class="material-icons">search</span></button>
+        <input type="text" placeholder="Procurar itens" [(ngModel)]="filter.text">
+        <button (click)="search()"><span class="material-icons">search</span></button>
       </div>
       <div>
         <p>Ordenar por</p>
-        <select name="sort" id="sort_filter">
+        <select name="sort" id="sort_filter" [(ngModel)]="filter.sort">
           <option value="">Ordem padrão</option>
           <option value="a">Menor preço</option>
           <option value="b">Maior preço</option>
@@ -50,7 +52,7 @@
     </div>
     <div class="items">
       <h4>Itens disponíveis</h4>
-      <app-items></app-items>
+      <app-items [items]="data.docs"></app-items>
     </div>
   </div>
 </div>

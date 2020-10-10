@@ -105,6 +105,7 @@
         }
 
         button {
+          background: #523530;
           border: unset;
           border-radius: unset;
           outline: none;
@@ -124,7 +125,7 @@
 
         p {
           margin: 0px;
-          background: #3aa4e5;
+          background: #523530;
           color: #fff;
           width: fit-content;
           padding: 0px 10px;
@@ -147,16 +148,19 @@
     }
 
     .items {
-      background: #fff;
+      background: linear-gradient(180deg, #00000080 130px, transparent 0px);
       min-height: 100vh;
       padding: 40px;
-      border-top: 10px solid #3aa4e5;
+      padding-right: 25px;
+      padding-top: 50px;
       box-shadow: 0 0px 40px -6px #0000001a;
       animation: slide-content-adverts 0.3s ease 0.2s backwards;
 
       h4 {
+        color: #fff;
         font-weight: bold;
         font-size: 30px;
+        margin-bottom: 80px;
       }
     }
   }
