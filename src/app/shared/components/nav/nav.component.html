@@ -3,7 +3,45 @@
     <img src="./assets/images/logo.png" alt="ROCT">
   </div>
   <div class="menu">
-
+    <div class="search">
+      <input type="text" placeholder="Procurar itens" [(ngModel)]="search" (keyup.enter)="openSearch()">
+    </div>
+    <div class="option">
+      <p>Jogos</p>
+      <div>
+        <li (click)="openGame('a')">Jogo A</li>
+        <li (click)="openGame('b')">Jogo B</li>
+        <li (click)="openGame('c')">Jogo C</li>
+        <li (click)="openGame('')">
+          Todos os jogos
+          <span class="material-icons">keyboard_arrow_right</span>
+        </li>
+      </div>
+    </div>
+    <div class="option">
+      <p>Servidores</p>
+      <div>
+        <li (click)="openServer('a')">Servidor A</li>
+        <li (click)="openServer('b')">Servidor B</li>
+        <li (click)="openServer('c')">Servidor C</li>
+        <li (click)="openServer('')">
+          Todos os servidores
+          <span class="material-icons">keyboard_arrow_right</span>
+        </li>
+      </div>
+    </div>
+    <div class="option">
+      <p>Itens</p>
+      <div>
+        <li (click)="openItem('skins')">Skins</li>
+        <li (click)="openItem('orbes')">Orbes</li>
+        <li (click)="openItem('icones')">Ícones</li>
+        <li (click)="openItem('')">
+          Todos os itens
+          <span class="material-icons">keyboard_arrow_right</span>
+        </li>
+      </div>
+    </div>
   </div>
   <div class="account">
     <a routerLink="/user/login">Entrar</a>
