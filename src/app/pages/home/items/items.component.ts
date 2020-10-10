@@ -16,7 +16,7 @@ export class ItemsComponent implements OnInit {
   }
 
   public viewItems(): void {
-    this.router.navigate(['/item']);
+    this.router.navigate(['/item'], { queryParams: { page: 1 } });
   }
 
 }
