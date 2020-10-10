@@ -1,5 +1,5 @@
 <nav class="navbar" [class.fixed]="fixed()" [class.main]="!main()" *ngIf="show()">
-  <div class="logo">
+  <div class="logo" (click)="goHome()">
     <img src="./assets/images/logo.png" alt="ROCT">
   </div>
   <div class="menu">

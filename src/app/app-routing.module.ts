@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { LoginComponent } from './pages/auth/login/login.component';
+import { AdvertsComponent } from './pages/adverts/adverts.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
         component: LoginComponent
       }
     ]
+  },
+  {
+    path: 'item',
+    component: AdvertsComponent
   },
   {
     path: '**',
