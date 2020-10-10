@@ -10,6 +10,7 @@ import { ComponentsModule } from './shared/components/components.module';
 import { AuthModule } from './pages/auth/auth.module';
 import { ProfileModule } from './pages/profile/profile.module';
 import { UserService } from './controllers/user/user.service';
+import { AdvertsModule } from './pages/adverts/adverts.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { UserService } from './controllers/user/user.service';
     ComponentsModule,
     HomeModule,
     AuthModule,
-    ProfileModule
+    ProfileModule,
+    AdvertsModule
   ],
   providers: [
     SessionService,

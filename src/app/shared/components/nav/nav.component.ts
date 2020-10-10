@@ -24,6 +24,10 @@ export class NavComponent implements OnInit {
     return st > 80;
   }
 
+  public goHome(): void {
+    this.router.navigate(['/']);
+  }
+
   public show(): boolean {
     return !this.router.url.includes('user/login') && !this.router.url.includes('user/new');
   }
