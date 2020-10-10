@@ -5,9 +5,9 @@
   margin-top: 50px;
 
   .rect {
-    width: 400px;
+    width: 300px;
     background: #3aa4e5;
-    height: 400px;
+    height: 300px;
     position: absolute;
     top: 0px;
     z-index: -1;
@@ -33,6 +33,7 @@
         display: flex;
         color: #6c45a7;
         margin-bottom: 10px;
+        font-size: 35px;
 
         h4 {
           font-weight: bold;
