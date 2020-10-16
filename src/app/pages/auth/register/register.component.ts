@@ -12,7 +12,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
     trigger('fadeOut', [
       transition(':enter', [
         style({}),
-        animate('250ms', style({ })),
+        animate('250ms', style({})),
       ]),
       transition(':leave', [
         animate('250ms ease-in-out', style({ opacity: 0 }))
@@ -88,18 +88,18 @@ export class RegisterComponent implements OnInit {
   }
 
   private validaSenha(): boolean {
-    if(this.data.pwd.password != this.data.pwd.confirm_password) {
+    if (this.data.pwd.password != this.data.pwd.confirm_password) {
       this.resetPassword();
       return false;
     }
 
     return true;
   }
-  
+
 
   public submit(): void {
     this.resetStatus();
-    if(this.validaSenha()) {
+    if (this.validaSenha()) {
       this.status.loading = true;
       this.userController.create({ ...this.data, password: this.data.pwd.password })
         .then(res => {
@@ -113,11 +113,11 @@ export class RegisterComponent implements OnInit {
           }, 3500);
         });
     } else {
-      this.status.error = true; 
+      this.status.error = true;
       this.status.error_message = "As senhas não são iguais. Tente novamente";
       setTimeout(() => {
         this.status.error = false;
-      }, 3500);   
+      }, 3500);
     }
   }
 }

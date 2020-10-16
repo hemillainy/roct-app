@@ -5,8 +5,7 @@
 			<div class="avatar">
 				<div [class.change-avatar]="changeAvatar" (mouseenter)="changeAvatar = true"
 					(mouseleave)="changeAvatar = false">
-					<img
-						[src]="data.avatar ? data.avatar : 'https://cdn.iconscout.com/icon/free/png-512/avatar-380-456332.png'"
+					<img [src]="data.avatar ? data.avatar : 'https://cdn.iconscout.com/icon/free/png-512/avatar-380-456332.png'"
 						alt="default">
 					<span class="material-icons" *ngIf="changeAvatar" (click)="openAvatarBox()">unarchive</span>
 				</div>
@@ -16,50 +15,37 @@
 					<label for="name">Nome</label>
 					<input [(ngModel)]="data.name" name="name" type="text" required>
 				</div>
-
 				<div class="item">
 					<label for="email">Email</label>
 					<input [(ngModel)]="data.email" name="email" type="text" required>
 				</div>
-
 				<div class="item">
 					<label for="cpf">CPF</label>
 					<input [(ngModel)]="data.cpf" name="cpf" type="text" mask="000.000.000-00" required>
 				</div>
-
 				<div class="item">
 					<label for="telefone">Telefone</label>
 					<input [(ngModel)]="data.telefone" name="telefone" type="text" mask="(00) 00000-0000" required>
 				</div>
-
 				<div class="item">
 					<label for="paswd">Senha</label>
 					<input [(ngModel)]="data.pwd.password" name="paswd" type="password" required>
 				</div>
-
 				<div class="item">
 					<label for="confirm_password">Confirme a senha</label>
 					<input [(ngModel)]="data.pwd.confirm_password" name="confirm_password" type="password" required>
 				</div>
-
-				<div class="">
+				<div class="type-user">
 					<label class="smallFont" for="vendedor">Quero ser um vendedor</label>
-					<input class="ml-10" [(ngModel)]="vendedor" name="vendedor" type="checkbox">
+					<div class="switch" [class.active]="data.vendedor" (click)="data.vendedor = !data.vendedor">
+						<div class="rect"></div>
+						<div class="circle"></div>
+					</div>
 				</div>
-				
 			</div>
-		
-      <button (click)="submit()">Cadastrar</button>
+			<button (click)="submit()">Cadastrar</button>
 		</form>
-		
-    <div class="overlay">
-      <div>
-        <img src="./assets/images/logo.png" alt="ROCT">
-        <p>Informe seus dados para o cadastro.</p>
-      </div>
-    </div>
-  </div>
-	
+	</div>
 	<div class="pop-up-avatar" *ngIf="boxAvatar" @fadeOut>
 		<div class="box">
 			<div class="header">
