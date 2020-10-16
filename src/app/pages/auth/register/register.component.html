@@ -1,5 +1,4 @@
 <div class="register">
-
 	<div class="content">
 		<form #login="ngForm">
 			<h5>Novo usuário</h5>
@@ -23,17 +22,12 @@
 					<input [(ngModel)]="data.email" name="email" type="text" required>
 				</div>
 
-				<div class="">
-					<label class="smallFont" for="vendedor">Quero ser um vendedor</label>
-					<input class="ml-10" [(ngModel)]="vendedor" name="vendedor" type="checkbox" (click)="resetCamposVendedor()">
-				</div>
-
-				<div class="item" *ngIf="vendedor">
+				<div class="item">
 					<label for="cpf">CPF</label>
 					<input [(ngModel)]="data.cpf" name="cpf" type="text" mask="000.000.000-00" required>
 				</div>
 
-				<div class="item" *ngIf="vendedor">
+				<div class="item">
 					<label for="telefone">Telefone</label>
 					<input [(ngModel)]="data.telefone" name="telefone" type="text" mask="(00) 00000-0000" required>
 				</div>
@@ -46,6 +40,11 @@
 				<div class="item">
 					<label for="confirm_password">Confirme a senha</label>
 					<input [(ngModel)]="data.pwd.confirm_password" name="confirm_password" type="password" required>
+				</div>
+
+				<div class="">
+					<label class="smallFont" for="vendedor">Quero ser um vendedor</label>
+					<input class="ml-10" [(ngModel)]="vendedor" name="vendedor" type="checkbox">
 				</div>
 				
 			</div>

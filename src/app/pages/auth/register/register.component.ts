@@ -29,7 +29,6 @@ export class RegisterComponent implements OnInit {
   // Scenes
   public changeAvatar: boolean;
   public boxAvatar: boolean;
-  public vendedor: boolean;
 
   constructor(
     private session: SessionService,
@@ -42,6 +41,7 @@ export class RegisterComponent implements OnInit {
       cpf: undefined,
       telefone: undefined,
       avatar: undefined,
+      vendedor: false,
       pwd: {
         password: undefined,
         confirm_password: undefined
@@ -49,7 +49,6 @@ export class RegisterComponent implements OnInit {
     };
     this.changeAvatar = false;
     this.boxAvatar = false;
-    this.vendedor = false;
     this.status = {
       loading: false,
       error: false,
@@ -79,11 +78,6 @@ export class RegisterComponent implements OnInit {
       error: false,
       error_message: "Algo de errado aconteceu, tente novamente"
     };
-  }
-
-  public resetCamposVendedor(): void {
-    this.data.cpf = undefined;
-    this.data.telefone = undefined;
   }
 
   public resetPassword(): void {
