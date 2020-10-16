@@ -1,0 +1,65 @@
+<div class="my-account">
+  <header>
+    <h2>Informações de conta</h2>
+  </header>
+  <div class="account-content">
+    <section>
+      <h5>Seus dados pessoais</h5>
+    </section>
+    <div>
+      <form>
+        <div class="row">
+          <label>Username*</label>
+          <input title="Username não editável" name="username" required disabled>
+        </div>
+        <div class="row">
+          <label>Email*</label>
+          <input name="email" required disabled>
+        </div>
+        <div class="row">
+          <label>CPF*</label>
+          <input name="cpf" required disabled>
+        </div>
+        <div>
+          <button type="button">Editar</button>
+          <button type="button">Alterar Senha</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="panel">
+    <div id="info_cadastrais">
+      <div class="content">
+        <div class="header">
+          <h2>Histórico de Compras</h2>
+        </div>
+        <table id="compras">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Valor Pago</th>
+              <th>Data da Compra</th>
+              <th>Vendedor</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Malho Congelado</td>
+              <td>3100</td>
+              <td>03/10/2020</td>
+              <td>Orn</td>
+            </tr>
+            <tr *ngFor="let compra of compras">
+              <th>{{compra.item.nome}}</th>
+              <th>{{compra.item.valor}}</th>
+              <th>{{compra.dt}}</th>
+              <th>{{compra.vendedor.username}}</th>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

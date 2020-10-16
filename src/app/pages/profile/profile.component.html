@@ -1,74 +1,35 @@
-
-<div class="container">
-  <div class="panel">
-    <h1>Informações da Conta</h1>
-    <div id="info_cadastrais">
-      <div class="content">
-        <div class="header">
-          <h2>Dados Cadastrais</h2>
+<div class="profile">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="menu">
+          <li (click)="sectionOption = 'account'">
+            <span class="material-icons">cancel_schedule_send</span>
+            Opção 1
+          </li>
+          <li (click)="sectionOption = 'xs'">
+            <span class="material-icons">cancel_schedule_send</span>
+            Opção 1
+          </li>
+          <li>
+            <span class="material-icons">cancel_schedule_send</span>
+            Opção 1
+          </li>
+          <li>
+            <span class="material-icons">cancel_schedule_send</span>
+            Opção 1
+          </li>
+          <li>
+            <span class="material-icons">cancel_schedule_send</span>
+            Opção 1
+          </li>
         </div>
-       <form>
-
-         <div class="row">
-          <label>Username</label>
-         <input class="form-control"
-         title="Username não editável"
-         name="username" required disabled>
-        </div>
-
-        <div class="row">
-          <label>Email</label>
-         <input class="form-control"
-         name="email" required disabled>
-        </div>
-
-        <div class="row">
-          <label>CPF</label>
-         <input class="form-control"
-         name="cpf" required disabled>
-        </div>
-
-        <div class="">
-          <span><i class="fas fa-key"></i></span>
-          <button type="button" class="btn btn-primary">Editar</button>
-  
-          <button type="button" class="btn btn-primary">Alterar Senha</button>
-        </div>
-       </form>
       </div>
-
-      <div class="content">
-        <div class="header">
-          <h2>Histórico de Compras</h2>
+      <div class="col-lg">
+        <div class="profile-content">
+          <app-minha-conta *ngIf="sectionOption === 'account'"></app-minha-conta>
         </div>
-        <table id="compras">
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>Valor Pago</th>
-              <th>Data da Compra</th>
-              <th>Vendedor</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>Malho Congelado</td>
-              <td>3100</td>
-              <td>03/10/2020</td>
-              <td>Orn</td>
-            </tr>
-            <tr *ngFor="let compra of compras">
-              <th>{{compra.item.nome}}</th>
-              <th>{{compra.item.valor}}</th>
-              <th>{{compra.dt}}</th>
-              <th>{{compra.vendedor.username}}</th>
-            </tr>
-          </tbody>
-          
-        </table>
       </div>
     </div>
   </div>
 </div>
-    
