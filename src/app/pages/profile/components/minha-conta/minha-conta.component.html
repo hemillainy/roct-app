@@ -9,11 +9,43 @@
     <div>
       <form>
         <div class="avatar">
-          <div [class.change-avatar]="changeAvatar" (mouseenter)="changeAvatar = true"
-            (mouseleave)="changeAvatar = false">
+          <div>
             <img [src]="data.avatar ? data.avatar : 'https://cdn.iconscout.com/icon/free/png-512/avatar-380-456332.png'"
-              alt="default">
-            <span class="material-icons" *ngIf="changeAvatar" (click)="openAvatarBox()">unarchive</span>
+              alt="default"><div class="panel" *ngIf="false">
+    <div id="info_cadastrais">
+      <div class="content">
+        <div class="header">
+          <h2>Histórico de Compras</h2>
+        </div>
+        <table id="compras">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Valor Pago</th>
+              <th>Data da Compra</th>
+              <th>Vendedor</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Malho Congelado</td>
+              <td>3100</td>
+              <td>03/10/2020</td>
+              <td>Orn</td>
+            </tr>
+            <tr *ngFor="let compra of compras">
+              <th>{{compra.item.nome}}</th>
+              <th>{{compra.item.valor}}</th>
+              <th>{{compra.dt}}</th>
+              <th>{{compra.vendedor.username}}</th>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>
           </div>
         </div>
         <div class="item">
