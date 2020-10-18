@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class NavComponent implements OnInit {
 
   private scroll = 0;
+  public search = '';
 
   constructor(
     private router: Router
@@ -24,12 +25,32 @@ export class NavComponent implements OnInit {
     return st > 180;
   }
 
+  public goHome(): void {
+    this.router.navigate(['/']);
+  }
+
   public show(): boolean {
     return !this.router.url.includes('user/login') && !this.router.url.includes('user/new');
   }
 
   public main(): boolean {
     return this.router.url === '/';
+  }
+
+  public openServer(value: string): void {
+    this.router.navigate(['/item'], { queryParams: { page: 1, server: value }});
+  }
+
+  public openGame(value: string): void {
+    this.router.navigate(['/item'], { queryParams: { page: 1, game: value }});
+  }
+
+  public openItem(value: string): void {
+    this.router.navigate(['/item'], { queryParams: { page: 1, type: value }});
+  }
+
+  public openSearch(): void {
+    this.router.navigate(['/item'], { queryParams: { page: 1, search: this.search }});
   }
 
 }

@@ -1,0 +1,198 @@
+.home-items {
+  min-height: 100vh;
+  position: relative;
+  padding-top: 50px;
+  margin-top: 50px;
+
+  .rect {
+    width: 300px;
+    background: #3aa4e5;
+    height: 300px;
+    position: absolute;
+    top: 0px;
+    z-index: -1;
+  }
+
+  .rect:nth-child(2) {
+    background: #6c45a7;
+    bottom: 0px;
+    top: unset;
+    right: 0px;
+    width: 120px;
+  }
+
+  .items-content {
+    min-height: 60vh;
+    padding: 40px;
+    box-shadow: -12px 20px 24px -2px #0000000d;
+
+    .header {
+      h4 {
+        font-weight: 200;
+        display: flex;
+        justify-content: flex-end;
+        color: #6c45a7;
+        margin-bottom: 10px;
+        font-size: 35px;
+
+        h4 {
+          font-weight: bold;
+          margin-left: 6px;
+          color: inherit;
+        }
+      }
+    }
+
+    .items {
+      display: flex;
+
+      .item {
+        width: 25%;
+        margin-right: 20px;
+        border-radius: 7px;
+        overflow: hidden;
+        transition: 0.3s;
+
+        .header {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          div.img {
+            width: 100%;
+            height: 300px;
+            background-position-y: top;
+            background-position-x: center;
+            background-size: cover;
+            background-image: url('https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg');
+            transition: 0.3s;
+          }
+
+          span {
+            position: absolute;
+            color: #fff;
+            font-size: 60px;
+            user-select: none;
+            opacity: 0;
+            transition: 0.3s;
+          }
+        }
+
+        .footer {
+          padding: 15px;
+          background: ghostwhite;
+          transition: 0.3s;
+
+          span.tag {
+            background: #3aa4e5;
+            padding: 0px 10px;
+            font-weight: 100;
+            color: #fff;
+            font-size: 12px;
+            transition: 0.3s;
+          }
+
+          p {
+            margin-top: 5px;
+            font-family: 'Montserrat';
+            width: 70%;
+            transition: 0.3s;
+          }
+
+          div {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            border-top: 1px solid #dbdbdb;
+            padding-top: 5px;
+            transition: 0.3s;
+
+            span:first-child {
+              font-size: 12px;
+            }
+
+            span:last-child {
+              font-size: 24px;
+              font-weight: bold;
+              font-family: 'Montserrat';
+            }
+          }
+        }
+      }
+
+      .item:hover {
+        cursor: pointer;
+        width: 30%;
+        height: fit-content;
+
+        .header {
+          div.img {
+            box-shadow: inset 0 0 80px #6c45a7;
+            filter: blur(2px);
+          }
+
+          span {
+            opacity: 1;
+          }
+        }
+
+        .footer {
+          background: #6c45a7;
+
+          span.tag {
+            background: #ffffff;
+            color: #6c45a7;
+          }
+
+          p {
+            color: #fff;
+          }
+
+          div {
+            color: #fff;
+          }
+        }
+      }
+
+      .item:last-child {
+        margin-right: 0px;
+      }
+    }
+
+    .actions {
+      margin-top: 40px;
+      display: flex;
+      justify-content: flex-end;
+
+      button {
+        cursor: pointer;
+        border: unset;
+        outline: none;
+        padding: 10px 20px;
+        font-family: 'Montserrat';
+        display: flex;
+        align-items: center;
+        background: #3aa4e5;
+        color: #fff;
+        transition: 0.3s;
+
+        span {
+          font-size: 20px;
+          padding-left: 5px;
+          width: 0px;
+          opacity: 0;
+          transition: 0.3s;
+        }
+      }
+
+      button:hover {
+        background: #6c45a7;
+
+        span {
+          width: 25px;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

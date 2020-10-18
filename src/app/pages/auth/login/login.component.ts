@@ -2,23 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionService } from 'src/app/controllers/session/session.service';
 import { UserService } from 'src/app/controllers/user/user.service';
-import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  animations: [
-    trigger('fadeOut', [
-      transition(':enter', [
-        style({}),
-        animate('250ms', style({})),
-      ]),
-      transition(':leave', [
-        animate('250ms ease-in-out', style({ opacity: 0 }))
-      ])
-    ])
-  ]
+  styleUrls: ['./login.component.scss']
 })
 
 export class LoginComponent implements OnInit {
@@ -37,11 +25,11 @@ export class LoginComponent implements OnInit {
       pwd: {
         password: undefined
       }
-    },
-      this.status = {
-        loading: false,
-        error: false
-      }
+    };
+    this.status = {
+      loading: false,
+      error: false
+    }
   }
 
   ngOnInit() {
@@ -51,11 +39,6 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/user/new']);
   }
 
-  //Configurar rota correta
-  public goToRecovery(): string {
-    return '/user/new';
-  }
-
   public resetStatus(): void {
     this.status = {
       loading: false,
@@ -63,7 +46,7 @@ export class LoginComponent implements OnInit {
     };
   }
 
-  //Talvez esse método esteja errado
+  // ATUALIZAR
   public submit(): void {
     this.resetStatus();
     this.status.loading = true;

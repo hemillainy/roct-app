@@ -1,0 +1,30 @@
+footer {
+  background-image: url("./../../../../assets/images/header.jpg");
+  background-size: cover;
+  overflow: hidden;
+  background-position-y: 340px;
+
+  .footer-content {
+    background: #00000099;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+    bottom: 0px;
+
+    img {
+      height: 50px;
+    }
+
+    p {
+      font-weight: bold;
+      font-family: 'Montserrat';
+      color: #fff;
+      margin: 0px;
+      padding-left: 10px;
+      margin-left: 10px;
+      font-size: 13px;
+      border-left: 1px solid;
+    }
+  }
+}
