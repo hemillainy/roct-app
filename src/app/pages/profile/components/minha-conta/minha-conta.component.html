@@ -8,58 +8,45 @@
     </section>
     <div>
       <form>
-        <div class="row">
-          <label>Username*</label>
-          <input title="Username não editável" name="username" required disabled>
+        <div class="avatar">
+          <div [class.change-avatar]="changeAvatar" (mouseenter)="changeAvatar = true"
+            (mouseleave)="changeAvatar = false">
+            <img [src]="data.avatar ? data.avatar : 'https://cdn.iconscout.com/icon/free/png-512/avatar-380-456332.png'"
+              alt="default">
+            <span class="material-icons" *ngIf="changeAvatar" (click)="openAvatarBox()">unarchive</span>
+          </div>
         </div>
-        <div class="row">
-          <label>Email*</label>
-          <input name="email" required disabled>
+        <div class="item">
+					<label for="name">Nome</label>
+					<input name="name" [(ngModel)]="data.name" type="text" required [disabled]="!isEditando">
         </div>
-        <div class="row">
-          <label>CPF*</label>
-          <input name="cpf" required disabled>
+        <div class="item">
+					<label for="email">Email</label>
+					<input name="email" [(ngModel)]="data.email" type="text" required [disabled]="!isEditando">
+        </div>
+        <div class="item">
+					<label for="cpf">CPF</label>
+					<input name="cpf" [(ngModel)]="data.cpf" type="text" mask="000.000.000-00" required [disabled]="!isEditando">
+        </div>
+        <div class="item">
+					<label for="telefone">Telefone</label>
+					<input name="telefone" [(ngModel)]="data.telefone" type="text" mask="(00) 00000-0000" required [disabled]="!isEditando">
+        </div>
+        <div class="item">
+					<label for="account-type">Tipo da Conta</label>
+					<input name="account-type" value={{getAccountType()}} type="text" required disabled>
         </div>
         <div>
-          <button type="button">Editar</button>
-          <button type="button">Alterar Senha</button>
+          <button type="button" (click)="editMode()" *ngIf="!isEditando">Editar</button>
+          <div class="row">
+            <button type="submit" (click)="submit()" class="btn-primary m-1" *ngIf="isEditando">Atualizar</button>
+            <button type="button" class="btn-danger m-1" (click)="resetChanges()" *ngIf="isEditando">Cancelar</button>
+          </div>
         </div>
       </form>
     </div>
-  </div>
-  <div class="panel">
-    <div id="info_cadastrais">
-      <div class="content">
-        <div class="header">
-          <h2>Histórico de Compras</h2>
-        </div>
-        <table id="compras">
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>Valor Pago</th>
-              <th>Data da Compra</th>
-              <th>Vendedor</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>Malho Congelado</td>
-              <td>3100</td>
-              <td>03/10/2020</td>
-              <td>Orn</td>
-            </tr>
-            <tr *ngFor="let compra of compras">
-              <th>{{compra.item.nome}}</th>
-              <th>{{compra.item.valor}}</th>
-              <th>{{compra.dt}}</th>
-              <th>{{compra.vendedor.username}}</th>
-            </tr>
-          </tbody>
-
-        </table>
-      </div>
+    <div class="error-alert" *ngIf="status.error" @fadeOut>
+      <p>{{ status.error_message }}</p>
     </div>
   </div>
 </div>
