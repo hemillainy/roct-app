@@ -31,7 +31,6 @@ export class MinhaContaComponent implements OnInit {
   public isEditando: any;
 
   constructor(
-    private session: SessionService,
     private userController: UserService,
     private router: Router) {
     // this.data = {
