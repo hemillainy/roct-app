@@ -15,31 +15,30 @@
           </div>
         </div>
         <div class="item">
-					<label for="name">Nome</label>
-					<input name="name" [(ngModel)]="data.name" type="text" required [disabled]="!isEditando">
+          <label for="name">Nome</label>
+          <input name="name" [(ngModel)]="data.name" type="text" required [disabled]="!isEditando">
         </div>
         <div class="item">
-					<label for="email">Email</label>
-					<input name="email" [(ngModel)]="data.email" type="text" required [disabled]="!isEditando">
+          <label for="email">Email</label>
+          <input name="email" [(ngModel)]="data.email" type="text" required [disabled]="!isEditando">
         </div>
         <div class="item">
-					<label for="cpf">CPF</label>
-					<input name="cpf" [(ngModel)]="data.cpf" type="text" mask="000.000.000-00" required [disabled]="!isEditando">
+          <label for="cpf">CPF</label>
+          <input name="cpf" [(ngModel)]="data.cpf" type="text" mask="000.000.000-00" required [disabled]="!isEditando">
         </div>
         <div class="item">
-					<label for="telefone">Telefone</label>
-					<input name="telefone" [(ngModel)]="data.telefone" type="text" mask="(00) 00000-0000" required [disabled]="!isEditando">
+          <label for="telefone">Telefone</label>
+          <input name="telefone" [(ngModel)]="data.telefone" type="text" mask="(00) 00000-0000" required
+            [disabled]="!isEditando">
         </div>
         <div class="item">
-					<label for="account-type">Tipo da Conta</label>
-					<input name="account-type" value={{getAccountType()}} type="text" required disabled>
+          <label for="account-type">Tipo da Conta</label>
+          <input name="account-type" value={{getAccountType()}} type="text" required disabled>
         </div>
-        <div>
+        <div class="actions">
           <button type="button" (click)="editMode()" *ngIf="!isEditando">Editar</button>
-          <div class="row">
-            <button type="submit" (click)="submit()" class="btn-primary m-1" *ngIf="isEditando">Atualizar</button>
-            <button type="button" class="btn-danger m-1" (click)="resetChanges()" *ngIf="isEditando">Cancelar</button>
-          </div>
+          <button type="button" (click)="submit()"  *ngIf="isEditando">Atualizar</button>
+          <button type="button" [class.cancel]="isEditando" (click)="resetChanges()" *ngIf="isEditando">Cancelar</button>
         </div>
       </form>
     </div>

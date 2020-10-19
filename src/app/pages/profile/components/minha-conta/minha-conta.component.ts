@@ -25,7 +25,7 @@ export class MinhaContaComponent implements OnInit {
   //Data
   public data: any;
   private data_aux: any;
-  
+
   // Scenes
   public status: any;
   public isEditando: any;
@@ -47,7 +47,7 @@ export class MinhaContaComponent implements OnInit {
       email: 'gabriel.almeida.azevedo@ccc.ufcg.edu.br',
       cpf: '12345678910',
       telefone: '83988888888',
-      avatar: "http://localhost:4200/assets/images/avatar/batman.svg",
+      avatar: "/assets/images/avatar/batman.svg",
       vendedor: false,
       auth_token: undefined,
     };
@@ -58,7 +58,7 @@ export class MinhaContaComponent implements OnInit {
       error: false,
       error_message: "Algo de errado aconteceu, tente novamente"
     };
-   }
+  }
 
   ngOnInit() {
   }
@@ -88,7 +88,7 @@ export class MinhaContaComponent implements OnInit {
   public submit(): void {
     this.resetStatus();
     this.status.loading = true;
-    this.userController.create({ ...this.data})
+    this.userController.create({ ...this.data })
       .then(res => {
         //Falta algo aqui??
         this.router.navigate(['/profile']);
