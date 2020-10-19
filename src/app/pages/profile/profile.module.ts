@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile.component';
 import { MinhaContaComponent } from './components/minha-conta/minha-conta.component';
 import { AlterarSenhaComponent } from './components/alterar-senha/alterar-senha.component';
 import { TransformaContaComponent } from './components/transforma-conta/transforma-conta.component';
+import { ProfileRoutingModule } from './profile.routing.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { TransformaContaComponent } from './components/transforma-conta/transfor
     RouterModule,
     FormsModule,
     NgxMaskModule.forRoot(),
+    ProfileRoutingModule
   ],
   exports: [
     ProfileComponent

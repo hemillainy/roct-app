@@ -21,6 +21,7 @@
     box-shadow: 0 0px 40px -6px #0000001a;
 
     li {
+      outline: none;
       cursor: pointer;
       font-family: "Baloo Chettan 2";
       font-size: 14px;
@@ -37,6 +38,7 @@
         font-size: inherit;
         margin-right: 5px;
         color: inherit;
+        width: 16px;
       }
     }
 

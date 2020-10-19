@@ -4,11 +4,11 @@
     <div class="row">
       <div class="col-lg-3">
         <div class="menu">
-          <li (click)="sectionOption = 'account'">
+          <li routerLink='/user/profile/account'>
             <span class="material-icons">account_circle</span>
             Minha Conta
           </li>
-          <li (click)="sectionOption = 'password'">
+          <li routerLink='/user/profile/password'>
             <span class="material-icons">security</span>
             Alterar Senha
           </li>
@@ -16,7 +16,7 @@
             <span class="material-icons">shopping_basket</span>
             Compras
           </li>
-          <li (click)="sectionOption = 'change-account-type'">
+          <li routerLink='/user/profile/change-type'>
             <span class="material-icons">perm_identityd</span>
             Tornar-se um Vendedor
           </li>
@@ -36,9 +36,7 @@
       </div>
       <div class="col-lg">
         <div class="profile-content">
-          <app-minha-conta *ngIf="sectionOption === 'account'"></app-minha-conta>
-          <app-alterar-senha *ngIf="sectionOption === 'password'"></app-alterar-senha>
-          <app-transforma-conta *ngIf="sectionOption === 'change-account-type'"></app-transforma-conta>
+          <router-outlet></router-outlet>
         </div>
       </div>
     </div>

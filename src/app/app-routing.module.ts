@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ProfileComponent } from './pages/profile/profile.component';
 import { AdvertsComponent } from './pages/adverts/adverts.component';
 
 const routes: Routes = [
@@ -24,7 +23,7 @@ const routes: Routes = [
       },
       {
         path: 'profile',
-        component: ProfileComponent
+        loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfileModule)
       },
       {
         path: '**',
