@@ -6,11 +6,15 @@ import { NgxMaskModule } from 'ngx-mask';
 
 import { ProfileComponent } from './profile.component';
 import { MinhaContaComponent } from './components/minha-conta/minha-conta.component';
+import { AlterarSenhaComponent } from './components/alterar-senha/alterar-senha.component';
+import { TransformaContaComponent } from './components/transforma-conta/transforma-conta.component';
 
 @NgModule({
   declarations: [
     ProfileComponent,
-    MinhaContaComponent
+    MinhaContaComponent,
+    AlterarSenhaComponent,
+    TransformaContaComponent
   ],
   imports: [
     CommonModule,

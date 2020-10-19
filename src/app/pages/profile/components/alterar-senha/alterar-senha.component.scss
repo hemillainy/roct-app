@@ -1,23 +1,26 @@
 .my-password {
   header {
+    background: #00000080;
+    padding: 30px;
+    height: 100px;
+
     h2 {
       font-weight: bold;
-      color: #525252;
+      color: #fff;
     }
   }
 
   .content {
-    padding-top: 20px;
+    padding-top: 60px;
 
     section {
       padding: 10px 15px;
-      background: ghostwhite;
-      border-radius: 5px;
+      background: gray;
       margin-bottom: 20px;
 
       h5 {
         font-weight: 300;
-        color: #525252;
+        color: #fff;
         font-size: 20px;
         margin: 0px;
       }

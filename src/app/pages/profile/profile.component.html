@@ -8,7 +8,7 @@
             <span class="material-icons">account_circle</span>
             Minha Conta
           </li>
-          <li>
+          <li (click)="sectionOption = 'password'">
             <span class="material-icons">security</span>
             Alterar Senha
           </li>
@@ -16,8 +16,8 @@
             <span class="material-icons">shopping_basket</span>
             Compras
           </li>
-          <li>
-            <span class="material-icons">perm_identity</span>
+          <li (click)="sectionOption = 'change-account-type'">
+            <span class="material-icons">perm_identityd</span>
             Tornar-se um Vendedor
           </li>
           <li>
@@ -37,6 +37,8 @@
       <div class="col-lg">
         <div class="profile-content">
           <app-minha-conta *ngIf="sectionOption === 'account'"></app-minha-conta>
+          <app-alterar-senha *ngIf="sectionOption === 'password'"></app-alterar-senha>
+          <app-transforma-conta *ngIf="sectionOption === 'change-account-type'"></app-transforma-conta>
         </div>
       </div>
     </div>
