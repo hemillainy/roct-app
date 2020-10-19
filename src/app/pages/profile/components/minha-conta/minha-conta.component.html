@@ -1,0 +1,49 @@
+<div class="my-account">
+  <header>
+    <h2>Informações de conta</h2>
+  </header>
+  <div class="account-content">
+    <section>
+      <h5>Seus dados pessoais</h5>
+    </section>
+    <div>
+      <form>
+        <div class="avatar">
+          <div>
+            <img [src]="data.avatar ? data.avatar : 'https://cdn.iconscout.com/icon/free/png-512/avatar-380-456332.png'"
+              alt="default">
+          </div>
+        </div>
+        <div class="item">
+          <label for="name">Nome</label>
+          <input name="name" [(ngModel)]="data.name" type="text" required [disabled]="!isEditando">
+        </div>
+        <div class="item">
+          <label for="email">Email</label>
+          <input name="email" [(ngModel)]="data.email" type="text" required [disabled]="!isEditando">
+        </div>
+        <div class="item">
+          <label for="cpf">CPF</label>
+          <input name="cpf" [(ngModel)]="data.cpf" type="text" mask="000.000.000-00" required [disabled]="!isEditando">
+        </div>
+        <div class="item">
+          <label for="telefone">Telefone</label>
+          <input name="telefone" [(ngModel)]="data.telefone" type="text" mask="(00) 00000-0000" required
+            [disabled]="!isEditando">
+        </div>
+        <div class="item">
+          <label for="account-type">Tipo da Conta</label>
+          <input name="account-type" value={{getAccountType()}} type="text" required disabled>
+        </div>
+        <div class="actions">
+          <button type="button" (click)="editMode()" *ngIf="!isEditando">Editar</button>
+          <button type="button" (click)="submit()"  *ngIf="isEditando">Atualizar</button>
+          <button type="button" [class.cancel]="isEditando" (click)="resetChanges()" *ngIf="isEditando">Cancelar</button>
+        </div>
+      </form>
+    </div>
+    <div class="error-alert" *ngIf="status.error" @fadeOut>
+      <p>{{ status.error_message }}</p>
+    </div>
+  </div>
+</div>

@@ -22,7 +22,7 @@ export class NavComponent implements OnInit {
   public fixed(event: any): boolean {
     const st = window.pageYOffset || document.documentElement.scrollTop;
     this.scroll = st <= 0 ? 0 : st;
-    return st > 80;
+    return st > 180;
   }
 
   public goHome(): void {

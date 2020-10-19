@@ -1,0 +1,56 @@
+.profile {
+  padding: 30px 20px;
+  min-height: 100vh;
+
+  .overlay {
+    background-image: url("./../../../assets/images/header.jpg");
+    background-position-y: -110px;
+    background-size: cover;
+    height: 230px;
+    z-index: -5;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+  }
+
+  .menu {
+    padding: 15px;
+    background: #fff;
+    border-top: 10px solid #3aa4e5;
+    box-shadow: 0 0px 40px -6px #0000001a;
+
+    li {
+      cursor: pointer;
+      font-family: "Baloo Chettan 2";
+      font-size: 14px;
+      list-style: none;
+      padding: 14px 10px;
+      border-bottom: 1px solid #dcdcdc33;
+      user-select: none;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      transition: 0.2s;
+
+      span {
+        font-size: inherit;
+        margin-right: 5px;
+        color: inherit;
+      }
+    }
+
+    li:hover {
+      background: #3aa4e5;
+      color: #fff;
+    }
+
+    li:last-child {
+      border-bottom: unset;
+    }
+  }
+
+  .profile-content {
+    padding-left: 30px;
+  }
+}

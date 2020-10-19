@@ -1,0 +1,42 @@
+<div class="upgrade-account">
+  <header>
+    <h2>Tornar-se Vendedor</h2>
+  </header>
+  <div class="content">
+    <div>
+      <form>
+        <div>
+          <section>
+            <b>Benefícios de ser um Vendedor</b>
+            <li>Tenha vendas seguras. Nosso sistema garante que o comprador pagou o item antes de você enviá-lo.</li>
+          </section>
+          <section>
+            <b>Termos de Uso</b>
+            <li >
+              O vendedor deve se comprometer a efetivar a operação de entrega sob pena de cancelamento da conta.
+            </li>
+            <li>
+              Será cobrada uma taxa de 5% sobre o preço da venda.
+            </li>
+          </section>
+        </div>
+        <div class="type-user">
+					<label class="smallFont" for="termos">Declaro que li e concordo</label>
+					<div class="switch" [class.active]="aceitouTermos" (click)="aceitouTermos = !aceitouTermos">
+						<div class="rect"></div>
+						<div class="circle"></div>
+					</div>
+				</div>
+        <div>
+          <button type="submit" (click)="submit()" class="btn-primary m-1"  [disabled]="!aceitouTermos">Upgrade de Conta</button>
+        </div>
+      </form>
+    </div>
+    <div class="success-alert" *ngIf="status.success" @fadeOut>
+      <p>{{ status.success_message }}</p>
+    </div>
+    <div class="error-alert" *ngIf="status.error" @fadeOut>
+      <p>{{ status.error_message }}</p>
+    </div>
+  </div>
+</div>

@@ -49,6 +49,10 @@ button:hover {
   }
 }
 
+button.cancel {
+  background: #f44336;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
 }
