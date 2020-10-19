@@ -1,0 +1,29 @@
+<div class="my-password">
+  <header>
+    <h2>Alterar Senha</h2>
+  </header>
+  <div class="content">
+    <div>
+      <form>
+        <div class="item">
+					<label for="name">Digite a senha antiga</label>
+					<input name="name" [(ngModel)]="data.pwd.old_password" type="password" required>
+        </div>
+        <div class="item">
+					<label for="email">Digite sua nova senha</label>
+					<input name="email" [(ngModel)]="data.pwd.new_password" type="password" required>
+        </div>
+        <div class="item">
+					<label for="cpf">Confirme a nova senha</label>
+					<input name="cpf" [(ngModel)]="data.pwd.confirm_password" type="password" required>
+        </div>
+        <div>
+          <button type="submit" (click)="submit()" class="btn-primary m-1">Atualizar</button>
+        </div>
+      </form>
+    </div>
+    <div class="error-alert" *ngIf="status.error" @fadeOut>
+      <p>{{ status.error_message }}</p>
+    </div>
+  </div>
+</div>
