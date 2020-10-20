@@ -41,6 +41,7 @@ export class CriarAnuncioComponent implements OnInit {
         itemName: undefined,
         description: undefined,
         itemPrice: undefined,
+        itemType: undefined,
         selectedFile: ImageSnippet,
       },
       auth_token: undefined,
