@@ -22,6 +22,39 @@
 			transition: 0.3s;
 		}
 
+		.status-paga {
+			background-color: gold;
+		}
+
+		.status-entregue {
+			background-color: rgba(243, 90, 1, 0.993);
+		}
+
+		.status-finalizada {
+			background-color:rgb(53, 199, 85);
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5 {
+			font-family: "Montserrat";
+			font-size: 24px;
+			font-weight: bold;
+			color: #525252;
+			border-bottom: 1px solid #dcdcdc33;
+		}
+
+		p {
+			font-family: "Baloo Chettan 2";
+      font-size: 18px;
+      list-style: none;
+      padding: 14px 10px;
+      user-select: none;
+      font-weight: 400;
+		}
+
 		.center-itens {
 			display: flex;
 			flex-direction: column;
@@ -30,7 +63,7 @@
 			padding: 0;
 		}
 
-		.col {
+		col {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -38,71 +71,10 @@
 		}
 
 		img {
-			//height: 120px;
       width: 100%;
-      //object-fit: cover;
 			object-position: top;
 			opacity: 1;
 			transition: 0.3s;
-		}
-	}
-
-	.item:hover {
-		cursor:pointer;
-
-		.header {
-			img {
-				opacity: 0.5;
-				filter: blur(1px);
-			}
-
-			span {
-				font-size: 30px;
-			}
-		}
-
-		.footer {
-			background: #6c45a7;
-
-			span.tag {
-				background: #fff;
-				color: #6c45a7;
-			}
-
-			p {
-				color: #fff;
-			}
-
-			div {
-				span {
-					color: #fff;
-				}
-			}
-		}
-	}
-}
-
-@media only screen and (max-width: 1000px) {
-	.items-adverts {
-		.item {
-			width: calc(100%/3 - 15px);
-		}
-	}
-}
-
-
-@media only screen and (max-width: 800px) {
-	.items-adverts {
-		.item {
-			width: calc(100%/2 - 15px);
-		}
-	}
-}
-
-@media only screen and (max-width: 650px) {
-	.items-adverts {
-		.item {
-			width: calc(100%/1 - 15px);
 		}
 	}
 }

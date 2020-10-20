@@ -4,21 +4,24 @@
 			<div class="col-md-2 center-itens">
 				<h4>{{compra.title}}</h4>
 				<span class="tag">{{compra.type}}</span>
+				<br/>
+				<span [ngClass]="{'status-finalizada': compra.status === 'Finalizada', 
+				'status-paga': compra.status === 'Paga', 'status-entregue': compra.status === 'Entregue'}">Compra: {{compra.status}}</span>
 			</div>
-			<div class="col-md2 center-itens">
+			<div class="col-md-2 center-itens">
 				<h5>Descrição</h5>
 				<p>{{compra.description}}</p>
 			</div>
-			<div class="col-md2 center-itens">
+			<div class="col-md-2 center-itens">
 				<h5>Preço</h5>
 				<p>R$ {{compra.price}}</p>
 			</div>
-			<div class="col-md2 center-itens">
+			<div class="col-md-2 center-itens">
 				<h5>Vendedor</h5>
 				<p>{{compra.seller}}</p>
 			</div>
 			<div class="col-md-2 center-itens">
-				<h5>Data da Compra</h5>
+				<h5>Data Compra</h5>
 				<p>{{compra.date}}</p>
 			</div>
 			<div class="col-md-2 image"><img src="{{compra.image}}">

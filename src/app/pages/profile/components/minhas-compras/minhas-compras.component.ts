@@ -67,6 +67,7 @@ export class MinhasComprasComponent implements OnInit {
       {
         title: 'Rabadon',
         description: 'Item AP',
+        status: 'Finalizada',
         price: 9.98,
         type: "item",
         seller: "LoneDarkWolf",
@@ -77,6 +78,7 @@ export class MinhasComprasComponent implements OnInit {
       {
         title: 'Rylai',
         description: '+300 de Vida; +90 de Poder de Habilidade; Passivo ÚNICO: Feitiços e Habilidades que causam dano reduzem a Velocidade de Movimento do inimigo em 20% por 1s.',
+        status: 'Entregue',
         price: 9.98,
         type: "item",
         seller: "LoneDarkWolf",
@@ -87,6 +89,7 @@ export class MinhasComprasComponent implements OnInit {
       {
         title: 'Morellonomicon',
         description: 'descricao',
+        status: 'Paga',
         price: 9.98,
         type: "item",
         seller: "LoneDarkWolf",
@@ -97,6 +100,7 @@ export class MinhasComprasComponent implements OnInit {
       {
         title: 'Cutelo Negro',
         description: 'descricao',
+        status: 'Finalizada',
         price: 9.98,
         type: "item",
         seller: "LoneDarkWolf",
@@ -107,6 +111,7 @@ export class MinhasComprasComponent implements OnInit {
       {
         title: 'Gema',
         description: 'descricao',
+        status: 'Finalizada',
         price: 9.98,
         type: "gema",
         seller: "LoneDarkWolf",
@@ -117,6 +122,7 @@ export class MinhasComprasComponent implements OnInit {
       {
         title: 'Orbe do Mundial 2020',
         description: 'descricao',
+        status: 'Paga',
         price: 9.98,
         type: "orbe",
         seller: "LoneDarkWolf",
@@ -127,6 +133,7 @@ export class MinhasComprasComponent implements OnInit {
       {
         title: 'Fragmento de Campeão',
         description: 'descricao',
+        status: 'Entregue',
         price: 9.98,
         type: "item",
         seller: "LoneDarkWolf",
@@ -137,6 +144,7 @@ export class MinhasComprasComponent implements OnInit {
       {
         title: 'Ekko True Damage',
         description: 'descricao',
+        status: 'Finalizada',
         price: 9.98,
         type: "skin",
         seller: "LoneDarkWolf",
@@ -147,6 +155,7 @@ export class MinhasComprasComponent implements OnInit {
       {
         title: 'Obisidian Dragon',
         description: 'descricao',
+        status: 'Finalizada',
         price: 9.98,
         type: "skin",
         seller: "Dalembert",
