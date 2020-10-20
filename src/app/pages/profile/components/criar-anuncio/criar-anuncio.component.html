@@ -37,6 +37,18 @@
           />
         </div>
         <div class="item">
+          <label for="itemType">Tipo do item</label>
+          <select
+            name="itemType"
+            [(ngModel)]="data.ads.itemType"
+          >
+            <option value="a">Tipo A</option>
+            <option value="b">Tipo B</option>
+            <option value="c">Tipo C</option>
+            <option value="">Tipo D</option>
+          </select>
+        </div>
+        <div class="item">
           <label for="description">Descrição</label>
           <input
             name="description"
@@ -45,7 +57,7 @@
           />
         </div>
         <div class="item">
-          <label for="itemPrice">Preço do item</label>
+          <label for="itemPrice">Preço</label>
           <input
             name="itemPrice"
             [(ngModel)]="data.ads.itemPrice"
