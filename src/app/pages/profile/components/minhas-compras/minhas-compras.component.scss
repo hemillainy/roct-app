@@ -1,0 +1,120 @@
+.purchases {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  padding: 30px;
+  position: relative;
+  background: linear-gradient(180deg, #00000033 230px, transparent 0px);
+
+  .overlay {
+    background-image: url("./../../../../../assets/images/header.jpg");
+    background-position-y: -110px;
+    background-size: cover;
+    height: 230px;
+    z-index: -5;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+  }
+
+  .content {
+    padding: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    width: 100%;
+
+    .search {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-direction: row-reverse;
+      margin-bottom: 20px;
+      animation: slide-content-adverts 0.3s ease 0.1s backwards;
+
+      div:first-child {
+        display: flex;
+        height: 40px;
+
+        input {
+          border: unset;
+          border-radius: unset;
+          font-family: 'Montserrat';
+          padding: 10px;
+          width: 100%;
+          outline: none;
+        }
+
+        button {
+          background: #523530;
+          border: unset;
+          border-radius: unset;
+          outline: none;
+          padding: 10px;
+
+          span {
+            width: unset;
+            padding: 0px;
+            opacity: 1;
+          }
+        }
+      }
+
+      div:last-child {
+        position: relative;
+        margin-top: 10px;
+
+        p {
+          margin: 0px;
+          background: #523530;
+          color: #fff;
+          width: fit-content;
+          padding: 0px 10px;
+          font-size: 12px;
+          position: absolute;
+          top: -10px;
+          left: 0px;
+        }
+
+        select {
+          background: #fff;
+          border: unset;
+          border-radius: unset;
+          font-family: 'Montserrat';
+          padding: 10px;
+          height: 40px;
+          width: 100%;
+          outline: none;
+        }
+      }
+    }
+
+    .compras {
+      background: linear-gradient(180deg, #00000080 130px, transparent 0px);
+      min-height: 100vh;
+      padding: 40px;
+      padding-right: 25px;
+      padding-top: 50px;
+      box-shadow: 0 0px 40px -6px #0000001a;
+      animation: slide-content-adverts 0.3s ease 0.2s backwards;
+
+      h4 {
+        color: #fff;
+        font-weight: bold;
+        font-size: 30px;
+        margin-bottom: 80px;
+      }
+    }
+  }
+}
+
+@keyframes slide-content-adverts {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

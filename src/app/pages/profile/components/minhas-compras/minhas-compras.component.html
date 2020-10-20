@@ -1,0 +1,26 @@
+<div class="purchases">
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="search">
+      <div>
+        <button class="ml-1 mr-1" (click)="search()">Filtrar</button>
+        <button class="ml-1 mr-1" (click)="resetFilter()">Limpar Filtro</button>
+      </div>
+      
+      <div>
+        <p>Status da Compra</p>
+        <select name="server" id="server_filter" [(ngModel)]="filter.server">
+          <option value="paga">Paga</option>
+          <option value="entregue">Entregue</option>
+          <option value="finalizada">Finalizada</option>
+        </select>
+      </div>
+    
+      </div>
+      
+    <div class="compras">
+      <h4>Compras Efetuadas</h4>
+      <app-compras [compras]="data.docs"></app-compras>
+    </div>
+  </div>
+</div>
