@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AlterarSenhaComponent } from './components/alterar-senha/alterar-senha.component';
 import { MinhaContaComponent } from './components/minha-conta/minha-conta.component';
+import { MinhasComprasComponent } from './components/minhas-compras/minhas-compras/minhas-compras.component';
 import { TransformaContaComponent } from './components/transforma-conta/transforma-conta.component';
 import { ProfileComponent } from './profile.component';
 
@@ -22,6 +23,10 @@ const routes: Routes = [
 			{
 				path: 'change-type',
 				component: TransformaContaComponent
+			},
+			{
+				path: 'my-purchases',
+				component: MinhasComprasComponent
 			},
 			{
 				path: '**',
