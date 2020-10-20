@@ -1,80 +1,141 @@
 .compras {
-	display: flex;
-	flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 
-	.background {
-		background-color: aquamarine;
-		background-image: linear-gradient( to right, rgba(226, 34, 98, 0.363), rgb(182, 59, 59));
+  .item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    background: #f7f7f7;
+    margin-bottom: 10px;
 
-		.image {
-			padding-left: 0;
-			padding-right: 0;
-			display: block;
-			text-align: right;
-		}
+    .details {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
 
-		span.tag {
-			background: #3aa4e5;
-			padding: 0px 10px;
-			font-weight: 100;
-			color: #fff;
-			font-size: 12px;
-			transition: 0.3s;
-		}
+      h4 {}
 
-		.status-paga {
-			background-color: gold;
-		}
+      div {
+        span {
+          padding: 0px 10px;
+          font-weight: 100;
+          color: #fff;
+          font-size: 12px;
+          transition: 0.3s;
+          margin-right: 6px;
+        }
 
-		.status-entregue {
-			background-color: rgba(243, 90, 1, 0.993);
-		}
+        span.tag {
+          background: #3aa4e5;
+        }
 
-		.status-finalizada {
-			background-color:rgb(53, 199, 85);
-		}
+        span.cost {
+          background: gainsboro;
+          color: #000;
+        }
 
-		h1,
-		h2,
-		h3,
-		h4,
-		h5 {
-			font-family: "Montserrat";
-			font-size: 24px;
-			font-weight: bold;
-			color: #525252;
-			border-bottom: 1px solid #dcdcdc33;
-		}
+        span.date {
+          background: #8BC34A;
+          padding-right: 0px;
 
-		p {
-			font-family: "Baloo Chettan 2";
-      font-size: 18px;
-      list-style: none;
-      padding: 14px 10px;
-      user-select: none;
-      font-weight: 400;
-		}
+          span {
+            background: #689a2d;
+            margin: 0px;
+            margin-left: 5px;
+            padding: 0px 6px;
+          }
+				}
+				
+				span.status {
+					background: gray;
+				}
 
-		.center-itens {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			margin: auto;
-			padding: 0;
-		}
+				span.status.Finalizada {
+					background: #009688;
+				}
 
-		col {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			padding: 0;
-		}
+				span.status.Entregue {
+					background: #ff5722;
+				}
 
-		img {
-      width: 100%;
-			object-position: top;
-			opacity: 1;
-			transition: 0.3s;
-		}
-	}
+				span.status.Paga {
+					background: #4caf50;
+				}
+      }
+    }
+
+    .background {
+      img {
+        height: 100px;
+        width: 200px;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .item:last-child {
+    margin-bottom: 0px;
+  }
+
+
+  span.tag {
+    background: #3aa4e5;
+    padding: 0px 10px;
+    font-weight: 100;
+    color: #fff;
+    font-size: 12px;
+    transition: 0.3s;
+  }
+
+  .status-paga {
+    background-color: gold;
+  }
+
+  .status-entregue {
+    background-color: rgba(243, 90, 1, 0.993);
+  }
+
+  .status-finalizada {
+    background-color: rgb(53, 199, 85);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: "Montserrat";
+    font-size: 24px;
+    font-weight: bold;
+    color: #525252;
+    border-bottom: 1px solid #dcdcdc33;
+  }
+
+  p {
+    font-family: "Baloo Chettan 2";
+    font-size: 18px;
+    list-style: none;
+    padding: 14px 10px;
+    user-select: none;
+    font-weight: 400;
+  }
+
+  .center-itens {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    padding: 0;
+  }
+
+  col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
 }
