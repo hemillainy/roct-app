@@ -46,11 +46,14 @@
         color: #525252;
       }
 
-      input {
+      input,
+      select,
+      textarea {
         font-family: "Montserrat";
         border: 1px solid gainsboro;
         padding: 8px 10px;
         min-width: 250px;
+        max-width: 400px;
         outline: none;
       }
 
@@ -111,9 +114,11 @@
         max-width: 200px;
         box-shadow: 0 6px 10px -8px #00000080;
       }
+
       p.error {
         border-top: 10px solid #f44336;
       }
+
       p.success {
         border-top: 10px solid #4cf436;
       }
