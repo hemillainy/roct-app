@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AlterarSenhaComponent } from './components/alterar-senha/alterar-senha.component';
+import { CriarAnuncioComponent } from './components/criar-anuncio/criar-anuncio.component';
 import { MinhaContaComponent } from './components/minha-conta/minha-conta.component';
 import { MinhasComprasComponent } from './components/minhas-compras/minhas-compras.component';
 import { TransformaContaComponent } from './components/transforma-conta/transforma-conta.component';
@@ -27,6 +28,10 @@ const routes: Routes = [
 			{
 				path: 'my-purchases',
 				component: MinhasComprasComponent
+			},
+			{
+				path: 'new-advertise',
+				component: CriarAnuncioComponent
 			},
 			{
 				path: '**',
