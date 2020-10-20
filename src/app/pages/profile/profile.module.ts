@@ -11,6 +11,7 @@ import { TransformaContaComponent } from './components/transforma-conta/transfor
 import { ProfileRoutingModule } from './profile.routing.module';
 import { MinhasComprasComponent } from './components/minhas-compras/minhas-compras.component';
 import { ComprasComponent } from './components/minhas-compras/compras/compras.component';
+import { CriarAnuncioComponent } from './components/criar-anuncio/criar-anuncio.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ComprasComponent } from './components/minhas-compras/compras/compras.co
     AlterarSenhaComponent,
     TransformaContaComponent,
     MinhasComprasComponent,
-    ComprasComponent
+    ComprasComponent,
+    CriarAnuncioComponent,
   ],
   imports: [
     CommonModule,
