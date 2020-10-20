@@ -1,0 +1,106 @@
+<div class="create-ad">
+  <header>
+    <h2>Criar anúncio</h2>
+  </header>
+  <div class="content">
+    <div>
+      <form>
+        <div class="item">
+          <label for="serverName">Selecione o servidor</label>
+          <select
+            name="server"
+            id="select_server"
+            [(ngModel)]="data.ads.server"
+          >
+            <option value="a">Servidor A</option>
+            <option value="b">Servidor B</option>
+            <option value="c">Servidor C</option>
+            <option value="">Servidor D</option>
+          </select>
+        </div>
+        <div class="item">
+          <label for="name">Nome do jogo</label>
+          <input
+            name="name"
+            [(ngModel)]="data.ads.gameName"
+            type="text"
+            required
+          />
+        </div>
+        <div class="item">
+          <label for="itemName">Nome do item</label>
+          <input
+            name="itemName"
+            [(ngModel)]="data.ads.itemName"
+            type="text"
+            required
+          />
+        </div>
+        <div class="item">
+          <label for="itemType">Tipo do item</label>
+          <select
+            name="itemType"
+            [(ngModel)]="data.ads.itemType"
+          >
+            <option value="a">Tipo A</option>
+            <option value="b">Tipo B</option>
+            <option value="c">Tipo C</option>
+            <option value="">Tipo D</option>
+          </select>
+        </div>
+        <div class="item">
+          <label for="description">Descrição</label>
+          <input
+            name="description"
+            [(ngModel)]="data.ads.description"
+            type="text"
+          />
+        </div>
+        <div class="item">
+          <label for="itemPrice">Preço</label>
+          <input
+            name="itemPrice"
+            [(ngModel)]="data.ads.itemPrice"
+            type="text"
+            required
+          />
+        </div>
+        <div class="item">
+          <label for="selectedFile">Imagem do item</label>
+          <input
+            name="selectedFile"
+            type="text"
+            disabled
+            [(ngModel)]="data.ads.selectedFile.file.name"
+            required
+          />
+          <button class="button-select-image" (click)="imageInput.click()">
+            Adicionar imagem
+            <input
+              #imageInput
+              type="file"
+              accept="image/*"
+              (change)="processFile(imageInput)"
+              style="display: none"
+            />
+          </button>
+        </div>
+        <div class="item">
+          <div class="image-preview" *ngIf="data.ads.selectedFile.src">
+            <img [src]="data.ads.selectedFile.src" height="300" />
+          </div>
+        </div>
+        <div>
+          <button type="submit" (click)="submit()" class="btn-primary m-1">
+            Criar
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="success-alert" *ngIf="status.show" @fadeOut>
+      <p [ngClass]="[status.type === 'success' ? 'success' : 'error']">
+        {{ status.message }}
+      </p>
+    </div>
+  </div>
+</div>

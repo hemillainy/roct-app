@@ -20,7 +20,7 @@
             <span class="material-icons">perm_identityd</span>
             Tornar-se um Vendedor
           </li>
-          <li>
+          <li (click)="sectionOption = 'create-ads'">
             <span class="material-icons">shopping_basket</span>
             Criar Anúncio
           </li>
@@ -39,6 +39,7 @@
           <app-minha-conta *ngIf="sectionOption === 'account'"></app-minha-conta>
           <app-alterar-senha *ngIf="sectionOption === 'password'"></app-alterar-senha>
           <app-transforma-conta *ngIf="sectionOption === 'change-account-type'"></app-transforma-conta>
+          <app-criar-anuncio *ngIf="sectionOption === 'create-ads'"></app-criar-anuncio>
         </div>
       </div>
     </div>

@@ -8,13 +8,15 @@ import { ProfileComponent } from './profile.component';
 import { MinhaContaComponent } from './components/minha-conta/minha-conta.component';
 import { AlterarSenhaComponent } from './components/alterar-senha/alterar-senha.component';
 import { TransformaContaComponent } from './components/transforma-conta/transforma-conta.component';
+import { CriarAnuncioComponent } from './components/criar-anuncio/criar-anuncio.component';
 
 @NgModule({
   declarations: [
     ProfileComponent,
     MinhaContaComponent,
     AlterarSenhaComponent,
-    TransformaContaComponent
+    TransformaContaComponent,
+    CriarAnuncioComponent,
   ],
   imports: [
     CommonModule,
