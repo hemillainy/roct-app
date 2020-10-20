@@ -2,73 +2,49 @@
 	display: flex;
 	flex-wrap: wrap;
 
-  .compra {
-		width: calc(100%/4 - 15px);
-    margin-right: 15px;
-    margin-bottom: 15px;
-    border-radius: 7px;
-    overflow: hidden;
-    transition: 0.3s;
+	.background {
+		background-color: aquamarine;
+		background-image: linear-gradient( to right, rgba(226, 34, 98, 0.363), rgb(182, 59, 59));
 
-    .header {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+		.image {
+			padding-left: 0;
+			padding-right: 0;
+			display: block;
+			text-align: right;
+		}
 
-      img {
-        height: 120px;
-        width: 100%;
-        object-fit: cover;
-				object-position: top;
-				opacity: 1;
-				transition: 0.3s;
-      }
+		span.tag {
+			background: #3aa4e5;
+			padding: 0px 10px;
+			font-weight: 100;
+			color: #fff;
+			font-size: 12px;
+			transition: 0.3s;
+		}
 
-      span {
-				user-select: none;
-        position: absolute;
-        color: #fff;
-				font-size: 0px;
-				transition: 0.3s;
-      }
-    }
+		.center-itens {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin: auto;
+			padding: 0;
+		}
 
-    .footer {
-      padding: 15px;
-      background: ghostwhite;
-      transition: 0.3s;
+		.col {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 0;
+		}
 
-      span.tag {
-        background: #3aa4e5;
-        padding: 0px 10px;
-        font-weight: 100;
-        color: #fff;
-				font-size: 12px;
-        transition: 0.3s;
-      }
-
-      p {
-        margin-top: 5px;
-        font-family: 'Montserrat';
-        width: 70%;
-        transition: 0.3s;
-      }
-
-      div {
-        display: flex;
-        justify-content: flex-end;
-        border-top: 1px solid gainsboro;
-        padding-top: 5px;
-
-        span {
-          font-size: 20px;
-          font-weight: bold;
-					font-family: 'Montserrat';
-					transition: 0.3s;
-        }
-      }
-    }
+		img {
+			//height: 120px;
+      width: 100%;
+      //object-fit: cover;
+			object-position: top;
+			opacity: 1;
+			transition: 0.3s;
+		}
 	}
 
 	.item:hover {

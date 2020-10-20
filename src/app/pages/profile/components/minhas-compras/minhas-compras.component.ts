@@ -66,6 +66,7 @@ export class MinhasComprasComponent implements OnInit {
     docs: [
       {
         title: 'Rabadon',
+        description: 'Item AP',
         price: 9.98,
         type: "item",
         seller: "LoneDarkWolf",
@@ -75,6 +76,7 @@ export class MinhasComprasComponent implements OnInit {
       },
       {
         title: 'Rylai',
+        description: '+300 de Vida; +90 de Poder de Habilidade; Passivo ÚNICO: Feitiços e Habilidades que causam dano reduzem a Velocidade de Movimento do inimigo em 20% por 1s.',
         price: 9.98,
         type: "item",
         seller: "LoneDarkWolf",
@@ -84,6 +86,7 @@ export class MinhasComprasComponent implements OnInit {
       },
       {
         title: 'Morellonomicon',
+        description: 'descricao',
         price: 9.98,
         type: "item",
         seller: "LoneDarkWolf",
@@ -93,6 +96,7 @@ export class MinhasComprasComponent implements OnInit {
       },
       {
         title: 'Cutelo Negro',
+        description: 'descricao',
         price: 9.98,
         type: "item",
         seller: "LoneDarkWolf",
@@ -102,6 +106,7 @@ export class MinhasComprasComponent implements OnInit {
       },
       {
         title: 'Gema',
+        description: 'descricao',
         price: 9.98,
         type: "gema",
         seller: "LoneDarkWolf",
@@ -111,6 +116,7 @@ export class MinhasComprasComponent implements OnInit {
       },
       {
         title: 'Orbe do Mundial 2020',
+        description: 'descricao',
         price: 9.98,
         type: "orbe",
         seller: "LoneDarkWolf",
@@ -120,6 +126,7 @@ export class MinhasComprasComponent implements OnInit {
       },
       {
         title: 'Fragmento de Campeão',
+        description: 'descricao',
         price: 9.98,
         type: "item",
         seller: "LoneDarkWolf",
@@ -129,12 +136,23 @@ export class MinhasComprasComponent implements OnInit {
       },
       {
         title: 'Ekko True Damage',
+        description: 'descricao',
         price: 9.98,
         type: "skin",
         seller: "LoneDarkWolf",
         seller_ratting: 4.9,
         date: "19/10/2020",
         image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ekko_19.jpg'
+      },
+      {
+        title: 'Obisidian Dragon',
+        description: 'descricao',
+        price: 9.98,
+        type: "skin",
+        seller: "Dalembert",
+        seller_ratting: 4.9,
+        date: "11/10/2020",
+        image: 'https://cabanadoleitor.com.br/wp-content/uploads/2020/09/sett-560x600.jpg'
       }
     ]
   };
