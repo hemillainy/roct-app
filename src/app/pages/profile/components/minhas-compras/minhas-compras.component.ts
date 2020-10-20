@@ -65,52 +65,76 @@ export class MinhasComprasComponent implements OnInit {
     page: 1,
     docs: [
       {
-        title: 'Jayce Academia de Batalha',
+        title: 'Rabadon',
         price: 9.98,
+        type: "item",
         seller: "LoneDarkWolf",
         seller_ratting: 4.9,
         date: "19/10/2020",
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
+        image: 'https://cdn-images.win.gg/news/d1359f9934ee5a75ed441ffce412a0a1/db52d5b965e38a07edeac144421e8b4a/original.png'
       },
       {
-        title: 'Jayce Academia de Batalha',
+        title: 'Rylai',
         price: 9.98,
+        type: "item",
         seller: "LoneDarkWolf",
         seller_ratting: 4.9,
         date: "19/10/2020",
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
+        image: 'https://pm1.narvii.com/6312/5bae30449776358939d476751c3d7792b5212301_00.jpg'
       },
       {
-        title: 'Jayce Academia de Batalha',
+        title: 'Morellonomicon',
         price: 9.98,
+        type: "item",
         seller: "LoneDarkWolf",
         seller_ratting: 4.9,
         date: "19/10/2020",
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQc6_hXMn_Xgl9maOK-ytgLOjiU1z5zYkY7Ww&usqp=CAU'
       },
       {
-        title: 'Jayce Academia de Batalha',
+        title: 'Cutelo Negro',
         price: 9.98,
+        type: "item",
         seller: "LoneDarkWolf",
         seller_ratting: 4.9,
         date: "19/10/2020",
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
+        image: 'https://pbs.twimg.com/media/EUQ5GEiWoAIaTdE.jpg'
       },
       {
-        title: 'Jayce Academia de Batalha',
+        title: 'Gema',
         price: 9.98,
+        type: "gema",
         seller: "LoneDarkWolf",
         seller_ratting: 4.9,
         date: "19/10/2020",
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
+        image: 'https://s2.glbimg.com/4eaGYh0nGDi0WYUr-QQS685Oegg=/0x0:1280x720/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2020/I/2/cK4QctRSKlIhkVwlnGBw/gemas-lol.jpg'
       },
       {
-        title: 'Jayce Academia de Batalha',
+        title: 'Orbe do Mundial 2020',
         price: 9.98,
+        type: "orbe",
         seller: "LoneDarkWolf",
         seller_ratting: 4.9,
         date: "19/10/2020",
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
+        image: 'https://pbs.twimg.com/media/EiJBqCeWAAgeaZs.png'
+      },
+      {
+        title: 'Fragmento de Campeão',
+        price: 9.98,
+        type: "item",
+        seller: "LoneDarkWolf",
+        seller_ratting: 4.9,
+        date: "19/10/2020",
+        image: 'https://pbs.twimg.com/media/EiJBqCfXYAAI_gp.png'
+      },
+      {
+        title: 'Ekko True Damage',
+        price: 9.98,
+        type: "skin",
+        seller: "LoneDarkWolf",
+        seller_ratting: 4.9,
+        date: "19/10/2020",
+        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ekko_19.jpg'
       }
     ]
   };
