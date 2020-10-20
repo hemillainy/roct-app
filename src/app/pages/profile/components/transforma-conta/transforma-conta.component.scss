@@ -17,9 +17,11 @@
       list-style-type: decimal;
     }
 
+    button {
+      margin-top: 10px;
+    }
+
     section {
-      padding: 10px 15px;
-      background: gray;
       margin-bottom: 20px;
 
       h5 {
@@ -28,19 +30,34 @@
         font-size: 20px;
         margin: 0px;
       }
+
+      b {
+        font-size: 24px;
+        font-family: "Montserrat";
+      }
+
+      li {
+        font-size: 18px;
+        font-family: "Baloo Chettan 2";
+      }
     }
 
     .type-user {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
       padding-top: 5px;
+
+      label {
+        margin-bottom: 12px;
+      }
     }
 
     div.switch {
       cursor: pointer;
       position: relative;
       margin-bottom: -10px;
+      margin-left: 10px;
 
       .rect {
         width: 70px;
@@ -107,17 +124,12 @@
       }
     }
 
-    .btn-primary:disabled {
-      background-color: gray;
-      cursor: default;
-    }
-    
     .error-alert {
       position: fixed;
       bottom: 0px;
       right: 0px;
       animation: slide-error-login 0.4s ease backwards;
-  
+
       p {
         padding: 20px;
         background: #fff;
@@ -127,14 +139,14 @@
         border-top: 10px solid #F44336;
         box-shadow: 0 6px 10px -8px #00000080;
       }
-    } 
+    }
 
     .success-alert {
       position: fixed;
       bottom: 0px;
       right: 0px;
       animation: slide-error-login 0.4s ease backwards;
-  
+
       p {
         padding: 20px;
         background: #fff;

@@ -11,9 +11,6 @@ export class ProfileComponent implements OnInit {
   public user: any;
   public compras: any;
 
-  // Scenes Menu
-  public sectionOption = 'account';
-
   constructor(
     private profileService: ProfileService
   ) {

@@ -14,6 +14,14 @@
     top: 0px;
   }
 
+  .profile-menu {
+    min-width: 300px;
+  }
+
+  .profile-body {
+    width: calc(100% - 300px);
+  }
+
   .menu {
     padding: 15px;
     background: #fff;
@@ -21,6 +29,7 @@
     box-shadow: 0 0px 40px -6px #0000001a;
 
     li {
+      outline: none;
       cursor: pointer;
       font-family: "Baloo Chettan 2";
       font-size: 14px;
@@ -37,6 +46,7 @@
         font-size: inherit;
         margin-right: 5px;
         color: inherit;
+        width: 16px;
       }
     }
 
@@ -51,6 +61,6 @@
   }
 
   .profile-content {
-    padding-left: 30px;
+    padding-left: 40px;
   }
 }

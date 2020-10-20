@@ -12,7 +12,7 @@
           </section>
           <section>
             <b>Termos de Uso</b>
-            <li >
+            <li>
               O vendedor deve se comprometer a efetivar a operação de entrega sob pena de cancelamento da conta.
             </li>
             <li>
@@ -21,14 +21,16 @@
           </section>
         </div>
         <div class="type-user">
-					<label class="smallFont" for="termos">Declaro que li e concordo</label>
-					<div class="switch" [class.active]="aceitouTermos" (click)="aceitouTermos = !aceitouTermos">
-						<div class="rect"></div>
-						<div class="circle"></div>
-					</div>
-				</div>
+          <label class="smallFont" for="termos">Declaro que li e concordo</label>
+          <div class="switch" [class.active]="aceitouTermos" (click)="aceitouTermos = !aceitouTermos">
+            <div class="rect"></div>
+            <div class="circle"></div>
+          </div>
+        </div>
         <div>
-          <button type="submit" (click)="submit()" class="btn-primary m-1"  [disabled]="!aceitouTermos">Upgrade de Conta</button>
+          <button type="submit" (click)="submit()" [disabled]="!aceitouTermos">
+            Upgrade de Conta
+          </button>
         </div>
       </form>
     </div>
