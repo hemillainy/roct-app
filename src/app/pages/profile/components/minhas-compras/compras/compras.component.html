@@ -1,0 +1,15 @@
+<div class="compras">
+	<div class="compra" *ngFor="let compra of compras; index as i;">
+		<div class="header">
+			<img src="{{ compra.image }}">
+			<span class="material-icons">search</span>
+		</div>
+		<div class="footer">
+			<span class="tag">{{ compra.type }}</span>
+			<p>{{ compra.title }}</p>
+			<div>
+				<span>{{ compra.price | currency:'BRL' }}</span>
+			</div>
+		</div>
+	</div>
+</div>

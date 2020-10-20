@@ -9,7 +9,9 @@ import { MinhaContaComponent } from './components/minha-conta/minha-conta.compon
 import { AlterarSenhaComponent } from './components/alterar-senha/alterar-senha.component';
 import { TransformaContaComponent } from './components/transforma-conta/transforma-conta.component';
 import { ProfileRoutingModule } from './profile.routing.module';
-import { MinhasComprasComponent } from './components/minhas-compras/minhas-compras/minhas-compras.component';
+import { MinhasComprasComponent } from './components/minhas-compras/minhas-compras.component';
+import { ComprasComponent } from './components/minhas-compras/compras/compras.component';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { MinhasComprasComponent } from './components/minhas-compras/minhas-compr
     MinhaContaComponent,
     AlterarSenhaComponent,
     TransformaContaComponent,
-    MinhasComprasComponent
+    MinhasComprasComponent,
+    ComprasComponent
   ],
   imports: [
     CommonModule,
