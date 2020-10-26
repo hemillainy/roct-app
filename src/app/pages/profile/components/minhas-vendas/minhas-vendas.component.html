@@ -1,0 +1,23 @@
+<div class="sales">
+  <div class="content">
+    <header class="vendas">
+      <h4>Vendas Efetuadas</h4>
+    </header>
+    <div class="search">
+      <div>
+        <button class="ml-1 mr-1" (click)="search()">Filtrar</button>
+        <button class="ml-1 mr-1" (click)="resetFilter()">Limpar Filtro</button>
+      </div>
+      <div>
+        <p>Status da Venda</p>
+        <select name="server" id="server_filter" [(ngModel)]="filter.server">
+          <option value="">Todos</option>
+          <option value="paga">Paga</option>
+          <option value="entregue">Entregue</option>
+          <option value="finalizada">Finalizada</option>
+        </select>
+      </div>
+    </div>
+    
+  </div>
+</div>
