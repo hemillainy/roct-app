@@ -1,0 +1,27 @@
+<div class="vendas">
+	<div class="item" *ngFor="let venda of vendas">
+		<div class="details">
+			<h4>{{ venda.title }}</h4>
+			<div>
+				<span class="tag">{{ venda.type }}</span>
+				<span class="cost">{{ venda.price | currency:'BRL' }}</span>
+				<span class="status {{ venda.status }}">{{ venda.status }}</span>
+				<span class="date" *ngIf="venda.status !== 'Disponivel'">
+					Data da Venda
+					<span >
+						{{ venda.date }}
+					</span>
+				</span>
+				<span class="shopper" *ngIf="venda.status !== 'Disponivel'">
+					Comprador
+					<span >
+						{{ venda.shopper }}
+					</span>
+				</span>
+			</div>
+		</div>
+		<div class="background">
+			<img src="{{ venda.image }}">
+		</div>
+	</div>
+</div>

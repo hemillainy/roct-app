@@ -12,12 +12,13 @@
         <p>Status da Venda</p>
         <select name="server" id="server_filter" [(ngModel)]="filter.server">
           <option value="">Todos</option>
+          <option value="disponivel">Disponível</option>
           <option value="paga">Paga</option>
           <option value="entregue">Entregue</option>
           <option value="finalizada">Finalizada</option>
         </select>
       </div>
     </div>
-    
+    <app-vendas [vendas]="data.docs"></app-vendas>
   </div>
 </div>

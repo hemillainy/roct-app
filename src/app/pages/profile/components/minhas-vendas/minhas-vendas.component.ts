@@ -64,58 +64,52 @@ export class MinhasVendasComponent implements OnInit {
     page: 1,
     docs: [
       {
-        title: 'Jayce Academia de Batalha',
+        title: 'Morellonomicon',
+        description: 'descricao',
+        status: 'Paga',
         price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
+        type: "item",
+        seller: "LoneDarkWolf",
+        shopper: "Dalembert",
+        seller_ratting: 4.9,
+        date: "19/10/2020",
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQc6_hXMn_Xgl9maOK-ytgLOjiU1z5zYkY7Ww&usqp=CAU'
       },
       {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
+        title: 'Orbe do Mundial 2020',
+        description: 'descricao',
+        status: 'Disponivel',
+        price: 15.99,
+        type: "orbe",
+        seller: "LoneDarkWolf",
+        shopper: "Condezero",
+        seller_ratting: 4.9,
+        date: undefined,
+        image: 'https://pbs.twimg.com/media/EiJBqCeWAAgeaZs.png'
       },
       {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
+        title: 'Ekko True Damage',
+        description: 'descricao',
+        status: 'Finalizada',
+        price: 25.00,
+        type: "skin",
+        seller: "LoneDarkWolf",
+        shopper: "Quelll123",
+        seller_ratting: 4.9,
+        date: "19/10/2020",
+        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ekko_19.jpg'
       },
       {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
-      },
-      {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
-      },
-      {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
-      },
-      {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
-      },
-      {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
-      },
-      {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
+        title: 'Obisidian Dragon',
+        description: 'descricao',
+        status: 'Entregue',
+        price: 30.00,
+        type: "skin",
+        seller: "LoneDarkWolf",
+        shopper: "RinoaSama",
+        seller_ratting: 4.9,
+        date: "11/10/2020",
+        image: 'https://cabanadoleitor.com.br/wp-content/uploads/2020/09/sett-560x600.jpg'
       }
     ]
   };
