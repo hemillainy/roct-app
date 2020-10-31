@@ -55,6 +55,11 @@
       color: #fff;
     }
 
+    li.active {
+      background: #737373;
+      color: #fff;
+    }
+
     li:last-child {
       border-bottom: unset;
     }

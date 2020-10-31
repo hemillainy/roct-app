@@ -4,24 +4,24 @@
     <div class="row">
       <div class="profile-menu">
         <div class="menu">
-          <li routerLink='/user/profile/account'>
+          <li [class.active]="component.command === 'account'" (click)="setCommand('account')">
             <span class="material-icons">account_circle</span>
             Minha Conta
           </li>
-          <li routerLink='/user/profile/password'>
+          <li [class.active]="component.command === 'password'" (click)="setCommand('password')">
             <span class="material-icons">security</span>
             Alterar Senha
           </li>
-          <li routerLink='/user/profile/my-purchases'>
+          <li [class.active]="component.command === 'purchases'" (click)="setCommand('purchases')">
             <span class="material-icons">shopping_basket</span>
             Minhas Compras
           </li>
-          <li routerLink='/user/profile/change-type'>
+          <li [class.active]="component.command === 'change-type'" (click)="setCommand('change-type')">
             <span class="material-icons">perm_identityd</span>
             Tornar-se um Vendedor
           </li>
-          <li routerLink='/user/profile/new-advertise'>
-            <span class="material-icons">shopping_basket</span>
+          <li [class.active]="component.command === 'advertise'" (click)="setCommand('advertise')">
+            <span class="material-icons">note_add</span>
             Criar Anúncio
           </li>
           <li routerLink='/user/profile/my-sales'>
@@ -36,7 +36,11 @@
       </div>
       <div class="profile-body">
         <div class="profile-content">
-          <router-outlet></router-outlet>
+          <app-minha-conta *ngIf="component.command === 'account'"></app-minha-conta>
+          <app-alterar-senha *ngIf="component.command === 'password'"></app-alterar-senha>
+          <app-transforma-conta *ngIf="component.command === 'change-type'"></app-transforma-conta>
+          <app-minhas-compras *ngIf="component.command === 'purchases'"></app-minhas-compras>
+          <app-criar-anuncio *ngIf="component.command === 'advertise'"></app-criar-anuncio>
         </div>
       </div>
     </div>
