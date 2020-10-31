@@ -11,6 +11,7 @@ import { TransformaContaComponent } from './components/transforma-conta/transfor
 import { MinhasComprasComponent } from './components/minhas-compras/minhas-compras.component';
 import { ComprasComponent } from './components/minhas-compras/compras/compras.component';
 import { CriarAnuncioComponent } from './components/criar-anuncio/criar-anuncio.component';
+import { MinhasVendasModule } from './components/minhas-vendas/minhas-vendas.module';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { CriarAnuncioComponent } from './components/criar-anuncio/criar-anuncio.
     RouterModule,
     FormsModule,
     NgxMaskModule.forRoot(),
+    MinhasVendasModule,
   ],
   exports: [
     ProfileComponent

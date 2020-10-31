@@ -1,0 +1,119 @@
+.vendas {
+  display: flex;
+  flex-wrap: wrap;
+
+  .item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    background: #f7f7f7;
+    margin-bottom: 10px;
+
+    .details {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+
+      div {
+        span {
+          padding: 0px 10px;
+          font-weight: 100;
+          color: #fff;
+          font-size: 12px;
+          transition: 0.3s;
+          margin-right: 6px;
+        }
+
+        span.tag {
+          background: #3aa4e5;
+        }
+
+        span.cost {
+          background: gainsboro;
+          color: #000;
+        }
+
+        span.date {
+          background: #8BC34A;
+          padding-right: 0px;
+
+          span {
+            background: #689a2d;
+            margin: 0px;
+            margin-left: 5px;
+            padding: 0px 6px;
+          }
+        }
+        
+        span.shopper {
+          background: #3b46a8;
+          padding-right: 0px;
+
+          span {
+            background: #4751aa;
+            margin: 0px;
+            margin-left: 5px;
+            padding: 0px 6px;
+          }
+				}
+				
+				span.status {
+					background: gray;
+				}
+
+				span.status.Finalizada {
+					background: #009688;
+				}
+
+				span.status.Entregue {
+					background: #ff5722;
+				}
+
+				span.status.Paga {
+					background: #4caf50;
+        }
+        
+        span.status.Disponivel {
+					background: #be07a6;
+				}
+      }
+    }
+
+    .background {
+      img {
+        height: 100px;
+        width: 200px;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .item:last-child {
+    margin-bottom: 0px;
+  }
+
+  span.tag {
+    background: #3aa4e5;
+    padding: 0px 10px;
+    font-weight: 100;
+    color: #fff;
+    font-size: 12px;
+    transition: 0.3s;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: "Montserrat";
+    font-size: 24px;
+    font-weight: bold;
+    color: #525252;
+    border-bottom: 1px solid #dcdcdc33;
+  }
+
+}
