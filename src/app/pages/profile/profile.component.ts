@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfileService } from 'src/app/controllers/profile/profile.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -8,23 +9,33 @@ import { ProfileService } from 'src/app/controllers/profile/profile.service';
 })
 export class ProfileComponent implements OnInit {
 
-  public user: any;
-  public compras: any;
+  private subs: Subscription;
+  public component = {
+    pages: ['account', 'password', 'change-type', 'purchases', 'advertise'],
+    command: 'account'
+  };
 
   constructor(
-    private profileService: ProfileService
-  ) {
-    this.user = {
-      username: undefined,
-      email: undefined,
-      pwd: {
-        password: undefined
-      }
-    };
-  }
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
-    this.compras = this.profileService.getCompras();
+    this.subs = this.route.queryParams.subscribe(
+      queryParams => {
+        const command = queryParams['command'] || 'info';
+        this.component.command = command;
+        if (!this.component.pages.includes(command)) {
+          this.component.command = 'account';
+        }
+      }
+    );
+    this.router.navigate([], { queryParams: { command: this.component.command }, queryParamsHandling: 'merge' });
+  }
+
+  public setCommand(value:string): void {
+    this.component.command = value;
+    this.router.navigate([], { queryParams: { command: this.component.command }, queryParamsHandling: 'merge' });
   }
 
 }

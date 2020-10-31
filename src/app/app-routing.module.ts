@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AdvertsComponent } from './pages/adverts/adverts.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,7 @@ const routes: Routes = [
       },
       {
         path: 'profile',
-        loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfileModule)
+        component: ProfileComponent
       },
       {
         path: '**',
