@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/controllers/auth/auth.service';
 import { SessionService } from 'src/app/controllers/session/session.service';
 import { UserService } from 'src/app/controllers/user/user.service';
 
@@ -18,13 +19,11 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private session: SessionService,
-    private userController: UserService
+    private ctrlAuth: AuthService
   ) {
     this.data = {
       email: undefined,
-      pwd: {
-        password: undefined
-      }
+      password: undefined
     };
     this.status = {
       loading: false,
@@ -46,14 +45,14 @@ export class LoginComponent implements OnInit {
     };
   }
 
-  // ATUALIZAR
-  public submit(): void {
+  public auth(): void {
     this.resetStatus();
     this.status.loading = true;
-    this.userController.create({ ...this.data, password: this.data.pwd.password })
+    this.ctrlAuth.auth(this.data)
       .then(res => {
-        this.session.logIn(res.data.auth_token);
-        this.router.navigate(['/profile']);
+        console.log(res);
+        this.session.logIn(res.data.token);
+        this.router.navigate(['/user/profile']);
       }).catch(err => {
         this.status.loading = false;
         this.status.error = true;

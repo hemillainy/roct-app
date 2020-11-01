@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
 import axios from 'axios';
+import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { SessionService } from '../session/session.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class ItemsService {
 
   private END_POINT: string;
 
@@ -22,7 +22,7 @@ export class UserService {
     return { headers: { Authorization: token } };
   }
 
-  public create(data: any): Promise<any> {
-    return axios.post(this.END_POINT + '/users', this.getConfig(), data);
+  public getItem(id: string): Promise<any> {
+    return axios.get(this.END_POINT + `/announcements/${id}`);
   }
 }

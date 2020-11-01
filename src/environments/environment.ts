@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  END_POINT_API: 'https://localhost:3000'
+  END_POINT_API: 'https://geovanens.pythonanywhere.com',
+  BASE_AVATAR: ''
 };
 
 /*

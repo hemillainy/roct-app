@@ -156,6 +156,15 @@ export class AdvertsComponent implements OnInit {
 
   public search(): void {
     console.log(this.filter);
+    this.router.navigate([], {
+      queryParams: {
+        page: this.data.page,
+        game: this.filter.game,
+        server: this.filter.server,
+        type: this.filter.type,
+        text: this.filter.text
+      }, queryParamsHandling: 'merge'
+    });
     this.filter.filtered = this.clearFilter();
   }
 

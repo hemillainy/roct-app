@@ -1,0 +1,152 @@
+.item-product {
+  min-height: 100vh;
+  padding: 30px;
+  background: linear-gradient(180deg, #00000080 230px, transparent 0px);
+  position: relative;
+
+  .overlay-item {
+    background-image: url("./../../../../assets/images/header.jpg");
+    background-position-y: -110px;
+    background-size: cover;
+    background-position: top;
+    height: 230px;
+    z-index: -5;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    transition: 0.3s;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    background: #fff;
+    margin: 30px;
+    margin-top: 40px;
+    padding: 40px;
+    animation: slide-content-product 0.3s ease 0.2s backwards;
+    transition: 0.3s;
+
+    .image {
+      animation: slide-content-product 0.3s ease 0.15s backwards;
+
+      img {
+        height: 300px;
+        width: 300px;
+        object-fit: cover;
+      }
+    }
+
+    .details {
+      margin-left: 40px;
+      width: 100%;
+      animation: slide-content-product 0.3s ease 0.3s backwards;
+
+      .header {
+        margin-bottom: 30px;
+
+        h5 {
+          font-family: 'Montserrat';
+          font-size: 35px;
+          font-weight: bold;
+          color: #3aa4e5;
+          text-transform: uppercase;
+        }
+
+        div {
+          display: flex;
+          align-items: flex-start;
+
+          p {
+            margin: 0px;
+            padding: 0px 10px;
+            background: gainsboro;
+            margin-right: 5px;
+          }
+
+          p.type {
+            color: #fff;
+            background: #3aa4e5;
+            text-transform: lowercase;
+          }
+
+          p:last-child {
+            background: #f3f3f3;
+          }
+        }
+      }
+
+      .description {
+        margin-bottom: 30px;
+      }
+
+      .action {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .price {
+          font-family: 'Montserrat';
+          font-weight: bold;
+          font-size: 40px;
+        }
+
+        button {
+          background: #8bc34a;
+          font-weight: bold;
+          transition: 0.3s;
+
+          span {
+            width: unset;
+            opacity: 1;
+            border-left: 1px solid #ffffff4d;
+            margin-left: 15px;
+            padding-left: 15px;
+          }
+        }
+
+        button:hover {
+          background: #4caf50;
+        }
+      }
+    }
+  }
+
+  .content.loading,
+  .content.err {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+
+    div.loader {
+      width: 60px;
+      height: 60px;
+    }
+
+    span {
+      font-size: 25px;
+      user-select: none;
+    }
+
+    p {
+      margin: 0px;
+      font-size: 20px;
+      margin-left: 8px;
+    }
+  }
+
+  @keyframes slide-content-product {
+    0% {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+}
