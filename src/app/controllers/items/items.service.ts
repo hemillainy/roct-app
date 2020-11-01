@@ -6,7 +6,7 @@ import { SessionService } from '../session/session.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class ItemsService {
 
   private END_POINT: string;
 
@@ -22,8 +22,7 @@ export class AuthService {
     return { headers: { Authorization: token } };
   }
 
-  public auth(body: any): Promise<any> {
-    return axios.post(this.END_POINT + '/auth/login', body);
+  public getItem(id: string): Promise<any> {
+    return axios.get(this.END_POINT + `/announcements/${id}`);
   }
-
 }

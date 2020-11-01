@@ -105,6 +105,8 @@ export class RegisterComponent implements OnInit {
           console.log(res.data);
           // this.router.navigate(['/user/profile']);
         }).catch(err => {
+          console.log(err.data);
+          console.log(err);
           this.status.loading = false;
           this.status.error = true;
           setTimeout(() => {

@@ -1,3 +1,35 @@
-<p>
-  product works!
-</p>
+<div class="item-product">
+  <div id="overlay-item" class="overlay-item"></div>
+  <div class="content loading" *ngIf="!status.loaded">
+    <div class="loader"></div>
+  </div>
+  <div class="content err" *ngIf="status.loaded && status.error">
+    <span class="material-icons">error</span>
+    <p>Item não encontrado.</p>
+  </div>
+  <div class="content" *ngIf="status.loaded && data">
+    <div class="image">
+      <img src="{{ data.image }}" alt="imagem do produto">
+    </div>
+    <div class="details">
+      <div class="header">
+        <h5>{{ data.name }}</h5>
+        <div>
+          <p class="type">{{ data.type_ }}</p>
+          <p>Criado em 31/10/2020</p>
+          <p>Postado por <strong>viniciusjps</strong> </p>
+        </div>
+      </div>
+      <div class="description">
+        {{ data.description }}
+      </div>
+      <div class="action">
+        <div class="price">{{ data.price | currency:'BRL' }}</div>
+        <button class="buy">
+          Comprar
+          <span class="material-icons">shopping_cart</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
