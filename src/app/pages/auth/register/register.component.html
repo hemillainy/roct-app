@@ -25,7 +25,7 @@
 				</div>
 				<div class="item">
 					<label for="telefone">Telefone</label>
-					<input [(ngModel)]="data.telefone" name="telefone" type="text" mask="(00) 00000-0000" required>
+					<input [(ngModel)]="data.phone" name="telefone" type="text" mask="(00) 00000-0000" required>
 				</div>
 				<div class="item">
 					<label for="paswd">Senha</label>
@@ -37,7 +37,7 @@
 				</div>
 				<div class="type-user">
 					<label class="smallFont" for="vendedor">Quero ser um vendedor</label>
-					<div class="switch" [class.active]="data.vendedor" (click)="data.vendedor = !data.vendedor">
+					<div class="switch" [class.active]="data.isSalesman" (click)="data.isSalesman = !data.isSalesman">
 						<div class="rect"></div>
 						<div class="circle"></div>
 					</div>

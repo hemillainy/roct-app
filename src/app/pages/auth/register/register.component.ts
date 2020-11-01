@@ -32,16 +32,16 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private session: SessionService,
-    private userController: UserService,
+    private ctrlUser: UserService,
     private router: Router
   ) {
     this.data = {
       name: undefined,
       email: undefined,
       cpf: undefined,
-      telefone: undefined,
+      phone: undefined,
       avatar: undefined,
-      vendedor: false,
+      isSalesman: false,
       pwd: {
         password: undefined,
         confirm_password: undefined
@@ -88,11 +88,10 @@ export class RegisterComponent implements OnInit {
   }
 
   private validaSenha(): boolean {
-    if (this.data.pwd.password != this.data.pwd.confirm_password) {
+    if (this.data.pwd.password !== this.data.pwd.confirm_password) {
       this.resetPassword();
       return false;
     }
-
     return true;
   }
 
@@ -101,10 +100,10 @@ export class RegisterComponent implements OnInit {
     this.resetStatus();
     if (this.validaSenha()) {
       this.status.loading = true;
-      this.userController.create({ ...this.data, password: this.data.pwd.password })
+      this.ctrlUser.create(this.data)
         .then(res => {
-          this.session.logIn(res.data.auth_token);
-          this.router.navigate(['/profile']);
+          console.log(res.data);
+          // this.router.navigate(['/user/profile']);
         }).catch(err => {
           this.status.loading = false;
           this.status.error = true;

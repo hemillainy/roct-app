@@ -8,10 +8,10 @@
       </div>
       <div class="item">
         <label for="paswd">Senha</label>
-        <input [(ngModel)]="data.pwd.password" name="paswd" type="password" required>
+        <input [(ngModel)]="data.password" name="paswd" type="password" required>
       </div>
       <a routerLink="/">Esqueceu sua senha?</a>
-      <button (click)="submit()">Entrar</button>
+      <button (click)="auth()">Entrar</button>
       <hr>
       <button class="second" (click)="goToRegister()">Cadastrar</button>
     </form>
