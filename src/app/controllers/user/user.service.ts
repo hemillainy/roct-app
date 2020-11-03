@@ -23,7 +23,7 @@ export class UserService {
   }
 
   public create(data: any): Promise<any> {
-    return axios.post(this.END_POINT + '/users', data, this.getConfig());
+    return axios.post(this.END_POINT + '/users', data);
   }
 
   public update(data: any): Promise<any> {
