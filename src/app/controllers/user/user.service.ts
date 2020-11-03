@@ -23,7 +23,7 @@ export class UserService {
   }
 
   public create(data: any): Promise<any> {
-    return axios.post(this.END_POINT + '/users', this.getConfig(), data);
+    return axios.post(this.END_POINT + '/users', data, this.getConfig());
   }
 
   public update(data: any): Promise<any> {
@@ -31,7 +31,7 @@ export class UserService {
   }
 
   public updatePassword(data: any): Promise<any> {
-    return axios.put(this.END_POINT + `/users/${data.userId}/${data.id}`, this.getConfig(), data);
+    return axios.put(this.END_POINT + `/users/${data.userId}/${data.id}`, data, this.getConfig());
   }
 
   public upgradeAccount(data: any): Promise<any> {

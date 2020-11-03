@@ -100,13 +100,15 @@ export class RegisterComponent implements OnInit {
     this.resetStatus();
     if (this.validaSenha()) {
       this.status.loading = true;
-      const pwd = this.data.pwd;
-      delete this.data.pwd;
-      this.data.password = pwd.password;
-      this.ctrlUser.create(this.data)
+      let user = Object.assign({}, this.data)
+      const pwd = Object.assign({}, this.data.pwd)
+      delete user.pwd;
+      delete pwd.confirm_password;
+      user.password = pwd.password;
+      this.ctrlUser.create(user)
         .then(res => {
           console.log(res.data);
-          // this.router.navigate(['/user/profile']);
+          this.router.navigate(['/user/profile']);
         }).catch(err => {
           console.log(err.data);
           console.log(err);
