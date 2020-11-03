@@ -22,6 +22,10 @@ export class ItemsService {
     return { headers: { Authorization: token } };
   }
 
+  public getItems(paginacao: any): Promise<any> {
+    return axios.post(this.END_POINT + `/announcements`, paginacao);
+  }
+
   public getItem(id: string): Promise<any> {
     return axios.get(this.END_POINT + `/announcements/${id}`, this.getConfig());
   }

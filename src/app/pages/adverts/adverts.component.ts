@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { query } from '@angular/core/src/render3';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ItemsService } from 'src/app/controllers/items/items.service';
 
 @Component({
   selector: 'app-adverts',
@@ -19,6 +20,7 @@ export class AdvertsComponent implements OnInit {
     sort: '',
     text: ''
   };
+
   public data = {
     page: 1,
     docs: [
@@ -111,7 +113,8 @@ export class AdvertsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private ctrlItems: ItemsService,
   ) { }
 
   ngOnInit() {
