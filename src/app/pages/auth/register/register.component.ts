@@ -100,6 +100,9 @@ export class RegisterComponent implements OnInit {
     this.resetStatus();
     if (this.validaSenha()) {
       this.status.loading = true;
+      const pwd = this.data.pwd;
+      delete this.data.pwd;
+      this.data.password = pwd.password;
       this.ctrlUser.create(this.data)
         .then(res => {
           console.log(res.data);

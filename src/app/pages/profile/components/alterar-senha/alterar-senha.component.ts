@@ -27,16 +27,16 @@ export class AlterarSenhaComponent implements OnInit {
   public status: any;
 
   constructor(
-    private userController: UserService,
+    private ctrlUser: UserService,
     private router: Router
     ) { 
     this.data = {
+      userId: undefined,
       pwd: {
         old_password: undefined,
         new_password: undefined,
         confirm_password: undefined
-      },
-      auth_token: undefined,
+      }
     };
     this.status = {
       loading: false,
@@ -70,7 +70,7 @@ export class AlterarSenhaComponent implements OnInit {
   public submit(): void {
     if (this.validaSenha()) {
       this.status.loading = true;
-      this.userController.create({ ...this.data})
+      this.ctrlUser.updatePassword({ ...this.data})
         .then(res => {
           this.router.navigate(['/profile']);
         }).catch(err => {

@@ -23,6 +23,10 @@ export class ItemsService {
   }
 
   public getItem(id: string): Promise<any> {
-    return axios.get(this.END_POINT + `/announcements/${id}`);
+    return axios.get(this.END_POINT + `/announcements/${id}`, this.getConfig());
+  }
+
+  public create(data: any): Promise<any> {
+    return axios.post(this.END_POINT + `/announcements`, data,  this.getConfig());
   }
 }

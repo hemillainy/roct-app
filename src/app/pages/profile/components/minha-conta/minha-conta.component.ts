@@ -31,7 +31,7 @@ export class MinhaContaComponent implements OnInit {
   public isEditando: any;
 
   constructor(
-    private userController: UserService,
+    private ctrlUser: UserService,
     private router: Router) {
     // this.data = {
     //   name: undefined,
@@ -43,12 +43,13 @@ export class MinhaContaComponent implements OnInit {
     //   auth_token: undefined,
     // };
     this.data = {
+      id: 1,
       name: 'Gabriel Almeida',
       email: 'gabriel.almeida.azevedo@ccc.ufcg.edu.br',
       cpf: '12345678910',
       telefone: '83988888888',
       avatar: "/assets/images/avatar/batman.svg",
-      vendedor: false,
+      isSalesman: false,
       auth_token: undefined,
     };
     this.data_aux = undefined;
@@ -69,7 +70,7 @@ export class MinhaContaComponent implements OnInit {
   }
 
   public getAccountType(): String {
-    return this.data.vendedor ? 'Vendedor' : 'Comprador';
+    return this.data.isSalesman ? 'Vendedor' : 'Comprador';
   }
 
   public resetChanges(): void {
@@ -88,7 +89,7 @@ export class MinhaContaComponent implements OnInit {
   public submit(): void {
     this.resetStatus();
     this.status.loading = true;
-    this.userController.create({ ...this.data })
+    this.ctrlUser.update({ ...this.data })
       .then(res => {
         //Falta algo aqui??
         this.router.navigate(['/profile']);

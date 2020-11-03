@@ -25,4 +25,16 @@ export class UserService {
   public create(data: any): Promise<any> {
     return axios.post(this.END_POINT + '/users', this.getConfig(), data);
   }
+
+  public update(data: any): Promise<any> {
+    return axios.put(this.END_POINT + `/users/${data.id}`, this.getConfig(), data);
+  }
+
+  public updatePassword(data: any): Promise<any> {
+    return axios.put(this.END_POINT + `/users/${data.userId}/${data.id}`, this.getConfig(), data);
+  }
+
+  public upgradeAccount(data: any): Promise<any> {
+    return axios.post(this.END_POINT + `/users/${data.userId}/upgrade`, this.getConfig());
+  }
 }

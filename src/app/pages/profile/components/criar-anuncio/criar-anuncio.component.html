@@ -19,12 +19,12 @@
           <input name="name" [(ngModel)]="data.ads.gameName" type="text" required />
         </div>
         <div class="item">
-          <label for="itemName">Nome do item</label>
-          <input name="itemName" [(ngModel)]="data.ads.itemName" type="text" required />
+          <label for="name">Nome do item</label>
+          <input name="name" [(ngModel)]="data.ads.name" type="text" required />
         </div>
         <div class="item">
-          <label for="itemType">Tipo do item</label>
-          <select name="itemType" [(ngModel)]="data.ads.itemType">
+          <label for="type_">Tipo do item</label>
+          <select name="type_" [(ngModel)]="data.ads.type_">
             <option value="" disabled>Selecione</option>
             <option value="a">Tipo A</option>
             <option value="b">Tipo B</option>
@@ -36,8 +36,8 @@
           <textarea name="description" [(ngModel)]="data.ads.description" type="text" ></textarea>
         </div>
         <div class="item">
-          <label for="itemPrice">Preço</label>
-          <input name="itemPrice" prefix="R$ " mask="0*,00" [(ngModel)]="data.ads.itemPrice" type="text" required />
+          <label for="price">Preço</label>
+          <input name="price" prefix="R$ " mask="0*,00" [(ngModel)]="data.ads.price" type="text" required />
         </div>
         <div class="item">
           <label for="selectedFile">Imagem do item</label>

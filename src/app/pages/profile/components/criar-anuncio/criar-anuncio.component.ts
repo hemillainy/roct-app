@@ -1,6 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ItemsService } from 'src/app/controllers/items/items.service';
 import { ProfileService } from 'src/app/controllers/profile/profile.service';
 
 @Component({
@@ -27,19 +28,21 @@ export class CriarAnuncioComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private ctrlItems: ItemsService,
   ) {
     this.data = {
       ads: {
         server: '',
         gameName: undefined,
-        itemName: undefined,
+        name: undefined,
         description: undefined,
-        itemPrice: undefined,
-        itemType: '',
-        image: 'https://'
+        price: undefined,
+        type_: '',
+        image: 'https://',
+        salesman_uuid: undefined,
       },
-      auth_token: undefined,
+      //image(url), name(string), description(string), price(float), type_({item, account, gold}), salesman_uuid(int)
     };
     this.status = {
       loading: false,
@@ -73,9 +76,32 @@ export class CriarAnuncioComponent implements OnInit {
     }, 3500);
   }
 
+  //TEMPORARIO
+  public extractAdd() {
+    let add = Object.assign({}, this.data.add);
+    delete add.server;
+    delete add.gameName;
+    delete add.description;
+    return add;
+  }
 
   public submit(): void {
-    this.status = { ...this.status, type: "success", show: true, message: "Anúncio criado" };
+    this.status.loading = true;
+    this.ctrlItems.create(this.extractAdd())//Alterar posteriormente
+      .then(res => {
+        this.router.navigate(['/profile']);
+      }).catch(err => {
+        this.status.loading = false;
+        this.status.type = "error";
+        this.status.show = true;
+        this.status.message = "Ocorreu um erro na criação."
+        this.status.error = true;
+        setTimeout(() => {
+          this.resetStatus();
+        }, 3500);
+      });
+
+    //this.status = { ...this.status, type: "success", show: true, message: "Anúncio criado" };
   }
 
 }
