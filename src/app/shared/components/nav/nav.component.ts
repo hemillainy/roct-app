@@ -82,7 +82,9 @@ export class NavComponent implements OnInit {
   }
 
   public openSearch(): void {
-    this.router.navigate(['/item'], { queryParams: { page: 1, search: this.search } });
+    const searchAux = this.search;
+    this.search = "";
+    this.router.navigate(['/item'], { queryParams: { page: 1, search: searchAux } });
   }
 
 }

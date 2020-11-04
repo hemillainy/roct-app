@@ -159,7 +159,7 @@ export class AdvertsComponent implements OnInit {
         game: this.filter.game,
         server: this.filter.server,
         type: this.filter.type,
-        text: this.filter.text,
+        search: this.filter.text,
         sort: this.filter.sort
       }, queryParamsHandling: 'merge'
     });
