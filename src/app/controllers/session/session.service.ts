@@ -25,6 +25,10 @@ export class SessionService {
     this.user = undefined;
   }
 
+  public setToken(token: string): void {
+    localStorage.setItem('Authorization', token);
+  }
+
   public logIn(token: string): void {
     //this.cookie.set('Authorization', token);
     // localStorage.setItem('User', user);

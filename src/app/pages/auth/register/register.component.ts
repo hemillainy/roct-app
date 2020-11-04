@@ -108,7 +108,8 @@ export class RegisterComponent implements OnInit {
       this.ctrlUser.create(user)
         .then(res => {
           //console.log(res);
-          this.session.setUser(res.data);
+          this.session.setToken(res.data.token);
+          this.session.setUser(res.data.user);
           this.session.isLogged = true;
           this.router.navigate(['/user/profile']);
         }).catch(err => {
