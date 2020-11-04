@@ -19,7 +19,7 @@ export class UserService {
   private getConfig(): any {
     const token = this.session.getToken();
     axios.defaults.headers.common['Authorization'] = token;
-    return { headers: { Authorization: token } };
+    return { headers: { Authorization: `Bearer ${token}` } };
   }
 
   public create(data: any): Promise<any> {
@@ -27,7 +27,7 @@ export class UserService {
   }
 
   public update(data: any): Promise<any> {
-    return axios.put(this.END_POINT + `/users/${data.id}`, this.getConfig(), data);
+    return axios.put(this.END_POINT + `/users/${this.session.getUserId()}`, data, this.getConfig());
   }
 
   public updatePassword(data: any): Promise<any> {

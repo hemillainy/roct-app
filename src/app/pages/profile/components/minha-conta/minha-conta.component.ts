@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/controllers/user/user.service';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { SessionService } from 'src/app/controllers/session/session.service';
+import { isUndefined } from 'util';
 
 @Component({
   selector: 'app-minha-conta',
@@ -32,25 +33,17 @@ export class MinhaContaComponent implements OnInit {
 
   constructor(
     private ctrlUser: UserService,
-    private router: Router) {
-    // this.data = {
-    //   name: undefined,
-    //   email: undefined,
-    //   cpf: undefined,
-    //   telefone: undefined,
-    //   avatar: undefined,
-    //   vendedor: false,
-    //   auth_token: undefined,
-    // };
+    private router: Router,
+    private ctrlSession: SessionService) {
+  
     this.data = {
-      id: 1,
-      name: 'Gabriel Almeida',
-      email: 'gabriel.almeida.azevedo@ccc.ufcg.edu.br',
-      cpf: '12345678910',
-      telefone: '83988888888',
-      avatar: "/assets/images/avatar/batman.svg",
-      isSalesman: false,
-      auth_token: undefined,
+      id: isUndefined,
+      name: undefined,
+      email: undefined,
+      cpf: undefined,
+      phone: undefined,
+      avatar: undefined,
+      isSalesman: undefined,
     };
     this.data_aux = undefined;
     this.isEditando = false;
@@ -62,21 +55,28 @@ export class MinhaContaComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(this.ctrlSession.user !== undefined) {
+      this.data = this.ctrlSession.user;
+    } else {
+      console.log("Erro ao recuperar o usuário da sessão")
+      // this.status.error = true;
+      // this.status.error_message = "Erro ao recuperar o usuário da sessão";
+      //   setTimeout(() => {
+      //     this.status.error = false;
+      //     this.resetStatus();
+      //   }, 3500);
+    }
   }
 
   public editMode(): void {
     this.isEditando = true;
-    this.data_aux = Object.assign({}, this.data);;
+    this.data_aux = Object.assign({}, this.data);
   }
 
   public getAccountType(): String {
     return this.data.isSalesman ? 'Vendedor' : 'Comprador';
   }
 
-  public resetChanges(): void {
-    this.data = this.data_aux;
-    this.isEditando = false;
-  }
 
   public resetStatus(): void {
     this.status = {
@@ -86,16 +86,21 @@ export class MinhaContaComponent implements OnInit {
     };
   }
 
+  public resetChanges(): void {
+    this.data = Object.assign({}, this.ctrlSession.user);
+  }
+
   public submit(): void {
     this.resetStatus();
     this.status.loading = true;
-    this.ctrlUser.update({ ...this.data })
+    this.ctrlUser.update(this.data)
       .then(res => {
         //Falta algo aqui??
         this.router.navigate(['/profile']);
       }).catch(err => {
         this.status.loading = false;
         this.status.error = true;
+        //this.resetChanges(); VOLTAR
         setTimeout(() => {
           this.status.error = false;
         }, 3500);
