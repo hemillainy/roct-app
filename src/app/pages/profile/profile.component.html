@@ -16,7 +16,7 @@
             <span class="material-icons">shopping_basket</span>
             Minhas Compras
           </li> -->
-          <li *ngIf="this.ctrlSession.user != undefined && !this.ctrlSession.user.isSalesman" [class.active]="component.command === 'change-type'" (click)="setCommand('change-type')">
+          <li *ngIf="this.renderizaTornarVendedor" [class.active]="component.command === 'change-type'" (click)="setCommand('change-type')">
             <span class="material-icons">perm_identityd</span>
             Tornar-se um Vendedor
           </li>
@@ -28,7 +28,7 @@
             <span class="material-icons">receipt</span>
             Minhas Vendas
           </li>
-          <li (click)="logOut()" *ngIf="this.ctrlSession.isLogged">
+          <li (click)="logOut()" *ngIf="this.userLogged">
             <span class="material-icons">exit_to_app</span>
             Sair
           </li>
