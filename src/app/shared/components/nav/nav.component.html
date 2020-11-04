@@ -9,9 +9,7 @@
     <div class="option">
       <p>Jogos</p>
       <div>
-        <li (click)="openGame('a')">Jogo A</li>
-        <li (click)="openGame('b')">Jogo B</li>
-        <li (click)="openGame('c')">Jogo C</li>
+        <li *ngFor="let item of navItems.games; index as i" (click)="openGame(item.value)">{{item.label}}</li>
         <li (click)="openGame('')">
           Todos os jogos
           <span class="material-icons">keyboard_arrow_right</span>
@@ -21,9 +19,7 @@
     <div class="option">
       <p>Servidores</p>
       <div>
-        <li (click)="openServer('a')">Servidor A</li>
-        <li (click)="openServer('b')">Servidor B</li>
-        <li (click)="openServer('c')">Servidor C</li>
+        <li *ngFor="let item of navItems.servers; index as i" (click)="openServer(item.value)">{{item.label}}</li>
         <li (click)="openServer('')">
           Todos os servidores
           <span class="material-icons">keyboard_arrow_right</span>
@@ -33,9 +29,7 @@
     <div class="option">
       <p>Itens</p>
       <div>
-        <li (click)="openItem('skins')">Skins</li>
-        <li (click)="openItem('orbes')">Orbes</li>
-        <li (click)="openItem('icones')">Ícones</li>
+        <li *ngFor="let item of navItems.itens; index as i" (click)="openItem(item.value)">{{item.label}}</li>
         <li (click)="openItem('')">
           Todos os itens
           <span class="material-icons">keyboard_arrow_right</span>
@@ -44,6 +38,7 @@
     </div>
   </div>
   <div class="account">
-    <a routerLink="/user/login">Entrar</a>
+    <a routerLink="/user/login" *ngIf="!userLoged()">Entrar</a>
+    <a routerLink="/user/profile" *ngIf="userLoged()">Perfil</a>
   </div>
 </nav>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemsService } from 'src/app/controllers/items/items.service';
 
 @Component({
   selector: 'app-partners',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PartnersComponent implements OnInit {
 
-  constructor() { }
+  public servers: [];
+
+  constructor(private ctrlItems: ItemsService) {
+    this.servers = [];
+   }
 
   ngOnInit() {
+    this.ctrlItems.getItemsServers().then(res => {
+      this.servers = res.data;
+    })
   }
 
 }

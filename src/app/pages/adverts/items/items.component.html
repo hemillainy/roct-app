@@ -1,12 +1,12 @@
 <div class="items-adverts">
-	<div class="item" *ngFor="let item of items; index as i;">
+	<div class="item" *ngFor="let item of items; index as i;" (click)="goToItem(item.uuid)">
 		<div class="header">
 			<img src="{{ item.image }}">
 			<span class="material-icons">search</span>
 		</div>
 		<div class="footer">
 			<span class="tag">{{ item.type }}</span>
-			<p>{{ item.title }}</p>
+			<p>{{ item.name }}</p>
 			<div>
 				<span>{{ item.price | currency:'BRL' }}</span>
 			</div>

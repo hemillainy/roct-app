@@ -50,8 +50,9 @@ export class LoginComponent implements OnInit {
     this.status.loading = true;
     this.ctrlAuth.auth(this.data)
       .then(res => {
-        console.log(res);
+        //console.log(res);
         this.session.logIn(res.data.token);
+        this.session.setUser(res.data.user);
         this.router.navigate(['/user/profile']);
       }).catch(err => {
         this.status.loading = false;

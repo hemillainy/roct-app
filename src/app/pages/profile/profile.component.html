@@ -8,15 +8,15 @@
             <span class="material-icons">account_circle</span>
             Minha Conta
           </li>
-          <li [class.active]="component.command === 'password'" (click)="setCommand('password')">
+          <!-- <li [class.active]="component.command === 'password'" (click)="setCommand('password')">
             <span class="material-icons">security</span>
             Alterar Senha
-          </li>
-          <li [class.active]="component.command === 'purchases'" (click)="setCommand('purchases')">
+          </li> -->
+          <!-- <li [class.active]="component.command === 'purchases'" (click)="setCommand('purchases')">
             <span class="material-icons">shopping_basket</span>
             Minhas Compras
-          </li>
-          <li [class.active]="component.command === 'change-type'" (click)="setCommand('change-type')">
+          </li> -->
+          <li *ngIf="this.ctrlSession.user != undefined && !this.ctrlSession.user.isSalesman" [class.active]="component.command === 'change-type'" (click)="setCommand('change-type')">
             <span class="material-icons">perm_identityd</span>
             Tornar-se um Vendedor
           </li>
@@ -24,11 +24,11 @@
             <span class="material-icons">note_add</span>
             Criar Anúncio
           </li>
-          <li routerLink='/user/profile/my-sales'>
+          <li [class.active]="component.command === 'sales'" (click)="setCommand('sales')">
             <span class="material-icons">receipt</span>
             Minhas Vendas
           </li>
-          <li>
+          <li (click)="logOut()" *ngIf="this.ctrlSession.isLogged">
             <span class="material-icons">exit_to_app</span>
             Sair
           </li>
@@ -37,10 +37,11 @@
       <div class="profile-body">
         <div class="profile-content">
           <app-minha-conta *ngIf="component.command === 'account'"></app-minha-conta>
-          <app-alterar-senha *ngIf="component.command === 'password'"></app-alterar-senha>
+          <!-- <app-alterar-senha *ngIf="component.command === 'password'"></app-alterar-senha> -->
           <app-transforma-conta *ngIf="component.command === 'change-type'"></app-transforma-conta>
-          <app-minhas-compras *ngIf="component.command === 'purchases'"></app-minhas-compras>
+          <!-- <app-minhas-compras *ngIf="component.command === 'purchases'"></app-minhas-compras> -->
           <app-criar-anuncio *ngIf="component.command === 'advertise'"></app-criar-anuncio>
+          <app-minhas-vendas *ngIf="component.command === 'sales'"></app-minhas-vendas>
         </div>
       </div>
     </div>

@@ -9,26 +9,22 @@
           <label for="serverName">Selecione o servidor</label>
           <select name="server" id="select_server" [(ngModel)]="data.ads.server">
             <option value="" disabled>Selecione</option>
-            <option value="a">Servidor A</option>
-            <option value="b">Servidor B</option>
-            <option value="c">Servidor C</option>
+            <option *ngFor="let item of dataSelect.server" value="{{item.value}}">{{item.label}}</option>
           </select>
         </div>
         <div class="item">
           <label for="name">Nome do jogo</label>
-          <input name="name" [(ngModel)]="data.ads.gameName" type="text" required />
+          <input name="name" [(ngModel)]="data.ads.game" type="text" required />
         </div>
         <div class="item">
-          <label for="itemName">Nome do item</label>
-          <input name="itemName" [(ngModel)]="data.ads.itemName" type="text" required />
+          <label for="name">Nome do item</label>
+          <input name="name" [(ngModel)]="data.ads.name" type="text" required />
         </div>
         <div class="item">
-          <label for="itemType">Tipo do item</label>
-          <select name="itemType" [(ngModel)]="data.ads.itemType">
+          <label for="type_">Tipo do item</label>
+          <select name="type_" [(ngModel)]="data.ads.type_">
             <option value="" disabled>Selecione</option>
-            <option value="a">Tipo A</option>
-            <option value="b">Tipo B</option>
-            <option value="c">Tipo C</option>
+            <option *ngFor="let item of dataSelect.typeItem" value="{{item.value}}">{{item.label}}</option>
           </select>
         </div>
         <div class="item">
@@ -36,12 +32,12 @@
           <textarea name="description" [(ngModel)]="data.ads.description" type="text" ></textarea>
         </div>
         <div class="item">
-          <label for="itemPrice">Preço</label>
-          <input name="itemPrice" prefix="R$ " mask="0*,00" [(ngModel)]="data.ads.itemPrice" type="text" required />
+          <label for="price">Preço</label>
+          <input name="price" prefix="R$ " mask="0*,00" [(ngModel)]="data.ads.price" type="text" required />
         </div>
         <div class="item">
           <label for="selectedFile">Imagem do item</label>
-          <input name="selectedFile" type="text" [(ngModel)]="data.ads.image" required />
+          <input placeholder="https://" name="selectedFile" type="text" [(ngModel)]="data.ads.image" required />
         </div>
         <div>
           <button type="submit" (click)="submit()">

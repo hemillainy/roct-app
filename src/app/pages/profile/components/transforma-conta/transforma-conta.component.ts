@@ -1,6 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SessionService } from 'src/app/controllers/session/session.service';
 
 import { UserService } from 'src/app/controllers/user/user.service';
 
@@ -27,8 +28,10 @@ export class TransformaContaComponent implements OnInit {
   public status: any;
 
   constructor(
-    private userController: UserService,
-    private router: Router) { 
+    private ctrlSession: SessionService,
+    private ctrlUser: UserService,
+    private router: Router) 
+    {  
     this.aceitouTermos = false;
     this.status = {
       loading: false,
@@ -63,10 +66,16 @@ export class TransformaContaComponent implements OnInit {
   public submit(): void {
     this.resetStatus();
     this.status.loading = true;
-    this.userController.create({ upgrade: "Vendedor"})
+
+    let userUpgrade = Object.assign({}, this.ctrlSession.user)
+    userUpgrade.isSalesman = true;
+    //console.log(userUpgrade)
+
+    this.ctrlUser.upgradeAccount(userUpgrade)
       .then(res => {
         this.status.loading = false;
         this.status.success = true;
+        this.ctrlSession.setUser(res.data);
         setTimeout(() => {
           this.status.sucess = false;
           this.router.navigate(['/profile']);
