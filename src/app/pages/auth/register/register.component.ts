@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
       email: undefined,
       cpf: undefined,
       phone: undefined,
-      avatar: undefined,
+      avatar: "https://cdn.iconscout.com/icon/free/png-512/avatar-380-456332.png",
       isSalesman: false,
       pwd: {
         password: undefined,
@@ -107,7 +107,9 @@ export class RegisterComponent implements OnInit {
       user.password = pwd.password;
       this.ctrlUser.create(user)
         .then(res => {
-          console.log(res.data);
+          console.log(res);
+          this.session.setUser(res);
+          this.session.isLogged = true;
           this.router.navigate(['/user/profile']);
         }).catch(err => {
           console.log(err.data);
