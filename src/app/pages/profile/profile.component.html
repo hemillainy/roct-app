@@ -20,7 +20,7 @@
             <span class="material-icons">perm_identityd</span>
             Tornar-se um Vendedor
           </li>
-          <li [class.active]="component.command === 'advertise'" (click)="setCommand('advertise')">
+          <li *ngIf="!this.renderizaTornarVendedor" [class.active]="component.command === 'advertise'" (click)="setCommand('advertise')">
             <span class="material-icons">note_add</span>
             Criar Anúncio
           </li>
