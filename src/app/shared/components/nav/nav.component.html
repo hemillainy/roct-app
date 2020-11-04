@@ -38,6 +38,7 @@
     </div>
   </div>
   <div class="account">
-    <a routerLink="/user/login">Entrar</a>
+    <a routerLink="/user/login" *ngIf="!userLoged()">Entrar</a>
+    <a routerLink="/user/profile" *ngIf="userLoged()">Perfil</a>
   </div>
 </nav>

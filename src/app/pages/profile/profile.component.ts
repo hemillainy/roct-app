@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { SessionService } from 'src/app/controllers/session/session.service';
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +18,8 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private ctrlSession: SessionService,
   ) { }
 
   ngOnInit() {
@@ -36,6 +38,10 @@ export class ProfileComponent implements OnInit {
   public setCommand(value:string): void {
     this.component.command = value;
     this.router.navigate([], { queryParams: { command: this.component.command }, queryParamsHandling: 'merge' });
+  }
+
+  public logOut(): void {
+    this.ctrlSession.logOut();
   }
 
 }

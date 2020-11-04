@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ItemsService } from "src/app/controllers/items/items.service";
+import { SessionService } from 'src/app/controllers/session/session.service';
 import { translateValue } from "src/utils"
 
 @Component({
@@ -21,7 +22,8 @@ export class NavComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private ctrlItems: ItemsService
+    private ctrlItems: ItemsService,
+    private ctrlSession: SessionService,
   ) {
     this.navItems = {
       games: [],
@@ -49,6 +51,10 @@ export class NavComponent implements OnInit {
     const st = window.pageYOffset || document.documentElement.scrollTop;
     this.scroll = st <= 0 ? 0 : st;
     return st > 180;
+  }
+
+  public userLoged(): boolean {
+    return this.ctrlSession.isLogged;
   }
 
   public goHome(): void {
