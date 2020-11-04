@@ -11,6 +11,8 @@ import { SessionService } from 'src/app/controllers/session/session.service';
 export class ProfileComponent implements OnInit {
 
   private subs: Subscription;
+  public renderizaTornarVendedor = undefined;
+  public userLogged = undefined;
   public component = {
     pages: ['account', 'password', 'change-type', 'purchases', 'advertise', 'sales'],
     command: 'account'
@@ -33,6 +35,8 @@ export class ProfileComponent implements OnInit {
       }
     );
     this.router.navigate([], { queryParams: { command: this.component.command }, queryParamsHandling: 'merge' });
+    this.renderizaTornarVendedor = this.ctrlSession.user != undefined && !this.ctrlSession.user.isSalesman;
+    this.userLogged = this.ctrlSession.isLogged;
   }
 
   public setCommand(value:string): void {

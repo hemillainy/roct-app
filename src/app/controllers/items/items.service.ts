@@ -26,6 +26,10 @@ export class ItemsService {
     return axios.post(`${this.END_POINT}/announcements`, paginacao);
   }
 
+  public getItemsSalesman(paginacao: any, id: any): Promise<any> {
+    return axios.post(`${this.END_POINT}/announcements/salesman/${id}`, paginacao, this.getConfig());
+  }
+
   public getItem(id: string): Promise<any> {
     return axios.get(`${this.END_POINT}/announcements/${id}`, this.getConfig());
   }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ItemsService } from 'src/app/controllers/items/items.service';
+import { SessionService } from 'src/app/controllers/session/session.service';
+import { translateValue } from "src/utils";
 
 @Component({
   selector: 'app-minhas-vendas',
@@ -15,14 +18,26 @@ export class MinhasVendasComponent implements OnInit {
     status: '',
     server: ''
   };
+
+  public items: [];
   
   constructor(
     private route: ActivatedRoute,
-    private router: Router
-  ) { }
+    private router: Router,
+    private ctrlsItems: ItemsService,
+    private ctrlSession: SessionService,
+  ) { 
+    this.items = [];
+  }
 
   ngOnInit() {
-    this.setQueryParams();
+    //this.setQueryParams();
+    this.ctrlsItems.getItemsSalesman({ page: 1, per_page: 4 },this.ctrlSession.getUserId()).then(res => {
+      this.items = res.data.data.map(item => {
+        item.type = translateValue(item.type_);
+        return item;
+      });
+    })
   }
 
   private setQueryParams(): void {
@@ -62,56 +77,7 @@ export class MinhasVendasComponent implements OnInit {
 
   public data = {
     page: 1,
-    docs: [
-      {
-        title: 'Morellonomicon',
-        description: 'descricao',
-        status: 'Paga',
-        price: 9.98,
-        type: "item",
-        seller: "LoneDarkWolf",
-        shopper: "Dalembert",
-        seller_ratting: 4.9,
-        date: "19/10/2020",
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQc6_hXMn_Xgl9maOK-ytgLOjiU1z5zYkY7Ww&usqp=CAU'
-      },
-      {
-        title: 'Orbe do Mundial 2020',
-        description: 'descricao',
-        status: 'Disponivel',
-        price: 15.99,
-        type: "orbe",
-        seller: "LoneDarkWolf",
-        shopper: "Condezero",
-        seller_ratting: 4.9,
-        date: undefined,
-        image: 'https://pbs.twimg.com/media/EiJBqCeWAAgeaZs.png'
-      },
-      {
-        title: 'Ekko True Damage',
-        description: 'descricao',
-        status: 'Finalizada',
-        price: 25.00,
-        type: "skin",
-        seller: "LoneDarkWolf",
-        shopper: "Quelll123",
-        seller_ratting: 4.9,
-        date: "19/10/2020",
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ekko_19.jpg'
-      },
-      {
-        title: 'Obisidian Dragon',
-        description: 'descricao',
-        status: 'Entregue',
-        price: 30.00,
-        type: "skin",
-        seller: "LoneDarkWolf",
-        shopper: "RinoaSama",
-        seller_ratting: 4.9,
-        date: "11/10/2020",
-        image: 'https://cabanadoleitor.com.br/wp-content/uploads/2020/09/sett-560x600.jpg'
-      }
-    ]
-  };
+    docs: []
+  }
 
 }

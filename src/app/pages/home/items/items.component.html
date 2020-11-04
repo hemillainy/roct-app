@@ -9,7 +9,7 @@
       </h4>
     </div>
     <div class="items">
-      <div class="item" *ngFor="let item of items">
+      <div class="item" *ngFor="let item of items" (click)="goToItem(item.uuid)">
         <div class="header">
           <img src="{{ item.image }}">
           <span class="material-icons">search</span>

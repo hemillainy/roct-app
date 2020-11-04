@@ -14,7 +14,7 @@ export class ItemsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private ctrlItems: ItemsService
+    private ctrlItems: ItemsService,
   ) {
     this.items = [];
   }
@@ -30,6 +30,10 @@ export class ItemsComponent implements OnInit {
 
   public viewItems(): void {
     this.router.navigate(['/item'], { queryParams: { page: 1 } });
+  }
+
+  public goToItem(itemId : any): void {
+    this.router.navigate([`/item/${itemId}`]);
   }
 
 }

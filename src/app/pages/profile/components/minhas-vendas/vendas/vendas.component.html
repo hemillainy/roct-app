@@ -1,7 +1,7 @@
 <div class="vendas">
 	<div class="item" *ngFor="let venda of vendas">
 		<div class="details">
-			<h4>{{ venda.title }}</h4>
+			<h4>{{ venda.name }}</h4>
 			<div>
 				<span class="tag">{{ venda.type }}</span>
 				<span class="cost">{{ venda.price | currency:'BRL' }}</span>

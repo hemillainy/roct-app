@@ -1,5 +1,5 @@
 <div class="items-adverts">
-	<div class="item" *ngFor="let item of items; index as i;">
+	<div class="item" *ngFor="let item of items; index as i;" (click)="goToItem(item.uuid)">
 		<div class="header">
 			<img src="{{ item.image }}">
 			<span class="material-icons">search</span>

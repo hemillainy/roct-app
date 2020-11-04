@@ -69,14 +69,13 @@ export class TransformaContaComponent implements OnInit {
 
     let userUpgrade = Object.assign({}, this.ctrlSession.user)
     userUpgrade.isSalesman = true;
-    console.log(userUpgrade)
+    //console.log(userUpgrade)
 
     this.ctrlUser.upgradeAccount(userUpgrade)
       .then(res => {
-        console.log(res)
         this.status.loading = false;
         this.status.success = true;
-        this.ctrlSession.setUser(res.user);///////
+        this.ctrlSession.setUser(res.data);
         setTimeout(() => {
           this.status.sucess = false;
           this.router.navigate(['/profile']);

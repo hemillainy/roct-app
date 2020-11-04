@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ItemsService } from 'src/app/controllers/items/items.service';
 import { ProfileService } from 'src/app/controllers/profile/profile.service';
+import { SessionService } from 'src/app/controllers/session/session.service';
 import { translateValue } from 'src/utils';
 
 @Component({
@@ -34,6 +35,7 @@ export class CriarAnuncioComponent implements OnInit {
     private router: Router,
     private profileService: ProfileService,
     private ctrlItems: ItemsService,
+    private ctrlSession: SessionService,
   ) {
     this.data = {
       ads: {
@@ -46,7 +48,6 @@ export class CriarAnuncioComponent implements OnInit {
         image: '',
         salesman_uuid: undefined,
       },
-      //image(url), name(string), description(string), price(float), type_({item, account, gold}), salesman_uuid(int)
     };
 
     this.dataSelect = {
@@ -106,6 +107,7 @@ export class CriarAnuncioComponent implements OnInit {
 
   public submit(): void {
     this.status.loading = true;
+    this.data.ads.salesman_uuid = this.ctrlSession.getUserId();
     this.ctrlItems.create(this.data.ads)
       .then(res => {
         this.router.navigate(['/profile']);
