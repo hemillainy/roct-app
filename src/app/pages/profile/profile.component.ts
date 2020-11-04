@@ -12,7 +12,7 @@ export class ProfileComponent implements OnInit {
 
   private subs: Subscription;
   public component = {
-    pages: ['account', 'password', 'change-type', 'purchases', 'advertise'],
+    pages: ['account', 'password', 'change-type', 'purchases', 'advertise', 'sales'],
     command: 'account'
   };
 
