@@ -24,7 +24,7 @@
             <span class="material-icons">note_add</span>
             Criar Anúncio
           </li>
-          <li [class.active]="component.command === 'sales'" (click)="setCommand('sales')">
+          <li *ngIf="!this.renderizaTornarVendedor" [class.active]="component.command === 'sales'" (click)="setCommand('sales')">
             <span class="material-icons">receipt</span>
             Minhas Vendas
           </li>
