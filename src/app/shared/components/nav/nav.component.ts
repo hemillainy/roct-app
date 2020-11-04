@@ -42,7 +42,7 @@ export class NavComponent implements OnInit {
         servers: resServers.data.map(updateToDropDown),
         itens: resTypes.data.map(item => updateToDropDown(item, translateValue))
       }
-      console.log(this.navItems);
+      //console.log(this.navItems);
     });
   }
 

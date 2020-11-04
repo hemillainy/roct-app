@@ -19,7 +19,6 @@ export class SessionService {
 
   public setUser(user: any): void {
     this.user = user;
-    console.log(user)
   }
 
   public clearUser(): void {
