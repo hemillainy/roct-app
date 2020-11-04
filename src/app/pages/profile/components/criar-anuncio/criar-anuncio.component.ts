@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ItemsService } from 'src/app/controllers/items/items.service';
 import { ProfileService } from 'src/app/controllers/profile/profile.service';
+import { translateValue } from 'src/utils';
 
 @Component({
   selector: 'app-criar-anuncio',
@@ -25,7 +26,10 @@ export class CriarAnuncioComponent implements OnInit {
   // Data
   public data: any;
   public status: any;
-
+  public dataSelect: {
+    typeItem: [];
+    server: [];
+  }
   constructor(
     private router: Router,
     private profileService: ProfileService,
@@ -34,16 +38,21 @@ export class CriarAnuncioComponent implements OnInit {
     this.data = {
       ads: {
         server: '',
-        gameName: undefined,
+        game: undefined,
         name: undefined,
         description: undefined,
         price: undefined,
         type_: '',
-        image: 'https://',
+        image: '',
         salesman_uuid: undefined,
       },
       //image(url), name(string), description(string), price(float), type_({item, account, gold}), salesman_uuid(int)
     };
+
+    this.dataSelect = {
+      typeItem: [],
+      server: []
+    }
     this.status = {
       loading: false,
       type: "",
@@ -53,6 +62,16 @@ export class CriarAnuncioComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.ctrlItems.getItemsServers().then(res => {
+      this.dataSelect.server = res.data.map(item => {
+        return { value: item, label: item }
+      });
+    });
+    this.ctrlItems.getItemsTypes().then(res => {
+      this.dataSelect.typeItem = res.data.map(item => {
+        return { value: item, label: translateValue(item) }
+      });
+    });
   }
 
   public resetStatus(): void {
@@ -80,14 +99,14 @@ export class CriarAnuncioComponent implements OnInit {
   public extractAdd() {
     let add = Object.assign({}, this.data.add);
     delete add.server;
-    delete add.gameName;
+    delete add.game;
     delete add.description;
     return add;
   }
 
   public submit(): void {
     this.status.loading = true;
-    this.ctrlItems.create(this.extractAdd())//Alterar posteriormente
+    this.ctrlItems.create(this.data.ads)
       .then(res => {
         this.router.navigate(['/profile']);
       }).catch(err => {

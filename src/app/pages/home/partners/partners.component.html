@@ -9,28 +9,10 @@
     <h4>parceiros</h4>
   </h4>
   <div class="content">
-    <div class="item">
+    <div class="item" *ngFor="let server of servers">
       <div class="overlay">
         <div class="img"></div>
-        <span>Servidor A</span>
-      </div>
-    </div>
-    <div class="item">
-      <div class="overlay">
-        <div class="img"></div>
-        <span>Servidor B</span>
-      </div>
-    </div>
-    <div class="item">
-      <div class="overlay">
-        <div class="img"></div>
-        <span>Servidor C</span>
-      </div>
-    </div>
-    <div class="item">
-      <div class="overlay">
-        <div class="img"></div>
-        <span>Servidor D</span>
+        <span>{{ server }}</span>
       </div>
     </div>
   </div>

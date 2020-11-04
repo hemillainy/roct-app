@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ItemsService } from 'src/app/controllers/items/items.service';
 
+import { translateValue } from "src/utils";
+
 @Component({
   selector: 'app-adverts',
   templateUrl: './adverts.component.html',
@@ -21,94 +23,15 @@ export class AdvertsComponent implements OnInit {
     text: ''
   };
 
+  public filtersData = {
+    server: [],
+    game: [],
+    type: [],
+  }
+
   public data = {
-    page: 1,
-    docs: [
-      {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
-      },
-      {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
-      },
-      {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
-      },
-      {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
-      },
-      {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
-      },
-      {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
-      },
-      {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
-      },
-      {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
-      },
-      {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
-      },
-      {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
-      },
-      {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
-      },
-      {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
-      },
-      {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
-      },
-      {
-        title: 'Jayce Academia de Batalha',
-        price: 9.98,
-        type: 'skin',
-        image: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jayce_5.jpg'
-      },
-    ]
+    page: 0,
+    docs: []
   };
 
   constructor(
@@ -119,15 +42,18 @@ export class AdvertsComponent implements OnInit {
 
   ngOnInit() {
     this.setQueryParams();
+    this.getItems();
+    this.setFiltersData();
   }
 
   private setQueryParams(): void {
     this.subs = this.route.queryParams.subscribe(
       queryParams => {
-        this.filter.game = queryParams['game'] || '';
-        this.filter.server = queryParams['server'] || '';
-        this.filter.type = queryParams['type'] || '';
+        this.filter.game = queryParams['game'] || 'all';
+        this.filter.server = queryParams['server'] || 'all';
+        this.filter.type = queryParams['type'] || 'all';
         this.filter.text = queryParams['search'] || '';
+        this.filter.sort = queryParams['sort'] || '';
         this.data.page = parseInt(queryParams['page'], 10);
         if (!this.data.page) {
           this.data.page = 1;
@@ -135,6 +61,73 @@ export class AdvertsComponent implements OnInit {
       }
     );
     this.router.navigate([], { queryParams: { page: this.data.page }, queryParamsHandling: 'merge' });
+  }
+
+  public getItems(): void {
+    this.ctrlItems.getItems({
+      page: this.data.page,
+      per_page: 100
+    }).then(res => {
+      const response = res.data;
+      if (response) {
+        const { data, info } = response;
+        const dataFiltered = this.filterItems(data).map((item: any) => {
+          item.type = translateValue(item.type_);
+          return item;
+        });
+        this.data.docs = this.filter.sort === "" ? dataFiltered : dataFiltered.sort((itemA: any, itemB: any) => {
+          if (this.filter.sort === "decrescente") {
+            return itemB.price - itemA.price;
+          }
+          else if (this.filter.sort === "crescente") {
+            return itemA.price - itemB.price;
+          }
+        });
+      }
+    });
+  }
+
+  public filterItems(data): [] {
+    return data.filter((item, i) => {
+      if (this.filter.game === "all" &&
+        this.filter.server === "all" &&
+        this.filter.type === "all" &&
+        this.filter.text === "") {
+        return true;
+      }
+      if (this.filter.game !== "all" && this.filter.game.toLowerCase() !== item.game.toLowerCase()) {
+        return false;
+      }
+      if (this.filter.server !== "all" && this.filter.server.toLowerCase() !== item.server.toLowerCase()) {
+        return false;
+      }
+      if (this.filter.type !== "all" && this.filter.type.toLowerCase() !== item.type_.toLowerCase()) {
+        return false;
+      }
+      if (this.filter.text.trim() !== "" && !item.name.toLowerCase().includes(this.filter.text.toLowerCase())) {
+        return false;
+      }
+
+      return true;
+    });
+  }
+
+  public setFiltersData(): void {
+
+    Promise.all([this.ctrlItems.getItemsGames(), this.ctrlItems.getItemsServers(), this.ctrlItems.getItemsTypes()]).then(([games, servers, types]) => {
+      this.filtersData.game = games.data.map(item => {
+        return { value: item, label: item }
+      });
+
+      this.filtersData.server = servers.data.map(item => {
+        return { value: item, label: item }
+      });
+
+      this.filtersData.type = types.data.map(item => {
+        return { value: item, label: translateValue(item) }
+      });
+    })
+
   }
 
   public resetFilter(): void {
@@ -158,14 +151,16 @@ export class AdvertsComponent implements OnInit {
   }
 
   public search(): void {
-    console.log(this.filter);
+    this.getItems();
+
     this.router.navigate([], {
       queryParams: {
         page: this.data.page,
         game: this.filter.game,
         server: this.filter.server,
         type: this.filter.type,
-        text: this.filter.text
+        text: this.filter.text,
+        sort: this.filter.sort
       }, queryParamsHandling: 'merge'
     });
     this.filter.filtered = this.clearFilter();

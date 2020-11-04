@@ -1,5 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ItemsService } from "src/app/controllers/items/items.service";
+import { translateValue } from "src/utils"
 
 @Component({
   selector: 'app-nav',
@@ -11,11 +13,35 @@ export class NavComponent implements OnInit {
   private scroll = 0;
   public search = '';
 
+  public navItems: {
+    games: [];
+    servers: [];
+    itens: [];
+  }
+
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+    private ctrlItems: ItemsService
+  ) {
+    this.navItems = {
+      games: [],
+      servers: [],
+      itens: []
+    }
+  }
 
   ngOnInit() {
+    Promise.all([this.ctrlItems.getItemsGames(), this.ctrlItems.getItemsServers(), this.ctrlItems.getItemsTypes()]).then(([resGames, resServers, resTypes]) => {
+      const updateToDropDown = (item: any, callback?: (value: any) => {} | undefined) => {
+        return { value: item, label: callback ? callback(item) : item }
+      }
+      this.navItems = {
+        games: resGames.data.map(updateToDropDown),
+        servers: resServers.data.map(updateToDropDown),
+        itens: resTypes.data.map(item => updateToDropDown(item, translateValue))
+      }
+      console.log(this.navItems);
+    });
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -38,19 +64,19 @@ export class NavComponent implements OnInit {
   }
 
   public openServer(value: string): void {
-    this.router.navigate(['/item'], { queryParams: { page: 1, server: value }});
+    this.router.navigate(['/item'], { queryParams: { page: 1, server: value } });
   }
 
   public openGame(value: string): void {
-    this.router.navigate(['/item'], { queryParams: { page: 1, game: value }});
+    this.router.navigate(['/item'], { queryParams: { page: 1, game: value } });
   }
 
   public openItem(value: string): void {
-    this.router.navigate(['/item'], { queryParams: { page: 1, type: value }});
+    this.router.navigate(['/item'], { queryParams: { page: 1, type: value } });
   }
 
   public openSearch(): void {
-    this.router.navigate(['/item'], { queryParams: { page: 1, search: this.search }});
+    this.router.navigate(['/item'], { queryParams: { page: 1, search: this.search } });
   }
 
 }
