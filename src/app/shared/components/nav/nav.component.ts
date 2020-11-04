@@ -34,15 +34,18 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
     Promise.all([this.ctrlItems.getItemsGames(), this.ctrlItems.getItemsServers(), this.ctrlItems.getItemsTypes()]).then(([resGames, resServers, resTypes]) => {
-      const updateToDropDown = (item: any, callback?: (value: any) => {} | undefined) => {
-        return { value: item, label: callback ? callback(item) : item }
-      }
+      
       this.navItems = {
-        games: resGames.data.map(updateToDropDown),
-        servers: resServers.data.map(updateToDropDown),
-        itens: resTypes.data.map(item => updateToDropDown(item, translateValue))
+        games: resGames.data.map(item => {
+          return { value: item, label: item }
+        }),
+        servers: resServers.data.map(item => {
+          return { value: item, label: item }
+        }),
+        itens: resTypes.data.map(item => {
+          return { value: item, label: translateValue(item) }
+        })
       }
-      //console.log(this.navItems);
     });
   }
 
