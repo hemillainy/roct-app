@@ -27,15 +27,12 @@ export class TransformaContaComponent implements OnInit {
 
   public status: any;
 
-  private userId: any;
-
   constructor(
     private ctrlSession: SessionService,
     private ctrlUser: UserService,
     private router: Router) 
     {  
     this.aceitouTermos = false;
-    this.userId = ctrlSession.getUserId();
     this.status = {
       loading: false,
       error: false,
@@ -69,10 +66,17 @@ export class TransformaContaComponent implements OnInit {
   public submit(): void {
     this.resetStatus();
     this.status.loading = true;
-    this.ctrlUser.upgradeAccount(this.userId)
+
+    let userUpgrade = Object.assign({}, this.ctrlSession.user)
+    userUpgrade.isSalesman = true;
+    console.log(userUpgrade)
+
+    this.ctrlUser.upgradeAccount(userUpgrade)
       .then(res => {
+        console.log(res)
         this.status.loading = false;
         this.status.success = true;
+        this.ctrlSession.setUser(res.user);///////
         setTimeout(() => {
           this.status.sucess = false;
           this.router.navigate(['/profile']);

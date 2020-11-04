@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
       .then(res => {
         console.log(res);
         this.session.logIn(res.data.token);
+        this.session.setUser(res.data.user);
         this.router.navigate(['/user/profile']);
       }).catch(err => {
         this.status.loading = false;
