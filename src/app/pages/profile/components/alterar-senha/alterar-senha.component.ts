@@ -31,7 +31,6 @@ export class AlterarSenhaComponent implements OnInit {
     private router: Router
     ) { 
     this.data = {
-      userId: undefined,
       pwd: {
         old_password: undefined,
         new_password: undefined,
@@ -67,10 +66,20 @@ export class AlterarSenhaComponent implements OnInit {
     return true;
   }
 
+  private montaObjetoBackend(data : any): any {
+    debugger;
+    let data_backend = Object.assign({}, data.pwd);
+        data_backend.password = data_backend.new_password;
+        delete data_backend.confirm_password;
+        delete data_backend.new_password;
+    return data_backend;
+  }
+
   public submit(): void {
     if (this.validaSenha()) {
+      const data_backend = this.montaObjetoBackend(this.data);
       this.status.loading = true;
-      this.ctrlUser.updatePassword({ ...this.data})
+      this.ctrlUser.updatePassword(data_backend)
         .then(res => {
           this.router.navigate(['/profile']);
         }).catch(err => {
