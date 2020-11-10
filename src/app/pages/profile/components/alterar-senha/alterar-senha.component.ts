@@ -67,7 +67,6 @@ export class AlterarSenhaComponent implements OnInit {
   }
 
   private montaObjetoBackend(data : any): any {
-    debugger;
     let data_backend = Object.assign({}, data.pwd);
         delete data_backend.confirmPassword;
         delete data_backend.confirmPassword;
