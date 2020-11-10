@@ -31,7 +31,7 @@ export class UserService {
   }
 
   public updatePassword(data: any): Promise<any> {
-    return axios.put(this.END_POINT + `/users/${data.userId}/${data.id}`, data, this.getConfig());
+    return axios.put(this.END_POINT + `/users/${this.session.getUserId()}/changePassword`, data, this.getConfig());
   }
 
   public upgradeAccount(data: any): Promise<any> {

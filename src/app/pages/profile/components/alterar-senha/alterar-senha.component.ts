@@ -31,11 +31,10 @@ export class AlterarSenhaComponent implements OnInit {
     private router: Router
     ) { 
     this.data = {
-      userId: undefined,
       pwd: {
-        old_password: undefined,
-        new_password: undefined,
-        confirm_password: undefined
+        oldPassword: undefined,
+        newPassword: undefined,
+        confirmPassword: undefined
       }
     };
     this.status = {
@@ -54,12 +53,12 @@ export class AlterarSenhaComponent implements OnInit {
   }
 
   public resetPassword(): void {
-    this.data.pwd.new_password = undefined;
-    this.data.pwd.confirm_password = undefined;
+    this.data.pwd.newPassword = undefined;
+    this.data.pwd.confirmPassword = undefined;
   }
 
   private validaSenha(): boolean {
-    if (this.data.pwd.new_password != this.data.pwd.confirm_password) {
+    if (this.data.pwd.newPassword != this.data.pwd.confirmPassword) {
       this.resetPassword();
       return false;
     }
@@ -67,10 +66,18 @@ export class AlterarSenhaComponent implements OnInit {
     return true;
   }
 
+  private montaObjetoBackend(data : any): any {
+    let data_backend = Object.assign({}, data.pwd);
+        delete data_backend.confirmPassword;
+        delete data_backend.confirmPassword;
+    return data_backend;
+  }
+
   public submit(): void {
     if (this.validaSenha()) {
+      const data_backend = this.montaObjetoBackend(this.data);
       this.status.loading = true;
-      this.ctrlUser.updatePassword({ ...this.data})
+      this.ctrlUser.updatePassword(data_backend)
         .then(res => {
           this.router.navigate(['/profile']);
         }).catch(err => {
