@@ -32,9 +32,9 @@ export class AlterarSenhaComponent implements OnInit {
     ) { 
     this.data = {
       pwd: {
-        old_password: undefined,
-        new_password: undefined,
-        confirm_password: undefined
+        oldPassword: undefined,
+        newPassword: undefined,
+        confirmPassword: undefined
       }
     };
     this.status = {
@@ -53,12 +53,12 @@ export class AlterarSenhaComponent implements OnInit {
   }
 
   public resetPassword(): void {
-    this.data.pwd.new_password = undefined;
-    this.data.pwd.confirm_password = undefined;
+    this.data.pwd.newPassword = undefined;
+    this.data.pwd.confirmPassword = undefined;
   }
 
   private validaSenha(): boolean {
-    if (this.data.pwd.new_password != this.data.pwd.confirm_password) {
+    if (this.data.pwd.newPassword != this.data.pwd.confirmPassword) {
       this.resetPassword();
       return false;
     }
@@ -69,9 +69,8 @@ export class AlterarSenhaComponent implements OnInit {
   private montaObjetoBackend(data : any): any {
     debugger;
     let data_backend = Object.assign({}, data.pwd);
-        data_backend.password = data_backend.new_password;
-        delete data_backend.confirm_password;
-        delete data_backend.new_password;
+        delete data_backend.confirmPassword;
+        delete data_backend.confirmPassword;
     return data_backend;
   }
 

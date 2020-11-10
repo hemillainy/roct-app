@@ -7,15 +7,15 @@
       <form>
         <div class="item">
 					<label for="name">Digite a senha antiga</label>
-					<input name="name" [(ngModel)]="data.pwd.old_password" type="password" required>
+					<input name="name" [(ngModel)]="data.pwd.oldPassword" type="password" required>
         </div>
         <div class="item">
 					<label for="email">Digite sua nova senha</label>
-					<input name="email" [(ngModel)]="data.pwd.new_password" type="password" required>
+					<input name="email" [(ngModel)]="data.pwd.newPassword" type="password" required>
         </div>
         <div class="item">
 					<label for="cpf">Confirme a nova senha</label>
-					<input name="cpf" [(ngModel)]="data.pwd.confirm_password" type="password" required>
+					<input name="cpf" [(ngModel)]="data.pwd.confirmPassword" type="password" required>
         </div>
         <div>
           <button type="submit" (click)="submit()">Atualizar</button>
