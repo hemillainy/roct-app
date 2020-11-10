@@ -25,7 +25,7 @@
       </div>
       <div class="action">
         <div class="price">{{ data.price | currency:'BRL' }}</div>
-        <button class="buy">
+        <button class="buy" (click)="goToCheckout(data.uuid)">
           Comprar
           <span class="material-icons">shopping_cart</span>
         </button>

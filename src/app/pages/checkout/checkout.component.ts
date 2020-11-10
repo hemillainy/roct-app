@@ -3,21 +3,23 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ItemsService } from 'src/app/controllers/items/items.service';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  selector: 'app-checkout',
+  templateUrl: './checkout.component.html',
+  styleUrls: ['./checkout.component.scss']
 })
-export class ProductComponent implements OnInit {
+export class CheckoutComponent implements OnInit {
 
   public id: string;
   public data: any;
+  public modo: string;
+  public parcelas: string;
   public status = { loaded: false, error: false };
 
   constructor(
     private ctrlItems: ItemsService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {  }
 
   ngOnInit() {
     this.route.paramMap.subscribe(paramMap => {
@@ -45,10 +47,6 @@ export class ProductComponent implements OnInit {
   private setBackground(): void {
     let elem = document.getElementById('overlay-item');
     elem.style.backgroundImage = `url(${this.data.image})`;
-  }
-
-  private goToCheckout(itemId : any): void {
-    this.router.navigate([`/item/${itemId}/checkout`]);
-  }
+  }  
 
 }

@@ -1,0 +1,233 @@
+.checkout {
+  min-height: 100vh;
+  padding: 30px;
+  background: linear-gradient(180deg, #00000080 230px, transparent 0px);
+  position: relative;
+
+  .overlay-item {
+    background-image: url("./../../../assets/images/header.jpg");
+    background-position-y: -110px;
+    background-size: cover;
+    background-position: top;
+    height: 230px;
+    z-index: -5;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    transition: 0.3s;
+  }
+ 
+  .titulo {
+    background: #00000080;
+    padding: 30px;
+    height: 100px;
+    
+    h4 {
+      color: #fff;
+      font-weight: bold;
+      font-size: 30px;
+      margin-bottom: 80px;
+    }
+  }
+  
+  .box-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    background: #fff;
+    margin-bottom: 30px;
+    margin-top: 40px;
+    padding: 40px;
+    animation: slide-content-product 0.3s ease 0.2s backwards;
+    transition: 0.3s;
+
+    .content-checkout {
+      display: flex;
+      flex-direction: row;
+      
+      .header {
+
+        h3 {
+          font-family: 'Montserrat';
+          font-size: 35px;
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+      }
+  
+      .item {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        margin-top: -15px;
+        position: relative;
+  
+        select {
+          background: #fff;
+          font-family: 'Montserrat';
+          border: 1px solid gainsboro;
+          padding: 10px;
+          width: 100%;
+          outline: none;
+        }
+  
+        label {
+          font-family: 'Montserrat';
+          position: relative;
+          top: 18px;
+          left: 10px;
+          background: #fff;
+          width: fit-content;
+          padding: 0px 10px;
+          border: 1px solid gainsboro;
+          font-size: 12px;
+          color: #525252;
+        }
+  
+        input {
+          font-family: 'Montserrat';
+          border: 1px solid gainsboro;
+          padding: 8px 10px;
+          min-width: 250px;
+          max-width: 400px;
+          outline: none;
+        }
+  
+        input:focus {
+          border: 1px solid #3aa4e5;
+        }
+      }
+    }
+
+    .content-item {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      margin-bottom: 30px;
+      margin-top: 40px;
+      padding: 40px;
+  
+      .image {
+        animation: slide-content-product 0.3s ease 0.15s backwards;
+  
+        img {
+          height: 150px;
+          width: 150px;
+          object-fit: cover;
+        }
+      }
+  
+      .details {
+        margin-left: 40px;
+        width: 100%;
+        animation: slide-content-product 0.3s ease 0.3s backwards;
+  
+        .header {
+          margin-bottom: 30px;
+  
+          h5 {
+            font-family: 'Montserrat';
+            font-size: 35px;
+            font-weight: bold;
+            color: #3aa4e5;
+            text-transform: uppercase;
+          }
+  
+          div {
+            display: flex;
+            align-items: flex-start;
+  
+            p {
+              margin: 0px;
+              padding: 0px 10px;
+              background: gainsboro;
+              margin-right: 5px;
+            }
+  
+            p.type {
+              color: #fff;
+              background: #3aa4e5;
+              text-transform: lowercase;
+            }
+  
+            p:last-child {
+              background: #f3f3f3;
+            }
+          }
+        }
+  
+        .description {
+          margin-bottom: 30px;
+        }
+  
+        .action {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+  
+          .price {
+            font-family: 'Montserrat';
+            font-weight: bold;
+            font-size: 40px;
+          }
+  
+          button {
+            background: #8bc34a;
+            font-weight: bold;
+            transition: 0.3s;
+  
+            span {
+              width: unset;
+              opacity: 1;
+              border-left: 1px solid #ffffff4d;
+              margin-left: 15px;
+              padding-left: 15px;
+            }
+          }
+  
+          button:hover {
+            background: #4caf50;
+          }
+        }
+      }
+    
+    }
+
+    .content-item.loading,
+    .content-item.err {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 300px;
+  
+      div.loader {
+        width: 60px;
+        height: 60px;
+      }
+  
+      span {
+        font-size: 25px;
+        user-select: none;
+      }
+  
+      p {
+        margin: 0px;
+        font-size: 20px;
+        margin-left: 8px;
+      }
+    }
+  }
+
+  @keyframes slide-content-product {
+    0% {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+}

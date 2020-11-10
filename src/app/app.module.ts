@@ -11,11 +11,12 @@ import { AuthModule } from './pages/auth/auth.module';
 import { ProfileModule } from './pages/profile/profile.module';
 import { UserService } from './controllers/user/user.service';
 import { AdvertsModule } from './pages/adverts/adverts.module';
+import { CheckoutModule } from './pages/checkout/checkout.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +26,8 @@ import { AdvertsModule } from './pages/adverts/adverts.module';
     HomeModule,
     AuthModule,
     ProfileModule,
-    AdvertsModule
+    AdvertsModule,
+    CheckoutModule
   ],
   providers: [
     SessionService,
