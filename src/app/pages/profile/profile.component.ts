@@ -12,7 +12,6 @@ export class ProfileComponent implements OnInit {
 
   private subs: Subscription;
   public renderizaTornarVendedor = undefined;
-  public userLogged = undefined;
   public component = {
     pages: ['account', 'password', 'change-type', 'purchases', 'advertise', 'sales'],
     command: 'account'
@@ -25,18 +24,21 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.subs = this.route.queryParams.subscribe(
-      queryParams => {
-        const command = queryParams.command || 'info';
-        this.component.command = command;
-        if (!this.component.pages.includes(command)) {
-          this.component.command = 'account';
+    if (this.isLogged()) {
+      this.subs = this.route.queryParams.subscribe(
+        queryParams => {
+          const command = queryParams.command || 'info';
+          this.component.command = command;
+          if (!this.component.pages.includes(command)) {
+            this.component.command = 'account';
+          }
         }
-      }
-    );
-    this.router.navigate([], { queryParams: { command: this.component.command }, queryParamsHandling: 'merge' });
-    this.renderizaTornarVendedor = this.ctrlSession.user !== undefined && !this.ctrlSession.user.isSalesman;
-    this.userLogged = this.ctrlSession.isLogged;
+      );
+      this.router.navigate([], { queryParams: { command: this.component.command }, queryParamsHandling: 'merge' });
+      this.renderizaTornarVendedor = this.ctrlSession.user !== undefined && !this.ctrlSession.user.isSalesman;
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 
   public setCommand(value: string): void {
@@ -47,6 +49,10 @@ export class ProfileComponent implements OnInit {
   public logOut(): void {
     this.ctrlSession.logOut();
     this.router.navigate(['/']);
+  }
+
+  public isLogged(): boolean {
+    return this.ctrlSession.isLogged;
   }
 
 }

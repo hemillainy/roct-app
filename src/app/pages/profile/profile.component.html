@@ -28,7 +28,7 @@
             <span class="material-icons">receipt</span>
             Minhas Vendas
           </li>
-          <li (click)="logOut()" *ngIf="this.userLogged">
+          <li (click)="logOut()" *ngIf="isLogged()">
             <span class="material-icons">exit_to_app</span>
             Sair
           </li>

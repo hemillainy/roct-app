@@ -3,6 +3,7 @@
   position: relative;
   padding-top: 50px;
   margin-top: 50px;
+  animation: slide 0.4s ease backwards;
 
   .rect {
     width: 300px;
@@ -89,7 +90,7 @@
 
           p {
             margin-top: 5px;
-            font-family: 'Montserrat';
+            font-family: "Montserrat";
             width: 70%;
             transition: 0.3s;
           }
@@ -109,7 +110,7 @@
             span:last-child {
               font-size: 24px;
               font-weight: bold;
-              font-family: 'Montserrat';
+              font-family: "Montserrat";
             }
           }
         }
@@ -163,7 +164,7 @@
         border: unset;
         outline: none;
         padding: 10px 20px;
-        font-family: 'Montserrat';
+        font-family: "Montserrat";
         display: flex;
         align-items: center;
         background: #3aa4e5;
@@ -188,5 +189,16 @@
         }
       }
     }
+  }
+}
+
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
   }
 }
