@@ -23,7 +23,7 @@ import { isUndefined } from 'util';
 })
 export class MinhaContaComponent implements OnInit {
 
-  //Data
+  // Data
   public data: any;
   private data_aux: any;
 
@@ -35,7 +35,7 @@ export class MinhaContaComponent implements OnInit {
     private ctrlUser: UserService,
     private router: Router,
     private ctrlSession: SessionService) {
-  
+
     this.data = {
       id: isUndefined,
       name: undefined,
@@ -50,21 +50,15 @@ export class MinhaContaComponent implements OnInit {
     this.status = {
       loading: false,
       error: false,
-      error_message: "Algo de errado aconteceu, tente novamente"
+      error_message: 'Algo de errado aconteceu, tente novamente'
     };
   }
 
   ngOnInit() {
-    if(this.ctrlSession.user !== undefined) {
+    if (this.ctrlSession.user !== undefined) {
       this.data = this.ctrlSession.user;
     } else {
-      console.log("Erro ao recuperar o usuário da sessão")
-      // this.status.error = true;
-      // this.status.error_message = "Erro ao recuperar o usuário da sessão";
-      //   setTimeout(() => {
-      //     this.status.error = false;
-      //     this.resetStatus();
-      //   }, 3500);
+      console.log('Erro ao recuperar o usuário da sessão');
     }
   }
 
@@ -73,16 +67,15 @@ export class MinhaContaComponent implements OnInit {
     this.data_aux = Object.assign({}, this.data);
   }
 
-  public getAccountType(): String {
+  public getAccountType(): string {
     return this.data.isSalesman ? 'Vendedor' : 'Comprador';
   }
-
 
   public resetStatus(): void {
     this.status = {
       loading: false,
       error: false,
-      error_message: "Algo de errado aconteceu, tente novamente"
+      error_message: 'Algo de errado aconteceu, tente novamente'
     };
   }
 
@@ -95,12 +88,11 @@ export class MinhaContaComponent implements OnInit {
     this.status.loading = true;
     this.ctrlUser.update(this.data)
       .then(res => {
-        //Falta algo aqui??
-        this.router.navigate(['/profile']);
+        // Falta algo aqui??
       }).catch(err => {
         this.status.loading = false;
         this.status.error = true;
-        //this.resetChanges(); VOLTAR
+        // this.resetChanges(); VOLTAR
         setTimeout(() => {
           this.status.error = false;
         }, 3500);

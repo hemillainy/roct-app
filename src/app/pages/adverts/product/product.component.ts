@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Session } from 'inspector';
 import { ItemsService } from 'src/app/controllers/items/items.service';
 import { SessionService } from 'src/app/controllers/session/session.service';
 

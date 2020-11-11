@@ -112,21 +112,18 @@ export class AdvertsComponent implements OnInit {
   }
 
   public setFiltersData(): void {
-
-    Promise.all([this.ctrlItems.getItemsGames(), this.ctrlItems.getItemsServers(), this.ctrlItems.getItemsTypes()]).then(([games, servers, types]) => {
-      this.filtersData.game = games.data.map(item => {
-        return { value: item, label: item };
+    Promise.all([this.ctrlItems.getItemsGames(), this.ctrlItems.getItemsServers(), this.ctrlItems.getItemsTypes()])
+      .then(([games, servers, types]) => {
+        this.filtersData.game = games.data.map(item => {
+          return { value: item, label: item };
+        });
+        this.filtersData.server = servers.data.map(item => {
+          return { value: item, label: item };
+        });
+        this.filtersData.type = types.data.map(item => {
+          return { value: item, label: translateValue(item) };
+        });
       });
-
-      this.filtersData.server = servers.data.map(item => {
-        return { value: item, label: item };
-      });
-
-      this.filtersData.type = types.data.map(item => {
-        return { value: item, label: translateValue(item) };
-      });
-    });
-
   }
 
   public resetFilter(): void {
@@ -151,15 +148,9 @@ export class AdvertsComponent implements OnInit {
 
   public search(): void {
     this.getItems();
-
     this.router.navigate([], {
       queryParams: {
-        page: this.data.page,
-        game: this.filter.game,
-        server: this.filter.server,
-        type: this.filter.type,
-        search: this.filter.text,
-        sort: this.filter.sort
+        ...this.filter
       }, queryParamsHandling: 'merge'
     });
     this.filter.filtered = this.clearFilter();

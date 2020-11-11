@@ -30,27 +30,27 @@ export class TransformaContaComponent implements OnInit {
   constructor(
     private ctrlSession: SessionService,
     private ctrlUser: UserService,
-    private router: Router) 
-    {  
+    private router: Router
+  ) {
     this.aceitouTermos = false;
     this.status = {
       loading: false,
       error: false,
       success: false,
-      error_message: "Algo de errado aconteceu, tente novamente",
-      success_message: "Upgrade realizado com sucesso!"
+      error_message: 'Algo de errado aconteceu, tente novamente',
+      success_message: 'Upgrade realizado com sucesso!'
     };
   }
 
   ngOnInit() {
   }
 
-  public getVantagens(): String {
-    return "Tenha vendas seguras. Nosso sistema garante que o comprador pagou antes do item ser enviado."
+  public getVantagens(): string {
+    return 'Tenha vendas seguras. Nosso sistema garante que o comprador pagou antes do item ser enviado.';
   }
 
-  public getTermosUso(): String {
-    return "1- vendedor deve se comprometer a efetivar a operação de entrega sob pena de cancelamento da conta. 2- Será cobrada uma taxa de 5% sobre o preço da venda"
+  public getTermosUso(): string {
+    return '1- vendedor deve se comprometer a efetivar a operação de entrega sob pena de cancelamento da conta. 2- Será cobrada uma taxa de 5% sobre o preço da venda';
   }
 
   public resetStatus(): void {
@@ -58,19 +58,16 @@ export class TransformaContaComponent implements OnInit {
       loading: false,
       error: false,
       success: false,
-      error_message: "Algo de errado aconteceu, tente novamente",
-      success_message: "Upgrade realizado com sucesso!"
+      error_message: 'Algo de errado aconteceu, tente novamente',
+      success_message: 'Upgrade realizado com sucesso!'
     };
   }
 
   public submit(): void {
     this.resetStatus();
     this.status.loading = true;
-
-    let userUpgrade = Object.assign({}, this.ctrlSession.user)
+    const userUpgrade = Object.assign({}, this.ctrlSession.user);
     userUpgrade.isSalesman = true;
-    //console.log(userUpgrade)
-
     this.ctrlUser.upgradeAccount(userUpgrade)
       .then(res => {
         this.status.loading = false;
@@ -78,7 +75,7 @@ export class TransformaContaComponent implements OnInit {
         this.ctrlSession.setUser(res.data);
         setTimeout(() => {
           this.status.sucess = false;
-          this.router.navigate(['/profile']);
+          // atualiar session
         }, 3500);
       }).catch(err => {
         this.status.loading = false;

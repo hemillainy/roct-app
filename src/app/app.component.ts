@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from './controllers/session/session.service';
+import { UserService } from './controllers/user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +11,14 @@ export class AppComponent implements OnInit {
   title = 'roct-app';
 
   constructor(
-    private session: SessionService
+    private session: SessionService,
+    private ctrlUser: UserService
   ) { }
 
   ngOnInit(): void {
     const auth = localStorage.getItem('Authorization');
     if (auth && auth !== 'undefined') {
-      this.session.setToken(auth);
+      this.session.logIn(auth);
     } else {
       this.session.logOut();
     }
