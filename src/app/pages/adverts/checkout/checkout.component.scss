@@ -138,6 +138,7 @@
       background: linear-gradient(-45deg, #3aa4e5, #00bfff);
       box-shadow: 15px 15px 0px 0px #6c45a7;
       margin-right: 60px;
+      animation: slide-content-product 0.3s ease backwards;
       transition: 0.3s;
 
       .image {
@@ -235,6 +236,7 @@
     margin-bottom: 30px;
     margin-top: 40px;
     padding: 40px;
+    animation: slide-content-product 0.3s ease backwards;
 
     div.loader {
       width: 60px;
