@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.subs = this.route.queryParams.subscribe(
       queryParams => {
-        const command = queryParams['command'] || 'info';
+        const command = queryParams.command || 'info';
         this.component.command = command;
         if (!this.component.pages.includes(command)) {
           this.component.command = 'account';
@@ -35,17 +35,18 @@ export class ProfileComponent implements OnInit {
       }
     );
     this.router.navigate([], { queryParams: { command: this.component.command }, queryParamsHandling: 'merge' });
-    this.renderizaTornarVendedor = this.ctrlSession.user != undefined && !this.ctrlSession.user.isSalesman;
+    this.renderizaTornarVendedor = this.ctrlSession.user !== undefined && !this.ctrlSession.user.isSalesman;
     this.userLogged = this.ctrlSession.isLogged;
   }
 
-  public setCommand(value:string): void {
+  public setCommand(value: string): void {
     this.component.command = value;
     this.router.navigate([], { queryParams: { command: this.component.command }, queryParamsHandling: 'merge' });
   }
 
   public logOut(): void {
     this.ctrlSession.logOut();
+    this.router.navigate(['/']);
   }
 
 }

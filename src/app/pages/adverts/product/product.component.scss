@@ -19,21 +19,34 @@
   }
 
   .content {
-    display: flex;
     flex-direction: row;
     align-items: flex-start;
     background: #fff;
-    margin: 30px;
+    margin: 30px auto;
     margin-top: 40px;
     padding: 40px;
     animation: slide-content-product 0.3s ease 0.2s backwards;
     transition: 0.3s;
 
+    .sections {
+      display: flex;
+      align-items: flex-start;
+
+      p {
+        text-transform: uppercase;
+        color: #525252;
+        font-family: "Montserrat";
+      }
+
+      i {
+        color: #525252;
+      }
+    }
+
     .image {
       animation: slide-content-product 0.3s ease 0.15s backwards;
 
       img {
-        height: 300px;
         width: 300px;
         object-fit: cover;
       }
@@ -48,7 +61,7 @@
         margin-bottom: 30px;
 
         h5 {
-          font-family: 'Montserrat';
+          font-family: "Montserrat";
           font-size: 35px;
           font-weight: bold;
           color: #3aa4e5;
@@ -88,12 +101,13 @@
         justify-content: space-between;
 
         .price {
-          font-family: 'Montserrat';
+          font-family: "Montserrat";
           font-weight: bold;
           font-size: 40px;
         }
 
         button {
+          font-family: "Montserrat";
           background: #8bc34a;
           font-weight: bold;
           transition: 0.3s;
@@ -109,6 +123,11 @@
 
         button:hover {
           background: #4caf50;
+        }
+
+        button:disabled {
+          opacity: 0.1;
+          background: gray;
         }
       }
     }

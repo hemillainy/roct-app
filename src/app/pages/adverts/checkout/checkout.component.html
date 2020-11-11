@@ -1,0 +1,90 @@
+<div class="checkout">
+	<div id="overlay-item" class="overlay-item"></div>
+	<div class="content-item loading" *ngIf="!status.loaded">
+		<div class="loader"></div>
+	</div>
+	<div class="content-item err" *ngIf="status.loaded && status.error">
+		<span class="material-icons">error</span>
+		<p>Item não encontrado.</p>
+	</div>
+	<header class="titulo">
+		<h4>Efetuar Pagamento</h4>
+	</header>
+	<div class="box-container" *ngIf="status.loaded && data">
+		<div class="content-item" style="width: 40%;">
+			<div class="image">
+				<img src="{{ data.image }}" alt="imagem do produto">
+			</div>
+			<div class="details">
+				<div class="header">
+					<h5>{{ data.name }}</h5>
+					<div>
+						<p class="type">{{ data.type_ }}</p>
+						<p>Criado em {{ data.created_at | date: 'dd/MM/yyyy' }}</p>
+						<p>Postado por <strong>{{ data.salesman.name }}</strong> </p>
+					</div>
+				</div>
+				<div class="description">
+					{{ data.description }}
+				</div>
+				<div class="action">
+					<div class="price">{{ data.price | currency:'BRL' }}</div>
+				</div>
+			</div>
+		</div>
+		<div class="content-checkout" style="width: 60%;">
+			<div>
+				<form>
+					<header class="header">
+						<h3>Checkout</h3>
+					</header>
+
+					<div class="item">
+						<label for="modo">Modo de Pagamento</label>
+						<select name="modo" [(ngModel)]="modo">
+							<option value="" selected></option>
+							<option value="cartao_credito">Cartão de Crédito</option>
+							<option value="cartao_debito">Cartão de Débito</option>
+						</select>
+					</div>
+
+					<div class="item">
+						<label for="name">Nome no Cartão</label>
+						<input name="name" type="text" required>
+					</div>
+
+					<div class="item">
+						<label for="name">Número do Cartão</label>
+						<input name="name" type="text" required>
+					</div>
+
+					<div class="item">
+						<label for="name">Código de Segurança do Cartão</label>
+						<input name="name" type="text" required>
+					</div>
+
+					<div class="item">
+						<label for="name">Validade do Cartão</label>
+						<input name="name" type="text" required>
+					</div>
+
+					<div class="item" *ngIf="modo == 'cartao_credito'">
+						<label for="parcelas">Parcelas</label>
+						<select name="parcelas" [(ngModel)]="parcelas">
+							<option value=""></option>
+							<option value="1">1 (sem juros)</option>
+							<option value="2">2 (sem juros)</option>
+							<option value="3">3 (sem juros)</option>
+							<option value="3">4 (com juros)</option>
+						</select>
+					</div>
+
+					<div>
+						<button class="cancel" type="submit" (click)="submit()">Pagar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</div>

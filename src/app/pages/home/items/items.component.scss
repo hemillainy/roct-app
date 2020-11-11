@@ -59,7 +59,6 @@
           justify-content: center;
 
           img {
-            width: 100%;
             height: 300px;
             transition: 0.3s;
           }
@@ -122,8 +121,7 @@
         height: fit-content;
 
         .header {
-          div.img {
-            box-shadow: inset 0 0 80px #6c45a7;
+          img {
             filter: blur(2px);
           }
 

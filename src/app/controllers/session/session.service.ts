@@ -10,10 +10,9 @@ export class SessionService {
   public user: any;
   public isLogged = false;
 
-  constructor(private router: Router, 
-  ) { }
+  constructor() { }
 
-  public getUserId(){
+  public getUserId() {
     return this.user.id;
   }
 
@@ -30,23 +29,17 @@ export class SessionService {
   }
 
   public logIn(token: string): void {
-    //this.cookie.set('Authorization', token);
-    // localStorage.setItem('User', user);
     localStorage.setItem('Authorization', token);
     this.isLogged = true;
-    //console.log(localStorage.getItem('Authorization'))
   }
 
   public getToken(): string {
     return localStorage.getItem('Authorization');
-    //return this.cookie.get('Authorization');
   }
 
   public logOut(): void {
-    //this.cookie.deleteAll();
     localStorage.clear();
     this.clearUser();
     this.isLogged = false;
-    this.router.navigate(['/']);
   }
 }

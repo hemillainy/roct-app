@@ -17,14 +17,13 @@ export class CheckoutComponent implements OnInit {
 
   constructor(
     private ctrlItems: ItemsService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {  }
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(paramMap => {
       this.id = paramMap.get('id');
-    })
+    });
     this.getItem();
   }
 
@@ -36,17 +35,10 @@ export class CheckoutComponent implements OnInit {
         setTimeout(() => {
           this.data = res.data;
           this.status.loaded = true;
-          this.setBackground();
         }, 400);
       }).catch(err => {
         this.status.loaded = true;
         this.status.error = true;
       });
   }
-
-  private setBackground(): void {
-    let elem = document.getElementById('overlay-item');
-    elem.style.backgroundImage = `url(${this.data.image})`;
-  }  
-
 }

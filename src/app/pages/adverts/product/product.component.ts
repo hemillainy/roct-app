@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Session } from 'inspector';
 import { ItemsService } from 'src/app/controllers/items/items.service';
+import { SessionService } from 'src/app/controllers/session/session.service';
 
 @Component({
   selector: 'app-product',
@@ -16,13 +18,14 @@ export class ProductComponent implements OnInit {
   constructor(
     private ctrlItems: ItemsService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private session: SessionService
   ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(paramMap => {
       this.id = paramMap.get('id');
-    })
+    });
     this.getItem();
   }
 
@@ -43,12 +46,18 @@ export class ProductComponent implements OnInit {
   }
 
   private setBackground(): void {
-    let elem = document.getElementById('overlay-item');
-    elem.style.backgroundImage = `url(${this.data.image})`;
+   const elem = document.getElementById('overlay-item');
+   elem.style.backgroundImage = `url(${this.data.image})`;
   }
 
-  private goToCheckout(itemId : any): void {
-    this.router.navigate([`/item/${itemId}/checkout`]);
+  public goToCheckout(itemId: any): void {
+    if (this.isLogged) {
+      this.router.navigate([`/item/${itemId}/checkout`]);
+    }
+  }
+
+  public isLogged(): boolean {
+    return this.session.isLogged;
   }
 
 }
