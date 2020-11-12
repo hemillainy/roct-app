@@ -12,6 +12,7 @@ export class CheckoutComponent implements OnInit {
 
   public id: string;
   public data: any;
+  public step = 0;
   public status = { loaded: false, error: false };
   public method = { type: '', number: undefined, name: undefined, security_code: undefined, validity: undefined };
 
@@ -46,5 +47,9 @@ export class CheckoutComponent implements OnInit {
         this.status.loaded = true;
         this.status.error = true;
       });
+  }
+
+  public pay(): void {
+    this.step += 1;
   }
 }

@@ -32,15 +32,72 @@
   }
 
   .box-container {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
     background: #fff;
     margin-bottom: 30px;
     margin-top: 40px;
     padding: 40px;
     animation: slide-content-product 0.3s ease 0.2s backwards;
     transition: 0.3s;
+
+    .steps {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 40px;
+      border-bottom: 1px solid ghostwhite;
+      padding-bottom: 40px;
+
+      .item {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        border: 1px solid gainsboro;
+        transition: 0.3s;
+        min-height: 75px;
+        margin-right: 25px;
+        opacity: 0.4;
+
+        p,
+        span {
+          margin: 0px;
+          font-family: "Montserrat";
+          transition: 0.3s;
+        }
+
+        p {
+          width: 30px;
+          height: 30px;
+          background: gainsboro;
+          border-radius: 25px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 8px;
+        }
+      }
+
+      .item.active {
+        background: #4caf50;
+        opacity: 1;
+
+        p {
+          background: #fff;
+          font-weight: bold;
+          color: #4caf50;
+        }
+
+        span {
+          font-weight: bold;
+          color: #fff;
+        }
+      }
+    }
+
+    .align {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      width: 100%;
+    }
 
     .content-checkout {
       display: flex;
@@ -132,7 +189,7 @@
 
     .content-item {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: flex-start;
       padding: 40px;
       background: linear-gradient(-45deg, #3aa4e5, #00bfff);
@@ -145,13 +202,13 @@
         animation: slide-content-product 0.3s ease 0.15s backwards;
 
         img {
-          width: 150px;
+          width: 260px;
           object-fit: cover;
         }
       }
 
       .details {
-        margin-left: 20px;
+        margin-top: 20px;
         width: 100%;
         animation: slide-content-product 0.3s ease 0.3s backwards;
 
@@ -223,6 +280,127 @@
 
     .content-item:hover {
       box-shadow: 25px 25px 0px 0px #6c45a7;
+    }
+
+    .confirmation {
+      width: 75%;
+      margin: auto;
+
+      h3 {
+        display: flex;
+        align-items: center;
+        font-family: "Montserrat";
+        font-size: 35px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+
+        span {
+          font-size: inherit;
+          margin-right: 5px;
+          user-select: none;
+        }
+      }
+
+      p {
+        font-family: "Montserrat";
+        font-size: 20px;
+      }
+
+      .content {
+        width: 100%;
+
+        div {
+          margin-right: 40px;
+          width: 100%;
+        }
+
+        a {
+          margin: unset;
+          margin-top: 20px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          width: fit-content;
+          padding: 15px 20px;
+          background: #52af50;
+          border-radius: 125px;
+          cursor: pointer;
+          transition: 0.3s;
+
+          p {
+            text-align: end;
+            margin: 0px;
+            font-size: 16px;
+            color: #fff;
+            font-weight: bold;
+          }
+
+          img {
+            height: 20px;
+            margin-left: 8px;
+          }
+        }
+
+        a:hover {
+          background: #449442;
+          text-decoration: unset;
+        }
+
+        .item {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 15px;
+          margin-top: -15px;
+          position: relative;
+
+          select {
+            background: #fff;
+            font-family: "Montserrat";
+            border: 1px solid gainsboro;
+            padding: 10px;
+            width: 100%;
+            outline: none;
+          }
+
+          label {
+            font-family: "Montserrat";
+            position: relative;
+            top: 18px;
+            left: 10px;
+            background: #fff;
+            width: fit-content;
+            padding: 0px 10px;
+            border: 1px solid gainsboro;
+            font-size: 12px;
+            color: #525252;
+          }
+
+          input {
+            font-family: "Montserrat";
+            border: 1px solid gainsboro;
+            padding: 8px 10px;
+            min-width: 250px;
+            outline: none;
+          }
+
+          input:focus {
+            border: 1px solid #3aa4e5;
+          }
+        }
+
+        button {
+          background: #8bc34a;
+          font-weight: bold;
+          transition: 0.3s;
+          margin-top: 20px;
+          margin-left: auto;
+        }
+
+        button:hover {
+          background: #4caf50;
+        }
+      }
     }
   }
 

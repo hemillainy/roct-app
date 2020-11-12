@@ -8,59 +8,95 @@
 		<p>Item não encontrado.</p>
 	</div>
 	<div class="container box-container" *ngIf="status.loaded && data">
-		<div class="content-item">
-			<div class="image">
-				<img src="{{ data.image }}" alt="imagem do produto">
+		<div class="steps">
+			<div class="item" [class.active]="step === 0">
+				<p>1</p>
+				<span>Método de pagamento</span>
 			</div>
-			<div class="details">
-				<div class="header">
-					<h5>{{ data.name }}</h5>
-					<div>
-						<p class="type">{{ data.type_ }}</p>
+			<div class="item" [class.active]="step === 1">
+				<p>2</p>
+				<span>Confirmação</span>
+			</div>
+		</div>
+		<div class="align" *ngIf="step === 0">
+			<div class="content-item">
+				<div class="image">
+					<img src="{{ data.image }}" alt="imagem do produto">
+				</div>
+				<div class="details">
+					<div class="header">
+						<h5>{{ data.name }}</h5>
+						<div>
+							<p class="type">{{ data.type_ }}</p>
+						</div>
+					</div>
+					<div class="action">
+						<div class="price">1x {{ data.price | currency:'BRL' }}</div>
 					</div>
 				</div>
-				<div class="action">
-					<div class="price">1x {{ data.price | currency:'BRL' }}</div>
+			</div>
+			<div class="content-checkout">
+				<div>
+					<form>
+						<header class="header">
+							<h3>Checkout</h3>
+						</header>
+						<div class="item">
+							<label for="modo">Modo de Pagamento</label>
+							<select name="modo" [(ngModel)]="method.type">
+								<option value="" selected>Selecione</option>
+								<option value="cartao_credito">Cartão de Crédito</option>
+								<option value="cartao_debito">Cartão de Débito</option>
+							</select>
+						</div>
+						<div class="item">
+							<label for="name">Nome no Cartão</label>
+							<input name="name" type="text" [(ngModel)]="method.name" required>
+						</div>
+						<div class="item">
+							<label for="name">Número do Cartão</label>
+							<input name="name" type="text" mask="0000 0000 0000 0000" [(ngModel)]="method.number" required>
+						</div>
+						<div class="item">
+							<label for="name">Código de Segurança do Cartão</label>
+							<input name="name" type="text" mask="000" [(ngModel)]="method.security_code" required>
+						</div>
+						<div class="item">
+							<label for="name">Validade do Cartão</label>
+							<input name="name" placeholder="Mês/Ano" type="text" mask="00/0000" [(ngModel)]="method.validity"
+								required>
+						</div>
+						<div>
+							<button (click)="pay()">
+								Pagar
+								<span class="material-icons">payment</span>
+							</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
-		<div class="content-checkout">
-			<div>
-				<form>
-					<header class="header">
-						<h3>Checkout</h3>
-					</header>
+		<div class="confirmation" *ngIf="step === 1">
+			<h3>
+				<span class="material-icons">info</span>
+				Informe o seu nickname
+			</h3>
+			<p>Para o recebimento do item</p>
+			<div class="content">
+				<div>
 					<div class="item">
-						<label for="modo">Modo de Pagamento</label>
-						<select name="modo" [(ngModel)]="method.type">
-							<option value="" selected>Selecione</option>
-							<option value="cartao_credito">Cartão de Crédito</option>
-							<option value="cartao_debito">Cartão de Débito</option>
-						</select>
+						<label for="name">Nickname</label>
+						<input name="name" type="text" [(ngModel)]="method.security_code" required>
 					</div>
-					<div class="item">
-						<label for="name">Nome no Cartão</label>
-						<input name="name" type="text" [(ngModel)]="method.name" required>
-					</div>
-					<div class="item">
-						<label for="name">Número do Cartão</label>
-						<input name="name" type="text" mask="0000 0000 0000 0000" [(ngModel)]="method.number" required>
-					</div>
-					<div class="item">
-						<label for="name">Código de Segurança do Cartão</label>
-						<input name="name" type="text" mask="000" [(ngModel)]="method.security_code" required>
-					</div>
-					<div class="item">
-						<label for="name">Validade do Cartão</label>
-						<input name="name" placeholder="Mês/Ano" type="text" mask="00/0000" [(ngModel)]="method.validity" required>
-					</div>
-					<div>
-						<button (click)="submit()">
-							Pagar
-							<span class="material-icons">payment</span>
-						</button>
-					</div>
-				</form>
+					<button>
+						Concluir
+						<span class="material-icons">done</span>
+					</button>
+				</div>
+				<a href="https://api.whatsapp.com/send?phone={{ data.salesman.phone }}" target="_blank">
+					<p>Se preferir, fale diretamente com o vendedor</p>
+					<img src="./assets/images/whatsapp.svg">
+				</a>
 			</div>
 		</div>
 	</div>
