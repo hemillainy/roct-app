@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ItemsService } from 'src/app/controllers/items/items.service';
 
-import { translateValue } from "src/utils";
+import { translateValue } from 'src/utils';
 
 @Component({
   selector: 'app-adverts',
@@ -27,7 +27,7 @@ export class AdvertsComponent implements OnInit {
     server: [],
     game: [],
     type: [],
-  }
+  };
 
   public data = {
     page: 0,
@@ -42,22 +42,22 @@ export class AdvertsComponent implements OnInit {
 
   ngOnInit() {
     this.setQueryParams();
-    this.getItems();
     this.setFiltersData();
   }
 
   private setQueryParams(): void {
     this.subs = this.route.queryParams.subscribe(
       queryParams => {
-        this.filter.game = queryParams['game'] || 'all';
-        this.filter.server = queryParams['server'] || 'all';
-        this.filter.type = queryParams['type'] || 'all';
-        this.filter.text = queryParams['search'] || '';
-        this.filter.sort = queryParams['sort'] || '';
-        this.data.page = parseInt(queryParams['page'], 10);
+        this.filter.game = queryParams.game || 'all';
+        this.filter.server = queryParams.server || 'all';
+        this.filter.type = queryParams.type || 'all';
+        this.filter.text = queryParams.search || '';
+        this.filter.sort = queryParams.sort || '';
+        this.data.page = parseInt(queryParams.page, 10);
         if (!this.data.page) {
           this.data.page = 1;
         }
+        this.getItems();
       }
     );
     this.router.navigate([], { queryParams: { page: this.data.page }, queryParamsHandling: 'merge' });
@@ -75,11 +75,10 @@ export class AdvertsComponent implements OnInit {
           item.type = translateValue(item.type_);
           return item;
         });
-        this.data.docs = this.filter.sort === "" ? dataFiltered : dataFiltered.sort((itemA: any, itemB: any) => {
-          if (this.filter.sort === "decrescente") {
+        this.data.docs = this.filter.sort === '' ? dataFiltered : dataFiltered.sort((itemA: any, itemB: any) => {
+          if (this.filter.sort === 'decrescente') {
             return itemB.price - itemA.price;
-          }
-          else if (this.filter.sort === "crescente") {
+          } else if (this.filter.sort === 'crescente') {
             return itemA.price - itemB.price;
           }
         });
@@ -89,22 +88,22 @@ export class AdvertsComponent implements OnInit {
 
   public filterItems(data): [] {
     return data.filter((item, i) => {
-      if (this.filter.game === "all" &&
-        this.filter.server === "all" &&
-        this.filter.type === "all" &&
-        this.filter.text === "") {
+      if (this.filter.game === 'all' &&
+        this.filter.server === 'all' &&
+        this.filter.type === 'all' &&
+        this.filter.text === '') {
         return true;
       }
-      if (this.filter.game !== "all" && this.filter.game.toLowerCase() !== item.game.toLowerCase()) {
+      if (this.filter.game !== 'all' && this.filter.game.toLowerCase() !== item.game.toLowerCase()) {
         return false;
       }
-      if (this.filter.server !== "all" && this.filter.server.toLowerCase() !== item.server.toLowerCase()) {
+      if (this.filter.server !== 'all' && this.filter.server.toLowerCase() !== item.server.toLowerCase()) {
         return false;
       }
-      if (this.filter.type !== "all" && this.filter.type.toLowerCase() !== item.type_.toLowerCase()) {
+      if (this.filter.type !== 'all' && this.filter.type.toLowerCase() !== item.type_.toLowerCase()) {
         return false;
       }
-      if (this.filter.text.trim() !== "" && !item.name.toLowerCase().includes(this.filter.text.toLowerCase())) {
+      if (this.filter.text.trim() !== '' && !item.name.toLowerCase().includes(this.filter.text.toLowerCase())) {
         return false;
       }
 
@@ -113,21 +112,18 @@ export class AdvertsComponent implements OnInit {
   }
 
   public setFiltersData(): void {
-
-    Promise.all([this.ctrlItems.getItemsGames(), this.ctrlItems.getItemsServers(), this.ctrlItems.getItemsTypes()]).then(([games, servers, types]) => {
-      this.filtersData.game = games.data.map(item => {
-        return { value: item, label: item }
+    Promise.all([this.ctrlItems.getItemsGames(), this.ctrlItems.getItemsServers(), this.ctrlItems.getItemsTypes()])
+      .then(([games, servers, types]) => {
+        this.filtersData.game = games.data.map(item => {
+          return { value: item, label: item };
+        });
+        this.filtersData.server = servers.data.map(item => {
+          return { value: item, label: item };
+        });
+        this.filtersData.type = types.data.map(item => {
+          return { value: item, label: translateValue(item) };
+        });
       });
-
-      this.filtersData.server = servers.data.map(item => {
-        return { value: item, label: item }
-      });
-
-      this.filtersData.type = types.data.map(item => {
-        return { value: item, label: translateValue(item) }
-      });
-    })
-
   }
 
   public resetFilter(): void {
@@ -145,22 +141,16 @@ export class AdvertsComponent implements OnInit {
   public clearFilter(): boolean {
     let result = false;
     Object.keys(this.filter).slice(1).map(item => {
-      result = result || (this.filter[item] !== '')
+      result = result || (this.filter[item] !== '');
     });
     return result;
   }
 
   public search(): void {
     this.getItems();
-
     this.router.navigate([], {
       queryParams: {
-        page: this.data.page,
-        game: this.filter.game,
-        server: this.filter.server,
-        type: this.filter.type,
-        search: this.filter.text,
-        sort: this.filter.sort
+        ...this.filter
       }, queryParamsHandling: 'merge'
     });
     this.filter.filtered = this.clearFilter();

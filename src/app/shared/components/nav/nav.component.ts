@@ -1,8 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ItemsService } from "src/app/controllers/items/items.service";
+import { ItemsService } from 'src/app/controllers/items/items.service';
 import { SessionService } from 'src/app/controllers/session/session.service';
-import { translateValue } from "src/utils"
+import { translateValue } from 'src/utils';
 
 @Component({
   selector: 'app-nav',
@@ -18,7 +18,7 @@ export class NavComponent implements OnInit {
     games: [];
     servers: [];
     itens: [];
-  }
+  };
 
   constructor(
     private router: Router,
@@ -29,24 +29,24 @@ export class NavComponent implements OnInit {
       games: [],
       servers: [],
       itens: []
-    }
+    };
   }
 
   ngOnInit() {
-    Promise.all([this.ctrlItems.getItemsGames(), this.ctrlItems.getItemsServers(), this.ctrlItems.getItemsTypes()]).then(([resGames, resServers, resTypes]) => {
-      
-      this.navItems = {
-        games: resGames.data.map(item => {
-          return { value: item, label: item }
-        }),
-        servers: resServers.data.map(item => {
-          return { value: item, label: item }
-        }),
-        itens: resTypes.data.map(item => {
-          return { value: item, label: translateValue(item) }
-        })
-      }
-    });
+    Promise.all([this.ctrlItems.getItemsGames(), this.ctrlItems.getItemsServers(), this.ctrlItems.getItemsTypes()])
+      .then(([resGames, resServers, resTypes]) => {
+        this.navItems = {
+          games: resGames.data.map(item => {
+            return { value: item, label: item };
+          }),
+          servers: resServers.data.map(item => {
+            return { value: item, label: item };
+          }),
+          itens: resTypes.data.map(item => {
+            return { value: item, label: translateValue(item) };
+          })
+        };
+      });
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -85,9 +85,7 @@ export class NavComponent implements OnInit {
   }
 
   public openSearch(): void {
-    const searchAux = this.search;
-    this.search = "";
-    this.router.navigate(['/item'], { queryParams: { page: 1, search: searchAux } });
+    this.router.navigate(['/item'], { queryParams: { page: 1, search: this.search } });
   }
 
 }

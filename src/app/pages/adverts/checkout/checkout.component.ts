@@ -4,15 +4,17 @@ import { ItemsService } from 'src/app/controllers/items/items.service';
 import { SessionService } from 'src/app/controllers/session/session.service';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  selector: 'app-checkout',
+  templateUrl: './checkout.component.html',
+  styleUrls: ['./checkout.component.scss']
 })
-export class ProductComponent implements OnInit {
+export class CheckoutComponent implements OnInit {
 
   public id: string;
   public data: any;
+  public step = 0;
   public status = { loaded: false, error: false };
+  public method = { type: '', number: undefined, name: undefined, security_code: undefined, validity: undefined };
 
   constructor(
     private ctrlItems: ItemsService,
@@ -22,10 +24,14 @@ export class ProductComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(paramMap => {
-      this.id = paramMap.get('id');
-    });
-    this.getItem();
+    if (this.session.isLogged) {
+      this.route.paramMap.subscribe(paramMap => {
+        this.id = paramMap.get('id');
+      });
+      this.getItem();
+    } else {
+      this.router.navigate(['/item']);
+    }
   }
 
   private getItem(): void {
@@ -36,7 +42,6 @@ export class ProductComponent implements OnInit {
         setTimeout(() => {
           this.data = res.data;
           this.status.loaded = true;
-          this.setBackground();
         }, 400);
       }).catch(err => {
         this.status.loaded = true;
@@ -44,19 +49,7 @@ export class ProductComponent implements OnInit {
       });
   }
 
-  private setBackground(): void {
-   const elem = document.getElementById('overlay-item');
-   elem.style.backgroundImage = `url(${this.data.image})`;
+  public pay(): void {
+    this.step += 1;
   }
-
-  public goToCheckout(itemId: any): void {
-    if (this.isLogged) {
-      this.router.navigate([`/item/${itemId}/checkout`]);
-    }
-  }
-
-  public isLogged(): boolean {
-    return this.session.isLogged;
-  }
-
 }

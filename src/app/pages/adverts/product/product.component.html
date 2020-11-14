@@ -1,34 +1,41 @@
 <div class="item-product">
   <div id="overlay-item" class="overlay-item"></div>
-  <div class="content loading" *ngIf="!status.loaded">
+  <div class="container content loading" *ngIf="!status.loaded">
     <div class="loader"></div>
   </div>
-  <div class="content err" *ngIf="status.loaded && status.error">
+  <div class="container content err" *ngIf="status.loaded && status.error">
     <span class="material-icons">error</span>
     <p>Item não encontrado.</p>
   </div>
-  <div class="content" *ngIf="status.loaded && data">
-    <div class="image">
-      <img src="{{ data.image }}" alt="imagem do produto">
+  <div class="container content" *ngIf="status.loaded && data">
+    <div class="sections">
+      <p>{{ data.server }}</p>
+      <span class="material-icons">keyboard_arrow_right</span>
+      <p>{{ data.game }}</p>
     </div>
-    <div class="details">
-      <div class="header">
-        <h5>{{ data.name }}</h5>
-        <div>
-          <p class="type">{{ data.type_ }}</p>
-          <p>Criado em {{ data.created_at | date: 'dd/MM/yyyy' }}</p>
-          <p>Postado por <strong>{{ data.salesman.name }}</strong> </p>
+    <div style="display: flex;">
+      <div class="image">
+        <img src="{{ data.image }}" alt="imagem do produto">
+      </div>
+      <div class="details">
+        <div class="header">
+          <h5>{{ data.name }}</h5>
+          <div>
+            <p class="type">{{ data.type_ }}</p>
+            <p>Criado em {{ data.created_at | date: 'dd/MM/yyyy' }}</p>
+            <p>Postado por <strong>{{ data.salesman.name }}</strong> </p>
+          </div>
         </div>
-      </div>
-      <div class="description">
-        {{ data.description }}
-      </div>
-      <div class="action">
-        <div class="price">{{ data.price | currency:'BRL' }}</div>
-        <button class="buy">
-          Comprar
-          <span class="material-icons">shopping_cart</span>
-        </button>
+        <div class="description">
+          {{ data.description }}
+        </div>
+        <div class="action">
+          <div class="price">{{ data.price | currency:'BRL' }}</div>
+          <button class="buy" (click)="goToCheckout(data.uuid)" [disabled]="!isLogged()">
+            Comprar
+            <span class="material-icons">shopping_cart</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>

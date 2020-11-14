@@ -1,4 +1,4 @@
-<div class="container partners">
+<div class="container partners" *ngIf="servers.length > 0">
   <div class="styles">
     <div class="rect"></div>
     <div class="rect"></div>
@@ -9,7 +9,7 @@
     <h4>parceiros</h4>
   </h4>
   <div class="content">
-    <div class="item" *ngFor="let server of servers">
+    <div class="item" *ngFor="let server of servers" (click)="open(server)">
       <div class="overlay">
         <div class="img"></div>
         <span>{{ server }}</span>

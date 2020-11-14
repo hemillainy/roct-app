@@ -29,6 +29,7 @@ nav.navbar {
         border: unset;
         background: #00000080;
         color: #fff;
+        font-family: "Montserrat";
       }
 
       input:focus {
@@ -47,7 +48,7 @@ nav.navbar {
         display: flex;
         align-items: center;
         user-select: none;
-        font-family: 'Montserrat';
+        font-family: "Montserrat";
         border-bottom: 3px solid transparent;
         transition: 0.3s;
       }
@@ -78,11 +79,12 @@ nav.navbar {
 
         li {
           cursor: pointer;
-          font-family: 'Montserrat';
+          font-family: "Montserrat";
           list-style: none;
           padding: 15px;
           border-bottom: 1px solid ghostwhite;
           font-size: 14px;
+          text-transform: capitalize;
         }
 
         li:last-child {
@@ -92,6 +94,7 @@ nav.navbar {
           border-bottom: unset;
           text-align: end;
           font-size: 12px;
+          text-transform: unset;
 
           span {
             font-size: inherit;
@@ -126,7 +129,7 @@ nav.navbar {
     margin-left: auto;
 
     a {
-      font-family: 'Montserrat';
+      font-family: "Montserrat";
       font-weight: bold;
       text-decoration: none;
       transition: 0.3s;
@@ -189,12 +192,12 @@ nav.fixed {
 @keyframes slide-nav-fixed {
   0% {
     opacity: 0;
-    transform: translateY(-40px)
+    transform: translateY(-40px);
   }
 
   100% {
     opacity: 1;
-    transform: translateY(0px)
+    transform: translateY(0px);
   }
 }
 
@@ -238,7 +241,7 @@ nav.main {
         display: flex;
         align-items: center;
         user-select: none;
-        font-family: 'Montserrat';
+        font-family: "Montserrat";
         border-bottom: 3px solid transparent;
         transition: 0.3s;
       }
@@ -269,7 +272,7 @@ nav.main {
 
         li {
           cursor: pointer;
-          font-family: 'Montserrat';
+          font-family: "Montserrat";
           list-style: none;
           padding: 15px;
           border-bottom: 1px solid ghostwhite;

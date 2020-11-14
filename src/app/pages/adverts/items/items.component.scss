@@ -8,7 +8,9 @@
     margin-bottom: 15px;
     border-radius: 7px;
     overflow: hidden;
-    transition: 0.3s;
+		animation: slide-content-items 0.3s ease backwards;
+		transition: 0.3s;
+		
 
     .header {
       position: relative;
@@ -20,7 +22,7 @@
         height: 120px;
         width: 100%;
         object-fit: cover;
-				object-position: top;
+				object-position: center;
 				opacity: 1;
 				transition: 0.3s;
       }
@@ -35,7 +37,8 @@
     }
 
     .footer {
-      padding: 15px;
+			padding: 15px;
+			height: 100%;
       background: ghostwhite;
       transition: 0.3s;
 
@@ -130,3 +133,15 @@
 		}
 	}
 }
+
+@keyframes slide-content-items {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+

@@ -4,16 +4,21 @@ import { AdvertsComponent } from './adverts.component';
 import { ItemsComponent } from './items/items.component';
 import { FormsModule } from '@angular/forms';
 import { ProductComponent } from './product/product.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { NgxMaskModule } from 'ngx-mask';
+
 
 @NgModule({
   declarations: [
     AdvertsComponent,
     ItemsComponent,
-    ProductComponent
+    ProductComponent,
+    CheckoutComponent
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    NgxMaskModule.forRoot(),
   ]
 })
 export class AdvertsModule { }

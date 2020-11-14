@@ -18,7 +18,7 @@ export class UserService {
 
   private getConfig(): any {
     const token = this.session.getToken();
-    axios.defaults.headers.common['Authorization'] = token;
+    axios.defaults.headers.common.Authorization = token;
     return { headers: { Authorization: `Bearer ${token}` } };
   }
 

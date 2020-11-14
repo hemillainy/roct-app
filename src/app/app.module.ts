@@ -15,7 +15,7 @@ import { AdvertsModule } from './pages/adverts/adverts.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +25,7 @@ import { AdvertsModule } from './pages/adverts/adverts.module';
     HomeModule,
     AuthModule,
     ProfileModule,
-    AdvertsModule
+    AdvertsModule,
   ],
   providers: [
     SessionService,

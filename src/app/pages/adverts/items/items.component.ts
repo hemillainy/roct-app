@@ -9,13 +9,13 @@ import { Router } from '@angular/router';
 export class ItemsComponent implements OnInit {
 
   @Input() items: any[];
-  
+
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-  public goToItem(itemId : any): void {
+  public goToItem(itemId: any): void {
     this.router.navigate([`/item/${itemId}`]);
   }
 
