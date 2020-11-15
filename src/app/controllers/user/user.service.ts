@@ -37,4 +37,8 @@ export class UserService {
   public upgradeAccount(data: any): Promise<any> {
     return axios.put(this.END_POINT + `/users/${this.session.getUserId()}`, data, this.getConfig());
   }
+
+  public getMyPurshases(paginacao: any): Promise<any> {
+    return axios.post(`${this.END_POINT}/purchases/purchases`, paginacao, this.getConfig());
+  }
 }
