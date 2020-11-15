@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       .then(res => {
         this.session.logIn(res.data.token);
         this.session.setUser(res.data.user);
-        this.router.navigate(['/user/profile']);
+        this.router.navigate([this.session.getPreviousPage()]);
       }).catch(err => {
         this.status.loading = false;
         this.status.error = true;
