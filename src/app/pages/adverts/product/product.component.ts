@@ -50,8 +50,11 @@ export class ProductComponent implements OnInit {
   }
 
   public goToCheckout(itemId: any): void {
-    if (this.isLogged) {
+    if (this.isLogged()) {
       this.router.navigate([`/item/${itemId}/checkout`]);
+    } else {
+      this.session.setPreviousPage(this.router.url);
+      this.router.navigate([`/user/login`]);
     }
   }
 
