@@ -9,13 +9,17 @@
 	</div>
 	<div class="container box-container" *ngIf="status.loaded && data">
 		<div class="steps">
-			<div class="item" [class.active]="step === 0">
+			<div class="item pointer" [class.active]="step === 0" (click)="changePanel('payment')">
 				<p>1</p>
 				<span>Método de pagamento</span>
 			</div>
-			<div class="item" [class.active]="step === 1">
+			<div class="item pointer" [class.active]="step === 1" (click)="changePanel('confirmation')">
 				<p>2</p>
 				<span>Confirmação</span>
+			</div>
+			<div class="item" [class.active]="step === 2">
+				<p>3</p>
+				<span>Contacte o Vendedor</span>
 			</div>
 		</div>
 		<div class="align" *ngIf="step === 0">
@@ -43,10 +47,10 @@
 						</header>
 						<div class="item">
 							<label for="modo">Modo de Pagamento</label>
-							<select name="modo" [(ngModel)]="method.type">
+							<select name="modo" [(ngModel)]="method.type" required>
 								<option value="" selected>Selecione</option>
-								<option value="cartao_credito">Cartão de Crédito</option>
-								<option value="cartao_debito">Cartão de Débito</option>
+								<option value="credit">Cartão de Crédito</option>
+								<option value="debit">Cartão de Débito</option>
 							</select>
 						</div>
 						<div class="item">
@@ -54,20 +58,24 @@
 							<input name="name" type="text" [(ngModel)]="method.name" required>
 						</div>
 						<div class="item">
-							<label for="name">Número do Cartão</label>
-							<input name="name" type="text" mask="0000 0000 0000 0000" [(ngModel)]="method.number" required>
+							<label for="cpf">CPF do dono do Cartão</label>
+							<input name="cpf" type="text" [(ngModel)]="method.cpf" mask="000.000.000-00" required>
 						</div>
 						<div class="item">
-							<label for="name">Código de Segurança do Cartão</label>
-							<input name="name" type="text" mask="000" [(ngModel)]="method.security_code" required>
+							<label for="number">Número do Cartão</label>
+							<input name="number" type="text" mask="0000 0000 0000 0000" [(ngModel)]="method.number" required>
 						</div>
 						<div class="item">
-							<label for="name">Validade do Cartão</label>
-							<input name="name" placeholder="Mês/Ano" type="text" mask="00/0000" [(ngModel)]="method.validity"
+							<label for="security_code">Código de Segurança do Cartão</label>
+							<input name="security_code" type="text" mask="000" [(ngModel)]="method.security_code" required>
+						</div>
+						<div class="item">
+							<label for="validity">Validade do Cartão</label>
+							<input name="validity" placeholder="Mês/Ano" type="text" mask="00/0000" [(ngModel)]="method.validity"
 								required>
 						</div>
 						<div>
-							<button (click)="pay()">
+							<button (click)="validatePayment()">
 								Pagar
 								<span class="material-icons">payment</span>
 							</button>
@@ -86,18 +94,36 @@
 				<div>
 					<div class="item">
 						<label for="name">Nickname</label>
-						<input name="name" type="text" [(ngModel)]="method.security_code" required>
+						<input name="name" type="text" [(ngModel)]="nickname" required>
 					</div>
-					<button>
+					<button (click)="pay()">
 						Concluir
 						<span class="material-icons">done</span>
 					</button>
 				</div>
+			</div>
+		</div>
+		<div class="confirmation" *ngIf="step === 2">
+			<h3>
+				<span class="material-icons">info</span>
+				Compra efetuada com sucesso!
+			</h3>
+			<p>Seu item será enviado para o nickname informado.</p>
+			<div class="content">
 				<a href="https://api.whatsapp.com/send?phone={{ data.salesman.phone }}" target="_blank">
 					<p>Se preferir, fale diretamente com o vendedor</p>
 					<img src="./assets/images/whatsapp.svg">
 				</a>
+				<button (click)="goToItems()">
+					Continuar Comprando
+				</button>
 			</div>
+		</div>
+		<div class="validation error" *ngIf="validation.error">
+			<p>{{ validation.message }}</p>
+		</div>
+		<div class="validation success" *ngIf="validation.success">
+			<p>{{ validation.message }}</p>
 		</div>
 	</div>
 </div>

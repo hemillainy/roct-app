@@ -95,7 +95,6 @@ export class RegisterComponent implements OnInit {
     return true;
   }
 
-
   public submit(): void {
     this.resetStatus();
     if (this.validaSenha()) {
@@ -107,11 +106,10 @@ export class RegisterComponent implements OnInit {
       user.password = pwd.password;
       this.ctrlUser.create(user)
         .then(res => {
-          //console.log(res);
           this.session.setToken(res.data.token);
           this.session.setUser(res.data.user);
           this.session.isLogged = true;
-          this.router.navigate(['/user/profile']);
+          this.router.navigate([this.session.getPreviousPage()]);
         }).catch(err => {
           console.log(err.data);
           console.log(err);

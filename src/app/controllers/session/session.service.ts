@@ -9,6 +9,7 @@ export class SessionService {
   // Data
   public user: any;
   public isLogged = false;
+  public previousPage = '/';
 
   constructor() { }
 
@@ -37,9 +38,18 @@ export class SessionService {
     return localStorage.getItem('Authorization');
   }
 
+  public setPreviousPage(url: string): void {
+    this.previousPage = url;
+  }
+
+  public getPreviousPage(): string {
+    return this.previousPage;
+  }
+
   public logOut(): void {
     localStorage.clear();
     this.clearUser();
     this.isLogged = false;
+    this.previousPage = '/';
   }
 }
