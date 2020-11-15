@@ -107,7 +107,6 @@ export class RegisterComponent implements OnInit {
       user.password = pwd.password;
       this.ctrlUser.create(user)
         .then(res => {
-          //console.log(res);
           this.session.setToken(res.data.token);
           this.session.setUser(res.data.user);
           this.session.isLogged = true;

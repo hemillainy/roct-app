@@ -1,21 +1,21 @@
 <div class="compras">
 	<div class="item" *ngFor="let compra of compras">
 		<div class="details">
-			<h4>{{ compra.title }}</h4>
+			<h4>{{ compra.announcement.name }}</h4>
 			<div>
-				<span class="tag">{{ compra.type }}</span>
-				<span class="cost">{{ compra.price | currency:'BRL' }}</span>
+				<span class="tag">{{ compra.announcement.type_ }}</span>
+				<span class="cost">{{ compra.announcement.price | currency:'BRL' }}</span>
 				<span class="date">
 					Data da compra
 					<span>
-						{{ compra.date }}
+						{{ compra.announcement.created_at | date: 'dd/MM/yyyy' }}
 					</span>
 				</span>
 				<span class="status {{ compra.status }}">{{ compra.status }}</span>
 			</div>
 		</div>
 		<div class="background">
-			<img src="{{ compra.image }}">
+			<img src="{{ compra.announcement.image }}">
 		</div>
 	</div>
 </div>
