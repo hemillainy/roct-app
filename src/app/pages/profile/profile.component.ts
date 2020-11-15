@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit {
         }
       );
       this.router.navigate([], { queryParams: { command: this.component.command }, queryParamsHandling: 'merge' });
-      this.renderizaTornarVendedor = this.ctrlSession.user !== undefined && !this.ctrlSession.user.isSalesman;
+      this.renderizaTornarVendedor = this.ctrlSession.getUser() !== undefined && !this.ctrlSession.getUser().isSalesman;
     } else {
       this.router.navigate(['/']);
     }

@@ -66,7 +66,7 @@ export class TransformaContaComponent implements OnInit {
   public submit(): void {
     this.resetStatus();
     this.status.loading = true;
-    const userUpgrade = Object.assign({}, this.ctrlSession.user);
+    const userUpgrade = Object.assign({}, this.ctrlSession.getUser());
     userUpgrade.isSalesman = true;
     this.ctrlUser.upgradeAccount(userUpgrade)
       .then(res => {
@@ -75,8 +75,8 @@ export class TransformaContaComponent implements OnInit {
         this.ctrlSession.setUser(res.data);
         setTimeout(() => {
           this.status.sucess = false;
-          // atualiar session
-        }, 3500);
+          this.router.navigate(['/'])
+        }, 2000);
       }).catch(err => {
         this.status.loading = false;
         this.status.error = true;

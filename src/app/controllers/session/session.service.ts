@@ -7,22 +7,21 @@ import { Router } from '@angular/router';
 export class SessionService {
 
   // Data
-  public user: any;
   public isLogged = false;
-  public previousPage = '/';
 
   constructor() { }
 
   public getUserId() {
-    return this.user.id;
+    return localStorage.getItem('userId');
   }
 
   public setUser(user: any): void {
-    this.user = user;
+    localStorage.setItem('userId', user.id);
+    localStorage.setItem('User', JSON.stringify(user))
   }
 
-  public clearUser(): void {
-    this.user = undefined;
+  public getUser(): any {
+    return JSON.parse(localStorage.getItem('User'));
   }
 
   public setToken(token: string): void {
@@ -39,17 +38,15 @@ export class SessionService {
   }
 
   public setPreviousPage(url: string): void {
-    this.previousPage = url;
+    localStorage.setItem('previousPage', url);
   }
 
   public getPreviousPage(): string {
-    return this.previousPage;
+    return localStorage.getItem('previousPage') || '/';
   }
 
   public logOut(): void {
     localStorage.clear();
-    this.clearUser();
     this.isLogged = false;
-    this.previousPage = '/';
   }
 }

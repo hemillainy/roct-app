@@ -55,8 +55,8 @@ export class MinhaContaComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.ctrlSession.user !== undefined) {
-      this.data = this.ctrlSession.user;
+    if (this.ctrlSession.getUser() !== undefined) {
+      this.data = this.ctrlSession.getUser();
     } else {
       console.log('Erro ao recuperar o usuário da sessão');
     }
@@ -80,7 +80,7 @@ export class MinhaContaComponent implements OnInit {
   }
 
   public resetChanges(): void {
-    this.data = Object.assign({}, this.ctrlSession.user);
+    this.data = Object.assign({}, this.ctrlSession.getUser());
   }
 
   public submit(): void {
