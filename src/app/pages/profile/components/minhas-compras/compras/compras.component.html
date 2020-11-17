@@ -1,4 +1,7 @@
 <div class="compras">
+	<div class="not-found" *ngIf="compras.length === 0">
+		<h4>Nenhum item encontrado.</h4>
+	</div>
 	<div class="item" *ngFor="let compra of compras">
 		<div class="details">
 			<h4>{{ compra.announcement.name }}</h4>

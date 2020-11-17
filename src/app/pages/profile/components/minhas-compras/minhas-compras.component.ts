@@ -59,10 +59,12 @@ export class MinhasComprasComponent implements OnInit {
       id: this.ctrlSession.getUserId()
     }).then(res => {
       this.data.docs = res.data.data;
+      if(this.filter.status) {
+        const mapped_status = this._mapeiaStatus(this.filter.status);
+        this.data.docs = this.data.docs.filter(compra => compra.status === mapped_status);
+      }
     });
   }
-
-
 
   public resetFilter(): void {
     this.filter = {
@@ -81,9 +83,27 @@ export class MinhasComprasComponent implements OnInit {
     return result;
   }
 
-
   public search(): void {
+    this.getMyPurchases();
     this.filter.filtered = this.clearFilter();
   }
 
+  private _mapeiaStatus(status: string) {
+    let mapped = '';
+    switch(status) {
+      case 'initiated':
+        mapped = 'Iniciada';
+        break;
+      case 'paid':
+        mapped = 'Item pago, aguardando entrega';
+        break;
+      case 'delivered':
+        mapped = 'Item entregue, aguardando confirmação';
+        break;
+      case 'finished':
+        mapped = 'Finalizada';
+        break;
+    }
+    return mapped;
+  }
 }
