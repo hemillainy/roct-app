@@ -2,6 +2,15 @@
   display: flex;
   flex-wrap: wrap;
 
+  .not-found {
+    width: 100%;
+    background: #f7f7f7;
+    margin-bottom: 10px;
+    border: 1px solid #f7f7f7;
+    animation: slide-items-purchases 0.3s ease 0.2s backwards;
+    transition: 0.3s;
+  }
+
   .item {
     display: flex;
     align-items: flex-start;
@@ -9,20 +18,28 @@
     width: 100%;
     background: #f7f7f7;
     margin-bottom: 10px;
+    border: 1px solid #f7f7f7;
+    animation: slide-items-purchases 0.3s ease 0.2s backwards;
+    transition: 0.3s;
 
     .details {
-      padding: 10px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       height: 100%;
+
+      h4 {
+        border-bottom: unset;
+        transition: 0.3s;
+      }
 
       div {
         span {
           padding: 0px 10px;
           font-weight: 100;
           color: #fff;
-          font-size: 12px;
+          font-size: 16px;
           transition: 0.3s;
           margin-right: 6px;
         }
@@ -47,7 +64,7 @@
             padding: 0px 6px;
           }
         }
-        
+
         span.shopper {
           background: #3b46a8;
           padding-right: 0px;
@@ -59,26 +76,22 @@
             padding: 0px 6px;
           }
 				}
-				
-				span.status {
-					background: gray;
-				}
 
-				span.status.Finalizada {
-					background: #009688;
-				}
-
-				span.status.Entregue {
-					background: #ff5722;
-				}
-
-				span.status.Paga {
-					background: #4caf50;
+        span.status {
+          background: gray;
         }
-        
-        span.status.Disponivel {
-					background: #be07a6;
-				}
+
+        span.status.Finalizada {
+          background: #009688;
+        }
+
+        span.status.Entregue {
+          background: #ff5722;
+        }
+
+        span.status.Paga {
+          background: #4caf50;
+        }
       }
     }
 
@@ -87,12 +100,32 @@
         height: 100px;
         width: 200px;
         object-fit: cover;
+        transition: 0.3s;
       }
     }
   }
 
   .item:last-child {
     margin-bottom: 0px;
+  }
+
+  .item:hover {
+    cursor: pointer;
+    background: #ffffff;
+    border: 1px solid gainsboro;
+
+    .details {
+      h4 {
+        color: #3aa4e5;
+      }
+    }
+
+    .background {
+      img {
+        height: 200px;
+        width: 200px;
+      }
+    }
   }
 
   span.tag {
@@ -102,6 +135,18 @@
     color: #fff;
     font-size: 12px;
     transition: 0.3s;
+  }
+
+  .status-paga {
+    background-color: gold;
+  }
+
+  .status-entregue {
+    background-color: rgba(243, 90, 1, 0.993);
+  }
+
+  .status-finalizada {
+    background-color: rgb(53, 199, 85);
   }
 
   h1,
@@ -116,4 +161,40 @@
     border-bottom: 1px solid #dcdcdc33;
   }
 
+  p {
+    font-family: "Baloo Chettan 2";
+    font-size: 18px;
+    list-style: none;
+    padding: 14px 10px;
+    user-select: none;
+    font-weight: 400;
+  }
+
+  .center-itens {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    padding: 0;
+  }
+
+  col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
 }
+
+
+@keyframes slide-items-purchases {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+

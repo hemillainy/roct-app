@@ -17,9 +17,9 @@ export class UserService {
   }
 
   private getConfig(): any {
-    const token = this.session.getToken();
+    const token = `Bearer ${this.session.getToken()}`;
     axios.defaults.headers.common.Authorization = token;
-    return { headers: { Authorization: `Bearer ${token}` } };
+    return { headers: { Authorization: token } };
   }
 
   public create(data: any): Promise<any> {
@@ -40,5 +40,13 @@ export class UserService {
 
   public getMyPurshases(paginacao: any): Promise<any> {
     return axios.post(`${this.END_POINT}/purchases/purchases`, paginacao, this.getConfig());
+  }
+
+  public getMySales(paginacao: any): Promise<any> {
+    return axios.post(`${this.END_POINT}/purchases/sales`, paginacao, this.getConfig());
+  }
+
+  public confirmDelivery(id: any): Promise<any> {
+    return axios.put(`${this.END_POINT}/purchases/${id}/confirmDelivery`, this.getConfig());
   }
 }

@@ -2,8 +2,8 @@
 	<div class="not-found" *ngIf="compras.length === 0">
 		<h4>Nenhum item encontrado.</h4>
 	</div>
-	<div class="item" *ngFor="let compra of compras">
-		<div class="details">
+	<div class="item" *ngFor="let compra of compras" (click)="setCommand('status-announcement', compra.uuid, 'purchases')">
+		<div class="details" >
 			<h4>{{ compra.announcement.name }}</h4>
 			<div>
 				<span class="tag">{{ compra.announcement.type_ }}</span>

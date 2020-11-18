@@ -17,7 +17,7 @@ export class ItemsService {
   }
 
   private getConfig(): any {
-    const token = this.session.getToken();
+    const token = `Bearer ${this.session.getToken()}`;
     axios.defaults.headers.common['Authorization'] = token;
     return { headers: { Authorization: token } };
   }
