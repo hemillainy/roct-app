@@ -3,7 +3,7 @@
 		<h4>Nenhum item encontrado.</h4>
 	</div>
 	<div class="item" *ngFor="let compra of compras">
-		<div class="details">
+		<div class="details" (click)="setCommand('status-announcement', compra.uuid, 'purchases')">
 			<h4>{{ compra.announcement.name }}</h4>
 			<div>
 				<span class="tag">{{ compra.announcement.type_ }}</span>

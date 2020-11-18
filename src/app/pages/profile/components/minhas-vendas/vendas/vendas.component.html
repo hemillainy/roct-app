@@ -1,10 +1,13 @@
 <div class="vendas">
+	<div class="not-found" *ngIf="vendas.length === 0">
+		<h4>Nenhum item encontrado.</h4>
+	</div>
 	<div class="item" *ngFor="let venda of vendas">
-		<div class="details">
-			<h4>{{ venda.name }}</h4>
+		<div class="details" (click)="setCommand('status-announcement', venda.uuid, 'sales')">
+			<h4>{{ venda.announcement.name }}</h4>
 			<div>
-				<span class="tag">{{ venda.type }}</span>
-				<span class="cost">{{ venda.price | currency:'BRL' }}</span>
+				<span class="tag">{{ venda.announcement.type_ }}</span>
+				<span class="cost">{{ venda.announcement.price | currency:'BRL' }}</span>
 				<span class="status {{ venda.status }}">{{ venda.status }}</span>
 				<span class="date" *ngIf="venda.status !== 'Disponivel'">
 					Data da Venda
@@ -15,13 +18,13 @@
 				<span class="shopper" *ngIf="venda.status !== 'Disponivel'">
 					Comprador
 					<span >
-						{{ venda.shopper }}
+						{{ venda.buyer.name }}
 					</span>
 				</span>
 			</div>
 		</div>
 		<div class="background">
-			<img src="{{ venda.image }}">
+			<img src="{{ venda.announcement.image }}">
 		</div>
 	</div>
 </div>

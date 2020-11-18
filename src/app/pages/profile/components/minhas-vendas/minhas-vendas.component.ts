@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ItemsService } from 'src/app/controllers/items/items.service';
 import { SessionService } from 'src/app/controllers/session/session.service';
+import { UserService } from 'src/app/controllers/user/user.service';
 import { translateValue } from "src/utils";
 
 @Component({
@@ -20,24 +21,18 @@ export class MinhasVendasComponent implements OnInit {
   };
 
   public items: [];
-  
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private ctrlsItems: ItemsService,
+    private ctrlUser: UserService,
     private ctrlSession: SessionService,
-  ) { 
+  ) {
     this.items = [];
   }
 
   ngOnInit() {
-    //this.setQueryParams();
-    this.ctrlsItems.getItemsSalesman({ page: 1, per_page: 4 },this.ctrlSession.getUserId()).then(res => {
-      this.items = res.data.data.map(item => {
-        item.type = translateValue(item.type_);
-        return item;
-      });
-    })
+    this.setQueryParams();
   }
 
   private setQueryParams(): void {
@@ -48,10 +43,11 @@ export class MinhasVendasComponent implements OnInit {
         if (!this.data.page) {
           this.data.page = 1;
         }
+        this.getMySales();
       }
     );
-    //CORRIGIR
     this.router.navigate([], { queryParams: { page: this.data.page }, queryParamsHandling: 'merge' });
+
   }
 
   public resetFilter(): void {
@@ -71,8 +67,45 @@ export class MinhasVendasComponent implements OnInit {
     return result;
   }
 
+  private getMySales(): void {
+    this.ctrlUser.getMySales({
+      page: this.data.page,
+      per_page: 100,
+      id: this.ctrlSession.getUserId()
+    }).then(res => {
+      this.data.docs = res.data.data;
+      if (this.filter.status) {
+        const mapped_status = this._mapeiaStatus(this.filter.status);
+        this.data.docs = this.data.docs.filter(compra => compra.status === mapped_status);
+      }
+    });
+  }
+
   public search(): void {
     this.filter.filtered = this.clearFilter();
+  }
+
+
+  private _mapeiaStatus(status: string) {
+    let mapped = '';
+    switch (status) {
+      case 'initiated':
+        mapped = 'Iniciada';
+        break;
+      case 'paid':
+        mapped = 'Item pago, aguardando entrega';
+        break;
+      case 'delivered':
+        mapped = 'Item entregue, aguardando confirmação';
+        break;
+      case 'finished':
+        mapped = 'Finalizada';
+        break;
+      default:
+        mapped = status;
+        break;
+    }
+    return mapped;
   }
 
   public data = {

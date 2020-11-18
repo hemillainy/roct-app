@@ -12,6 +12,7 @@ import { MinhasComprasComponent } from './components/minhas-compras/minhas-compr
 import { ComprasComponent } from './components/minhas-compras/compras/compras.component';
 import { CriarAnuncioComponent } from './components/criar-anuncio/criar-anuncio.component';
 import { MinhasVendasModule } from './components/minhas-vendas/minhas-vendas.module';
+import { ConsultaAnuncioComponent } from './components/consulta-anuncio/consulta-anuncio.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { MinhasVendasModule } from './components/minhas-vendas/minhas-vendas.mod
     MinhasComprasComponent,
     ComprasComponent,
     CriarAnuncioComponent,
+    ConsultaAnuncioComponent,
   ],
   imports: [
     CommonModule,
