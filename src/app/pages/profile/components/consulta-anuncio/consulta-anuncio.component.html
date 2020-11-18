@@ -69,7 +69,7 @@
             *ngIf="
               (type === 'sales' &&
                 !data?.salesman_delivery_confirmation &&
-                data?.status === 'Item pago, aguardando entrega') ||
+                (data?.status === 'Item pago, aguardando entrega' || data?.status === 'Item entregue, aguardando confirmação')) ||
               (type === 'purchases' &&
                 !data?.buyer_delivery_confirmation &&
                 (data?.status === 'Item pago, aguardando entrega' || data?.status === 'Item entregue, aguardando confirmação'))
