@@ -197,6 +197,29 @@
         border-top: 10px solid #4cf436;
       }
     }
+
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 300px;
+
+      div.loader {
+        width: 60px;
+        height: 60px;
+      }
+
+      span {
+        font-size: 25px;
+        user-select: none;
+      }
+
+      p {
+        margin: 0px;
+        font-size: 20px;
+        margin-left: 8px;
+      }
+    }
   }
 }
 

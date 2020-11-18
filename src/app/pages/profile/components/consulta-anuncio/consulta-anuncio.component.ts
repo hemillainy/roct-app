@@ -14,7 +14,7 @@ export class ConsultaAnuncioComponent implements OnInit {
   public type: string;
   public id: number;
   public data: any = {};
-  public status = { message: "", error: false, show: false };
+  public status = { loaded: true, message: "", error: false, show: false };
 
   constructor(
     private route: ActivatedRoute,
@@ -32,7 +32,7 @@ export class ConsultaAnuncioComponent implements OnInit {
   }
 
   private getItem(): void {
-    this.status.error = false;
+    this.status = {...this.status, error: false};
     const body = {
       page: this.page,
       per_page: 100,
@@ -42,24 +42,24 @@ export class ConsultaAnuncioComponent implements OnInit {
     if (this.type === "sales") {
       this.ctrlUser.getMySales(body).then(res => {
         this.data = res.data.data.filter(item => this.id === item.uuid)[0];
-        console.log(this.data);
+        this.status = {...this.status, loaded: false};
       })
 
     }
     else {
       this.ctrlUser.getMyPurshases(body).then(res => {
         this.data = res.data.data.filter(item => this.id === item.uuid)[0];
-        console.log(this.data);
+        this.status = {...this.status, loaded: false};
       })
     }
   }
 
   public confirmDelivery(): void {
     this.ctrlUser.confirmDelivery(this.data.uuid).then(() => {
-      this.status = { error: false, message: this.type === "sales" ? "Entrega confirmada" : "Recebimento confirmado", show: true };
+      this.status = { loaded: false, error: false, message: this.type === "sales" ? "Entrega confirmada" : "Recebimento confirmado", show: true };
       this.getItem();
     }).catch(() => {
-      this.status = { error: true, message: "Houve um problema, tente mais tarde.", show: true };
+      this.status = { loaded: false, error: true, message: "Houve um problema, tente mais tarde.", show: true };
     });
   }
 

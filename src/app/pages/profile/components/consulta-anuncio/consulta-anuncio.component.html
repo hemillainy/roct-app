@@ -3,8 +3,13 @@
     <header class="header">
       <h4>Minha {{ type === "sales" ? "venda" : "compra" }}</h4>
     </header>
-
-    <div class="consulta-anuncio-container">
+    <div class="loading" *ngIf="status.loaded">
+      <div class="loader"></div>
+    </div>
+    <div
+      class="consulta-anuncio-container"
+      *ngIf="!status.loaded && data?.announcement"
+    >
       <div class="background">
         <img src="{{ data?.announcement.image }}" />
       </div>
@@ -21,7 +26,10 @@
           <span class="status {{ data?.status }}">{{ data?.status }}</span>
           <span
             class="shopper"
-            *ngIf="data?.status === 'Item pago, aguardando entrega'"
+            *ngIf="
+              data?.status === 'Item pago, aguardando entrega' ||
+              data?.status === 'Item entregue, aguardando confirmação'
+            "
           >
             {{ type === "sales" ? "Comprador" : "Vendedor" }}
             <span>
@@ -30,7 +38,10 @@
           </span>
           <span
             class="nickname"
-            *ngIf="data?.status === 'Item pago, aguardando entrega'"
+            *ngIf="
+              data?.status === 'Item pago, aguardando entrega' ||
+              data?.status === 'Item entregue, aguardando confirmação'
+            "
           >
             Nick
             <span>
@@ -61,7 +72,7 @@
                 data?.status === 'Item pago, aguardando entrega') ||
               (type === 'purchases' &&
                 !data?.buyer_delivery_confirmation &&
-                data?.status === 'Item pago, aguardando entrega')
+                (data?.status === 'Item pago, aguardando entrega' || data?.status === 'Item entregue, aguardando confirmação'))
             "
             (click)="confirmDelivery()"
           >
