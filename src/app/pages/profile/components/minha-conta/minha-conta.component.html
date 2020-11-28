@@ -13,30 +13,30 @@
         </div>
         <div class="item">
           <label for="name">Nome</label>
-          <input [(ngModel)]="data.name" name="name" type="text" required [disabled]="!isEditando">
-          <span class="required" *ngIf="!data.name">
+          <input [(ngModel)]="data.name" name="name" type="text" required [disabled]="!isEditando" (ngModelChange)="validate('name')">
+          <span class="required" *ngIf="errors['name']">
             Campo obrigatório *
           </span>
         </div>
         <div class="item">
           <label for="email">Email</label>
-          <input name="email" [(ngModel)]="data.email" type="text" required [disabled]="!isEditando">
-          <span class="required" *ngIf="!data.email">
+          <input name="email" [(ngModel)]="data.email" type="text" required [disabled]="!isEditando" (ngModelChange)="validate('email')">
+          <span class="required" *ngIf="errors['email']">
             Campo obrigatório *
           </span>
         </div>
         <div class="item">
           <label for="cpf">CPF</label>
-          <input name="cpf" [(ngModel)]="data.cpf" type="text" mask="000.000.000-00" required [disabled]="!isEditando">
-          <span class="required" *ngIf="!data.cpf">
+          <input name="cpf" [(ngModel)]="data.cpf" type="text" mask="000.000.000-00" required [disabled]="!isEditando" (ngModelChange)="validate('cpf')">
+          <span class="required" *ngIf="errors['cpf']">
             Campo obrigatório *
           </span>
         </div>
         <div class="item">
           <label for="phone">Telefone</label>
           <input name="phone" [(ngModel)]="data.phone" type="text" mask="(00) 00000-0000" required
-            [disabled]="!isEditando">
-            <span class="required" *ngIf="!data.phone">
+            [disabled]="!isEditando" (ngModelChange)="validate('phone')">
+            <span class="required" *ngIf="errors['phone']">
               Campo obrigatório *
             </span>
         </div>
@@ -51,7 +51,7 @@
             <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
             Loading...
           </button>          
-          <button type="button" class="loading" [class.cancel]="isEditando" (click)="resetChanges()" *ngIf="isEditando && !status.loading">Cancelar</button>
+          <button type="button" class="cancel" (click)="resetChanges()" *ngIf="isEditando && !status.loading">Cancelar</button>
         </div>
       </form>
     </div>

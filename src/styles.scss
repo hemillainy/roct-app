@@ -53,6 +53,10 @@ button.cancel {
   background: #f44336;
 }
 
+button.cancel:hover {
+  background: #ec2617;
+}
+
 button:disabled {
   background: gainsboro;
 }
