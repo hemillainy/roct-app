@@ -46,7 +46,7 @@ export class CriarAnuncioComponent implements OnInit {
         name: undefined,
         description: undefined,
         price: undefined,
-        type: '',
+        type_: '',
         image: '',
         salesman_uuid: undefined,
       },
@@ -116,7 +116,13 @@ export class CriarAnuncioComponent implements OnInit {
       this.data.ads.salesman_uuid = this.ctrlSession.getUserId();
       this.ctrlItems.create(this.data.ads)
         .then(res => {
-          this.router.navigate(['/profile']);
+          this.status.type = "success";
+          this.status.show = true;
+          this.status.message = "Anúncio criado com sucesso!";
+          setTimeout(() => {
+            this.resetStatus();
+            this.router.navigate(['/user/profile']);
+          }, 2000);
         }).catch(err => {
           this.status.loading = false;
           this.status.type = "error";
@@ -134,8 +140,6 @@ export class CriarAnuncioComponent implements OnInit {
         this.status.show = false;
       }, 2500);
     }
-
-    //this.status = { ...this.status, type: "success", show: true, message: "Anúncio criado" };
   }
 
   private initiateErrors(): void {
@@ -143,7 +147,7 @@ export class CriarAnuncioComponent implements OnInit {
     this.errors['server'] = false;
     this.errors['game'] = false;
     this.errors['name'] = false;
-    this.errors['type'] = false;
+    this.errors['type_'] = false;
     this.errors['description'] = false;
     this.errors['price'] = false;
     this.errors['image'] = false;
@@ -165,20 +169,11 @@ export class CriarAnuncioComponent implements OnInit {
   }
 
   validate(property: string): void {
-    switch(property) {
-      case "server":
-      case "game":
-      case "type":
-      case "name":
-      case "description":
-      case "image":
-      case "price":
-        if(!this.data.ads[property]) {
-          this.errors[property] = true;
-        } else {
-          this.errors[property] = false;
-        }
-      }
+    if(!this.data.ads[property]) {
+      this.errors[property] = true;
+    } else {
+      this.errors[property] = false;
+    }
   }
 
 }

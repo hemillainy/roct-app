@@ -30,12 +30,12 @@
           </span>
         </div>
         <div class="item">
-          <label for="type">Tipo do item</label>
-          <select name="type" [(ngModel)]="data.ads.type" (blur)="validate('type')" (ngModelChange)="validate('type')">
+          <label for="type_">Tipo do item</label>
+          <select name="type_" [(ngModel)]="data.ads.type_" (blur)="validate('type_')" (ngModelChange)="validate('type_')">
             <option value="" disabled>Selecione</option>
             <option *ngFor="let item of dataSelect.typeItem" value="{{item.value}}">{{item.label}}</option>
           </select>
-          <span class="required" *ngIf="errors['type']">
+          <span class="required" *ngIf="errors['type_']">
             Campo obrigatório *
           </span>
         </div>
@@ -48,7 +48,7 @@
         </div>
         <div class="item">
           <label for="price">Preço</label>
-          <input name="price" prefix="R$ " mask="0*,00" [(ngModel)]="data.ads.price" type="text" required (blur)="validate('price')"/>
+          <input name="price" prefix="R$ " mask="0*.00" [dropSpecialCharacters]="false" [(ngModel)]="data.ads.price" type="text" required (blur)="validate('price')"/>
           <span class="required" *ngIf="errors['price']">
             Campo obrigatório *
           </span>
