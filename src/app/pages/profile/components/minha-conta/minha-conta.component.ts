@@ -81,22 +81,40 @@ export class MinhaContaComponent implements OnInit {
 
   public resetChanges(): void {
     this.data = Object.assign({}, this.ctrlSession.getUser());
+    this.isEditando = false;
+  }
+
+  public validate(): boolean {
+    return (this.data.name && this.data.email && this.data.cpf && this.data.phone);
   }
 
   public submit(): void {
-    this.resetStatus();
-    this.status.loading = true;
-    this.ctrlUser.update(this.data)
-      .then(res => {
-        // Falta algo aqui??
-      }).catch(err => {
-        this.status.loading = false;
-        this.status.error = true;
-        // this.resetChanges(); VOLTAR
-        setTimeout(() => {
-          this.status.error = false;
-        }, 3500);
-      });
+    if(this.validate()) {
+      this.resetStatus();
+      this.status.loading = true;
+      this.ctrlUser.update(this.data)
+        .then(res => {
+          this.ctrlSession.setUser(res.data);
+          setTimeout(() => {
+            this.status.loading = false
+            this.isEditando = false;
+          }, 500);
+        }).catch(err => {
+          this.status.loading = false;
+          this.status.error = true;
+          // this.resetChanges(); VOLTAR
+          setTimeout(() => {
+            this.status.error = false;
+          }, 3500);
+        });
+    } else {
+      this.status.error = true;
+      this.status.error_message = "Preencha todos os campos obrigatórios"
+      setTimeout(() => {
+        this.resetStatus();
+      }, 2500);
+      
+    }
   }
 
 }
