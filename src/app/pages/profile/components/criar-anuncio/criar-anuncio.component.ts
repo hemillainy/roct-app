@@ -31,6 +31,8 @@ export class CriarAnuncioComponent implements OnInit {
     typeItem: [];
     server: [];
   }
+  private errors: any;
+
   constructor(
     private router: Router,
     private profileService: ProfileService,
@@ -44,7 +46,7 @@ export class CriarAnuncioComponent implements OnInit {
         name: undefined,
         description: undefined,
         price: undefined,
-        type_: '',
+        type: '',
         image: '',
         salesman_uuid: undefined,
       },
@@ -60,6 +62,8 @@ export class CriarAnuncioComponent implements OnInit {
       show: false,
       message: ""
     };
+
+    this.initiateErrors();
   }
 
   ngOnInit() {
@@ -106,23 +110,75 @@ export class CriarAnuncioComponent implements OnInit {
   }
 
   public submit(): void {
-    this.status.loading = true;
-    this.data.ads.salesman_uuid = this.ctrlSession.getUserId();
-    this.ctrlItems.create(this.data.ads)
-      .then(res => {
-        this.router.navigate(['/profile']);
-      }).catch(err => {
-        this.status.loading = false;
-        this.status.type = "error";
-        this.status.show = true;
-        this.status.message = "Ocorreu um erro na criação."
-        this.status.error = true;
-        setTimeout(() => {
-          this.resetStatus();
-        }, 3500);
-      });
+    this.validateAll();
+    if(this.valid()) {
+      this.status.loading = true;
+      this.data.ads.salesman_uuid = this.ctrlSession.getUserId();
+      this.ctrlItems.create(this.data.ads)
+        .then(res => {
+          this.router.navigate(['/profile']);
+        }).catch(err => {
+          this.status.loading = false;
+          this.status.type = "error";
+          this.status.show = true;
+          this.status.message = "Ocorreu um erro na criação."
+          setTimeout(() => {
+            this.resetStatus();
+          }, 3500);
+        });
+    } else {
+      this.status.type = "error";
+      this.status.show = true;
+      this.status.message = "Campos obrigatórios não preenchidos."
+      setTimeout(() => {
+        this.status.show = false;
+      }, 2500);
+    }
 
     //this.status = { ...this.status, type: "success", show: true, message: "Anúncio criado" };
+  }
+
+  private initiateErrors(): void {
+    this.errors = [];
+    this.errors['server'] = false;
+    this.errors['game'] = false;
+    this.errors['name'] = false;
+    this.errors['type'] = false;
+    this.errors['description'] = false;
+    this.errors['price'] = false;
+    this.errors['image'] = false;
+  }
+
+  valid(): boolean {
+    for(const e of this.errors) {
+      if(this.errors[e] === true) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  private validateAll(): void {
+    for(const e of this.errors) {
+      this.validate(e);
+    }
+  }
+
+  validate(property: string) {
+    switch(property) {
+      case "server":
+      case "game":
+      case "type":
+      case "name":
+      case "description":
+      case "image":
+      case "price":
+        if(!this.data.ads[property]) {
+          this.errors[property] = true;
+        } else {
+          this.errors[property] = false;
+        }
+    }
   }
 
 }
