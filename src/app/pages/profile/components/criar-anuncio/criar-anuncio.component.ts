@@ -111,7 +111,7 @@ export class CriarAnuncioComponent implements OnInit {
 
   public submit(): void {
     this.validateAll();
-    if(this.valid()) {
+    if(this.isValid()) {
       this.status.loading = true;
       this.data.ads.salesman_uuid = this.ctrlSession.getUserId();
       this.ctrlItems.create(this.data.ads)
@@ -139,7 +139,7 @@ export class CriarAnuncioComponent implements OnInit {
   }
 
   private initiateErrors(): void {
-    this.errors = [];
+    this.errors = {};
     this.errors['server'] = false;
     this.errors['game'] = false;
     this.errors['name'] = false;
@@ -149,9 +149,9 @@ export class CriarAnuncioComponent implements OnInit {
     this.errors['image'] = false;
   }
 
-  valid(): boolean {
-    for(const e of this.errors) {
-      if(this.errors[e] === true) {
+  isValid(): boolean {
+    for(const e in this.errors) {
+      if(this.errors[e]) {
         return false;
       }
     }
@@ -159,12 +159,12 @@ export class CriarAnuncioComponent implements OnInit {
   }
 
   private validateAll(): void {
-    for(const e of this.errors) {
-      this.validate(e);
+    for(const e in this.errors) {
+      this.validate(e)
     }
   }
 
-  validate(property: string) {
+  validate(property: string): void {
     switch(property) {
       case "server":
       case "game":
@@ -178,7 +178,7 @@ export class CriarAnuncioComponent implements OnInit {
         } else {
           this.errors[property] = false;
         }
-    }
+      }
   }
 
 }
