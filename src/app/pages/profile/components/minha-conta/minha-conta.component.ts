@@ -26,6 +26,7 @@ export class MinhaContaComponent implements OnInit {
   // Data
   public data: any;
   private data_aux: any;
+  private errors: any;
 
   // Scenes
   public status: any;
@@ -52,6 +53,8 @@ export class MinhaContaComponent implements OnInit {
       error: false,
       error_message: 'Algo de errado aconteceu, tente novamente'
     };
+
+    this.initiateErrors();
   }
 
   ngOnInit() {
@@ -82,14 +85,12 @@ export class MinhaContaComponent implements OnInit {
   public resetChanges(): void {
     this.data = Object.assign({}, this.ctrlSession.getUser());
     this.isEditando = false;
-  }
-
-  public validate(): boolean {
-    return (this.data.name && this.data.email && this.data.cpf && this.data.phone);
+    this.initiateErrors();
   }
 
   public submit(): void {
-    if(this.validate()) {
+    this.validateAll();
+    if(this.isValid()) {
       this.resetStatus();
       this.status.loading = true;
       this.ctrlUser.update(this.data)
@@ -109,12 +110,43 @@ export class MinhaContaComponent implements OnInit {
         });
     } else {
       this.status.error = true;
-      this.status.error_message = "Preencha todos os campos obrigatórios"
+      this.status.error_message = "Campos obrigatórios não preenchidos."
       setTimeout(() => {
         this.resetStatus();
       }, 2500);
       
     }
+  }
+
+  private initiateErrors(): void {
+    this.errors = {};
+    this.errors['name'] = false;
+    this.errors['email'] = false;
+    this.errors['cpf'] = false;
+    this.errors['phone'] = false;
+  }
+
+  isValid(): boolean {
+    for(const e in this.errors) {
+      if(this.errors[e]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  private validateAll(): void {
+    for(const e in this.errors) {
+      this.validate(e)
+    }
+  }
+
+  validate(property: string): void {
+    if(!this.data[property]) {
+      this.errors[property] = true;
+    } else {
+        this.errors[property] = false;
+      }
   }
 
 }
