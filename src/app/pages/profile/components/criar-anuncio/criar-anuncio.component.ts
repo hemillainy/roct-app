@@ -1,10 +1,11 @@
-import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { ItemsService } from 'src/app/controllers/items/items.service';
+import { animate, style, transition, trigger } from '@angular/animations';
+
+import { translateValue } from 'src/utils';
 import { ProfileService } from 'src/app/controllers/profile/profile.service';
 import { SessionService } from 'src/app/controllers/session/session.service';
-import { translateValue } from 'src/utils';
 
 @Component({
   selector: 'app-criar-anuncio',
@@ -31,7 +32,7 @@ export class CriarAnuncioComponent implements OnInit {
     typeItem: [];
     server: [];
   }
-  private errors: any;
+  public errors: any;
 
   constructor(
     private router: Router,

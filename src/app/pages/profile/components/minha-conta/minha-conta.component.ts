@@ -26,7 +26,7 @@ export class MinhaContaComponent implements OnInit {
   // Data
   public data: any;
   private data_aux: any;
-  private errors: any;
+  public errors: any;
 
   // Scenes
   public status: any;
