@@ -57,6 +57,10 @@ button:disabled {
   background: gainsboro;
 }
 
+span.required {
+  color: rgba(212, 16, 16, 0.774);
+}
+
 ::-webkit-scrollbar {
   width: 6px;
 }
