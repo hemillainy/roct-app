@@ -33,27 +33,30 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit() {
-    Promise.all([this.ctrlItems.getItemsGames(), this.ctrlItems.getItemsServers(), this.ctrlItems.getItemsTypes()])
-      .then(([resGames, resServers, resTypes]) => {
-        this.navItems = {
-          games: resGames.data.map(item => {
-            return { value: item, label: item };
-          }),
-          servers: resServers.data.map(item => {
-            return { value: item, label: item };
-          }),
-          itens: resTypes.data.map(item => {
-            return { value: item, label: translateValue(item) };
-          })
-        };
-      });
+    Promise.all([
+      this.ctrlItems.getItemsGames(),
+      this.ctrlItems.getItemsServers(),
+      this.ctrlItems.getItemsTypes()
+    ]).then(([resGames, resServers, resTypes]) => {
+      this.navItems = {
+        games: resGames.data.map(item => {
+          return { value: item, label: item };
+        }),
+        servers: resServers.data.map(item => {
+          return { value: item, label: item };
+        }),
+        itens: resTypes.data.map(item => {
+          return { value: item, label: translateValue(item) };
+        })
+      };
+    });
   }
 
   @HostListener('window:scroll', ['$event'])
   public fixed(event: any): boolean {
     const st = window.pageYOffset || document.documentElement.scrollTop;
     this.scroll = st <= 0 ? 0 : st;
-    return st > 180;
+    return st > 250;
   }
 
   public userLoged(): boolean {
