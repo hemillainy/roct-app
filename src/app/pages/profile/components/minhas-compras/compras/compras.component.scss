@@ -35,17 +35,27 @@
       }
 
       div {
+        display: flex;
+        flex-wrap: wrap;
+
         span {
           padding: 0px 10px;
           font-weight: 100;
           color: #fff;
           font-size: 16px;
           transition: 0.3s;
-          margin-right: 6px;
+          margin-right: 10px;
+          margin-top: 10px;
         }
 
         span.tag {
           background: #3aa4e5;
+        }
+
+        span.server {
+          background: #ff9800;
+          color: #000;
+          text-transform: capitalize;
         }
 
         span.cost {
@@ -54,7 +64,7 @@
         }
 
         span.date {
-          background: #8BC34A;
+          background: #8bc34a;
           padding-right: 0px;
 
           span {
@@ -174,7 +184,6 @@
   }
 }
 
-
 @keyframes slide-items-purchases {
   0% {
     opacity: 0;
@@ -185,4 +194,3 @@
     transform: translateY(0px);
   }
 }
-

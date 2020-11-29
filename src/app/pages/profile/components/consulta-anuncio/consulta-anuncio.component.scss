@@ -37,14 +37,18 @@
 
       .details {
         margin-left: 15px;
+
+        h5 {
+          font-family: "Montserrat";
+          font-size: 35px;
+          font-weight: bold;
+          color: #3aa4e5;
+          text-transform: uppercase;
+        }
+
         div {
-          h5 {
-            font-family: "Montserrat";
-            font-size: 35px;
-            font-weight: bold;
-            color: #3aa4e5;
-            text-transform: uppercase;
-          }
+          display: flex;
+          flex-wrap: wrap;
 
           .price {
             font-family: "Montserrat";
@@ -64,7 +68,8 @@
             color: #fff;
             font-size: 16px;
             transition: 0.3s;
-            margin-right: 6px;
+            margin-right: 10px;
+            margin-bottom: 10px;
           }
 
           span.tag {
@@ -72,15 +77,21 @@
           }
 
           span.shopper {
-            background: #3b46a8;
+            background: #795548;
             padding-right: 0px;
 
             span {
-              background: #4751aa;
+              background: #563b31;
               margin: 0px;
               margin-left: 5px;
               padding: 0px 6px;
             }
+          }
+
+          span.server {
+            background: #ff9800;
+            color: #000;
+            text-transform: capitalize;
           }
 
           span.nickname {

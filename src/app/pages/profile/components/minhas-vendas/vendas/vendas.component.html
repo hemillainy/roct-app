@@ -3,21 +3,22 @@
 		<h4>Nenhum item encontrado.</h4>
 	</div>
 	<div class="item" *ngFor="let venda of vendas" (click)="setCommand('status-announcement', venda.uuid, 'sales')">
-		<div class="details" >
+		<div class="details">
 			<h4>{{ venda.announcement.name }}</h4>
 			<div>
 				<span class="tag">{{ venda.announcement.type_ }}</span>
+				<span class="server">{{ venda.announcement.server }}</span>
 				<span class="cost">{{ venda.announcement.price | currency:'BRL' }}</span>
 				<span class="status {{ venda.status }}">{{ venda.status }}</span>
-				<span class="date" *ngIf="venda.status !== 'Disponivel'">
+				<span class="date" *ngIf="venda.date && venda.status !== 'Disponivel'">
 					Data da Venda
-					<span >
+					<span>
 						{{ venda.date }}
 					</span>
 				</span>
 				<span class="shopper" *ngIf="venda.status !== 'Disponivel'">
 					Comprador
-					<span >
+					<span>
 						{{ venda.buyer.name }}
 					</span>
 				</span>
