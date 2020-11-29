@@ -139,14 +139,15 @@ export class CriarAnuncioComponent implements OnInit {
   }
 
   private initiateErrors(): void {
-    this.errors = {};
-    this.errors.server = false;
-    this.errors.game = false;
-    this.errors.name = false;
-    this.errors.type_ = false;
-    this.errors.description = false;
-    this.errors.price = false;
-    this.errors.image = false;
+    this.errors = {
+      server: false,
+      game: false,
+      name: false,
+      type_: false,
+      description: false,
+      price: false,
+      image: false
+    };
   }
 
   isValid(): boolean {

@@ -6,17 +6,6 @@
     <div>
       <form>
         <div class="item" *ngIf="dataSelect.loaded">
-          <label for="serverName">Selecione o servidor</label>
-          <select name="server" id="select_server" [(ngModel)]="data.ads.server" (blur)="validate('server')"
-            (ngModelChange)="validate('server')">
-            <option value="" disabled>Selecione</option>
-            <option *ngFor="let item of dataSelect.server" value="{{item.value}}">{{item.label}}</option>
-          </select>
-          <span class="required" *ngIf="errors && errors['server']">
-            Campo obrigatório *
-          </span>
-        </div>
-        <div class="item" *ngIf="dataSelect.loaded">
           <label for="game">Jogo</label>
           <select name="game" [(ngModel)]="data.ads.game" (blur)="validate('game')" (ngModelChange)="validate('game')"
             id="games" required>
@@ -24,6 +13,17 @@
             <option *ngFor="let item of dataSelect.games" value="{{ item }}">{{ item }}</option>
           </select>
           <span class="required" *ngIf="errors && errors['game']">
+            Campo obrigatório *
+          </span>
+        </div>
+        <div class="item" *ngIf="dataSelect.loaded">
+          <label for="serverName">Selecione o servidor</label>
+          <select name="server" id="select_server" [(ngModel)]="data.ads.server" (blur)="validate('server')"
+            (ngModelChange)="validate('server')">
+            <option value="" disabled>Selecione</option>
+            <option *ngFor="let item of dataSelect.server" value="{{item.value}}">{{item.label}}</option>
+          </select>
+          <span class="required" *ngIf="errors && errors['server']">
             Campo obrigatório *
           </span>
         </div>
