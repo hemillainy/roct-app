@@ -5,58 +5,68 @@
   <div class="content">
     <div>
       <form>
-        <div class="item">
+        <div class="item" *ngIf="dataSelect.loaded">
           <label for="serverName">Selecione o servidor</label>
-          <select name="server" id="select_server" [(ngModel)]="data.ads.server" (blur)="validate('server')" (ngModelChange)="validate('server')">
+          <select name="server" id="select_server" [(ngModel)]="data.ads.server" (blur)="validate('server')"
+            (ngModelChange)="validate('server')">
             <option value="" disabled>Selecione</option>
             <option *ngFor="let item of dataSelect.server" value="{{item.value}}">{{item.label}}</option>
           </select>
-          <span class="required" *ngIf="errors['server']">
+          <span class="required" *ngIf="errors && errors['server']">
             Campo obrigatório *
           </span>
         </div>
-        <div class="item">
-          <label for="game">Nome do jogo</label>
-          <input name="game" [(ngModel)]="data.ads.game" type="text" required (blur)="validate('game')" (ngModelChange)="validate('game')"/>
-          <span class="required" *ngIf="errors['game']">
+        <div class="item" *ngIf="dataSelect.loaded">
+          <label for="game">Jogo</label>
+          <select name="game" [(ngModel)]="data.ads.game" (blur)="validate('game')" (ngModelChange)="validate('game')"
+            id="games" required>
+            <option value="" disabled>Selecione</option>
+            <option *ngFor="let item of dataSelect.games" value="{{ item }}">{{ item }}</option>
+          </select>
+          <span class="required" *ngIf="errors && errors['game']">
             Campo obrigatório *
           </span>
         </div>
         <div class="item">
           <label for="name">Nome do item</label>
-          <input name="name" [(ngModel)]="data.ads.name" type="text" required (blur)="validate('name')" (ngModelChange)="validate('name')"/>
-          <span class="required" *ngIf="errors['name']">
+          <input name="name" [(ngModel)]="data.ads.name" type="text" required (blur)="validate('name')"
+            (ngModelChange)="validate('name')" />
+          <span class="required" *ngIf="errors && errors['name']">
             Campo obrigatório *
           </span>
         </div>
-        <div class="item">
+        <div class="item" *ngIf="dataSelect.loaded">
           <label for="type_">Tipo do item</label>
-          <select name="type_" [(ngModel)]="data.ads.type_" (blur)="validate('type_')" (ngModelChange)="validate('type_')">
+          <select name="type_" [(ngModel)]="data.ads.type_" (blur)="validate('type_')"
+            (ngModelChange)="validate('type_')">
             <option value="" disabled>Selecione</option>
             <option *ngFor="let item of dataSelect.typeItem" value="{{item.value}}">{{item.label}}</option>
           </select>
-          <span class="required" *ngIf="errors['type_']">
+          <span class="required" *ngIf="errors && errors['type_']">
             Campo obrigatório *
           </span>
         </div>
         <div class="item">
           <label for="description">Descrição</label>
-          <textarea name="description" [(ngModel)]="data.ads.description" type="text" (blur)="validate('description')" (ngModelChange)="validate('description')"></textarea>
-          <span class="required" *ngIf="errors['description']">
+          <textarea name="description" [(ngModel)]="data.ads.description" type="text" (blur)="validate('description')"
+            (ngModelChange)="validate('description')"></textarea>
+          <span class="required" *ngIf="errors && errors['description']">
             Campo obrigatório *
           </span>
         </div>
         <div class="item">
           <label for="price">Preço</label>
-          <input name="price" prefix="R$ " mask="0*.00" [dropSpecialCharacters]="false" [(ngModel)]="data.ads.price" type="text" required (blur)="validate('price')"/>
-          <span class="required" *ngIf="errors['price']">
+          <input name="price" prefix="R$ " mask="0*.00" [dropSpecialCharacters]="false" [(ngModel)]="data.ads.price"
+            type="text" required (blur)="validate('price')" />
+          <span class="required" *ngIf="errors && errors['price']">
             Campo obrigatório *
           </span>
         </div>
         <div class="item">
           <label for="image">Imagem do item</label>
-          <input placeholder="https://" name="image" type="text" [(ngModel)]="data.ads.image" required (blur)="validate('image')" (ngModelChange)="validate('image')"/>
-          <span class="required" *ngIf="errors['image']">
+          <input placeholder="https://" name="image" type="text" [(ngModel)]="data.ads.image" required
+            (blur)="validate('image')" (ngModelChange)="validate('image')" />
+          <span class="required" *ngIf="errors && errors['image']">
             Campo obrigatório *
           </span>
         </div>

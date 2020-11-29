@@ -29,54 +29,49 @@ export class CriarAnuncioComponent implements OnInit {
   public data: any;
   public status: any;
   public dataSelect: {
-    typeItem: [];
-    server: [];
-  }
+    typeItem: [],
+    server: [],
+    games: [],
+    loaded: boolean
+  };
   public errors: any;
 
   constructor(
     private router: Router,
-    private profileService: ProfileService,
     private ctrlItems: ItemsService,
     private ctrlSession: SessionService,
   ) {
     this.data = {
       ads: {
         server: '',
-        game: undefined,
-        name: undefined,
-        description: undefined,
+        game: '',
+        name: '',
+        description: '',
         price: undefined,
         type_: '',
         image: '',
         salesman_uuid: undefined,
       },
     };
-
-    this.dataSelect = {
-      typeItem: [],
-      server: []
-    }
-    this.status = {
-      loading: false,
-      type: "",
-      show: false,
-      message: ""
-    };
-
-    this.initiateErrors();
+    this.dataSelect = { typeItem: [], server: [], games: [], loaded: false };
+    this.status = { loading: false, type: '', show: false, message: '' };
   }
 
   ngOnInit() {
-    this.ctrlItems.getItemsServers().then(res => {
-      this.dataSelect.server = res.data.map(item => {
-        return { value: item, label: item }
+    this.initiateErrors();
+    Promise.all([
+      this.ctrlItems.getItemsServers(),
+      this.ctrlItems.getItemsTypes(),
+      this.ctrlItems.getItemsGames()
+    ]).then(res => {
+      this.dataSelect.loaded = true;
+      this.dataSelect.server = res[0].data.map(item => {
+        return { value: item, label: item };
       });
-    });
-    this.ctrlItems.getItemsTypes().then(res => {
-      this.dataSelect.typeItem = res.data.map(item => {
-        return { value: item, label: translateValue(item) }
+      this.dataSelect.typeItem = res[1].data.map(item => {
+        return { value: item, label: translateValue(item) };
       });
+      this.dataSelect.games = res[2].data;
     });
   }
 
@@ -84,8 +79,8 @@ export class CriarAnuncioComponent implements OnInit {
     this.status = {
       loading: false,
       show: false,
-      type: "",
-      message: ""
+      type: '',
+      message: ''
     };
   }
 
@@ -101,9 +96,9 @@ export class CriarAnuncioComponent implements OnInit {
     }, 3500);
   }
 
-  //TEMPORARIO
+  // TEMPORARIO
   public extractAdd() {
-    let add = Object.assign({}, this.data.add);
+    const add = Object.assign({}, this.data.add);
     delete add.server;
     delete add.game;
     delete add.description;
@@ -112,31 +107,31 @@ export class CriarAnuncioComponent implements OnInit {
 
   public submit(): void {
     this.validateAll();
-    if(this.isValid()) {
+    if (this.isValid()) {
       this.status.loading = true;
       this.data.ads.salesman_uuid = this.ctrlSession.getUserId();
       this.ctrlItems.create(this.data.ads)
         .then(res => {
-          this.status.type = "success";
+          this.status.type = 'success';
           this.status.show = true;
-          this.status.message = "Anúncio criado com sucesso!";
+          this.status.message = 'Anúncio criado com sucesso!';
           setTimeout(() => {
             this.resetStatus();
             this.router.navigate(['/user/profile']);
           }, 2000);
         }).catch(err => {
           this.status.loading = false;
-          this.status.type = "error";
+          this.status.type = 'error';
           this.status.show = true;
-          this.status.message = "Ocorreu um erro na criação."
+          this.status.message = 'Ocorreu um erro na criação.';
           setTimeout(() => {
             this.resetStatus();
           }, 3500);
         });
     } else {
-      this.status.type = "error";
+      this.status.type = 'error';
       this.status.show = true;
-      this.status.message = "Campos obrigatórios não preenchidos."
+      this.status.message = 'Campos obrigatórios não preenchidos.';
       setTimeout(() => {
         this.status.show = false;
       }, 2500);
@@ -145,18 +140,18 @@ export class CriarAnuncioComponent implements OnInit {
 
   private initiateErrors(): void {
     this.errors = {};
-    this.errors['server'] = false;
-    this.errors['game'] = false;
-    this.errors['name'] = false;
-    this.errors['type_'] = false;
-    this.errors['description'] = false;
-    this.errors['price'] = false;
-    this.errors['image'] = false;
+    this.errors.server = false;
+    this.errors.game = false;
+    this.errors.name = false;
+    this.errors.type_ = false;
+    this.errors.description = false;
+    this.errors.price = false;
+    this.errors.image = false;
   }
 
   isValid(): boolean {
-    for(const e in this.errors) {
-      if(this.errors[e]) {
+    for (const e in this.errors) {
+      if (this.errors[e]) {
         return false;
       }
     }
@@ -164,13 +159,13 @@ export class CriarAnuncioComponent implements OnInit {
   }
 
   private validateAll(): void {
-    for(const e in this.errors) {
-      this.validate(e)
+    for (const e in this.errors) {
+      this.validate(e);
     }
   }
 
   validate(property: string): void {
-    if(!this.data.ads[property]) {
+    if (!this.data.ads[property]) {
       this.errors[property] = true;
     } else {
       this.errors[property] = false;
