@@ -9,14 +9,16 @@ import { Router } from '@angular/router';
 export class VendasComponent implements OnInit {
 
   @Input() vendas: any[];
-  
-  constructor(private router: Router) { }
+
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
 
   public setCommand(value: string, id: number, type: string): void {
-    this.router.navigate([], { queryParams: { command: value, id, type}, queryParamsHandling: 'merge' });
+    this.router.navigate([], { queryParams: { command: value, id, type }, queryParamsHandling: 'merge' });
   }
 
 }
