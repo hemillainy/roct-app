@@ -46,6 +46,10 @@ export class UserService {
     return axios.post(`${this.END_POINT}/purchases/sales`, paginacao, this.getConfig());
   }
 
+  public getMyAnnouncements(paginacao: any): Promise<any> {
+    return axios.post(`${this.END_POINT}/announcements/salesman/${this.session.getUserId()}`, paginacao, this.getConfig());
+  }
+
   public confirmDelivery(id: any): Promise<any> {
     return axios.put(`${this.END_POINT}/purchases/${id}/confirmDelivery`, this.getConfig());
   }

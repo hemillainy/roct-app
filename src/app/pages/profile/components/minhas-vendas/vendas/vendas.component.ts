@@ -10,6 +10,8 @@ export class VendasComponent implements OnInit {
 
   @Input() vendas: any[];
 
+  @Input() anuncios: any[];
+
   constructor(
     private router: Router
   ) { }
