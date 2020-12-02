@@ -24,6 +24,10 @@
             <span class="material-icons">note_add</span>
             Criar Anúncio
           </li>
+          <li *ngIf="!this.renderizaTornarVendedor" [class.active]="component.command === 'announcements'" (click)="setCommand('announcements')">
+            <span class="material-icons">receipt</span>
+            Meus Anúncios
+          </li>
           <li *ngIf="!this.renderizaTornarVendedor" [class.active]="component.command === 'sales'" (click)="setCommand('sales')">
             <span class="material-icons">receipt</span>
             Minhas Vendas
@@ -41,6 +45,7 @@
           <app-transforma-conta *ngIf="component.command === 'change-type'"></app-transforma-conta>
           <app-minhas-compras *ngIf="component.command === 'purchases'"></app-minhas-compras>
           <app-criar-anuncio *ngIf="component.command === 'advertise'"></app-criar-anuncio>
+          <app-meus-anuncios *ngIf="component.command === 'announcements'"></app-meus-anuncios>
           <app-minhas-vendas *ngIf="component.command === 'sales'"></app-minhas-vendas>
           <app-consulta-anuncio *ngIf="component.command === 'status-announcement'"></app-consulta-anuncio>
         </div>
