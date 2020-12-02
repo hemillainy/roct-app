@@ -1,6 +1,6 @@
 <div class="vendas">
 	<div class="not-found" *ngIf="vendas.length === 0">
-		<h4>Nenhum item encontrado.</h4>
+		<h4>Nenhuma venda encontrada.</h4>
 	</div>
 	<div class="item" *ngFor="let venda of vendas" (click)="setCommand('status-announcement', venda.uuid, 'sales')">
 		<div class="details">

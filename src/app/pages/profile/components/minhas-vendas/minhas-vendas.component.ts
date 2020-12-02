@@ -1,10 +1,8 @@
+import { Subscription } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { ItemsService } from 'src/app/controllers/items/items.service';
-import { SessionService } from 'src/app/controllers/session/session.service';
 import { UserService } from 'src/app/controllers/user/user.service';
-import { translateValue } from "src/utils";
+import { SessionService } from 'src/app/controllers/session/session.service';
 
 @Component({
   selector: 'app-minhas-vendas',
@@ -20,16 +18,17 @@ export class MinhasVendasComponent implements OnInit {
     server: ''
   };
 
-  public items: [];
+  public data = {
+    page: 1,
+    vendas: [],
+  }
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private ctrlUser: UserService,
     private ctrlSession: SessionService,
-  ) {
-    this.items = [];
-  }
+  ) {  }
 
   ngOnInit() {
     this.setQueryParams();
@@ -43,6 +42,7 @@ export class MinhasVendasComponent implements OnInit {
         if (!this.data.page) {
           this.data.page = 1;
         }
+
         this.getMySales();
       }
     );
@@ -73,15 +73,16 @@ export class MinhasVendasComponent implements OnInit {
       per_page: 100,
       id: this.ctrlSession.getUserId()
     }).then(res => {
-      this.data.docs = res.data.data;
-      if (this.filter.status) {
+      this.data.vendas = res.data.data;
+      if (this.filter.status !== '') {
         const mapped_status = this._mapeiaStatus(this.filter.status);
-        this.data.docs = this.data.docs.filter(compra => compra.status === mapped_status);
+        this.data.vendas = this.data.vendas.filter(venda => venda.status === mapped_status);
       }
     });
   }
 
   public search(): void {
+    this.getMySales();
     this.filter.filtered = this.clearFilter();
   }
 
@@ -106,11 +107,6 @@ export class MinhasVendasComponent implements OnInit {
         break;
     }
     return mapped;
-  }
-
-  public data = {
-    page: 1,
-    docs: []
   }
 
 }

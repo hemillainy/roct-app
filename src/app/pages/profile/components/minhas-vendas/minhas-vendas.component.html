@@ -10,15 +10,14 @@
       </div>
       <div>
         <p>Status da Venda</p>
-        <select name="server" id="server_filter" [(ngModel)]="filter.server">
+        <select name="status" id="status_filter" [(ngModel)]="filter.status">
           <option value="">Todos</option>
-          <option value="disponivel">Disponível</option>
-          <option value="paga">Paga</option>
-          <option value="entregue">Entregue</option>
-          <option value="finalizada">Finalizada</option>
+          <option value="paid">Paga</option>
+          <option value="delivered">Entregue</option>
+          <option value="finished">Finalizada</option>
         </select>
       </div>
     </div>
-    <app-vendas [vendas]="data.docs"></app-vendas>
+    <app-vendas [vendas]="data.vendas" [anuncios]="data.anuncios"></app-vendas>
   </div>
 </div>

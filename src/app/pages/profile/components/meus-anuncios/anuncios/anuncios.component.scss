@@ -1,0 +1,134 @@
+.anuncios {
+  display: flex;
+  flex-wrap: wrap;
+
+  .not-found {
+    width: 100%;
+    background: #f7f7f7;
+    margin-bottom: 10px;
+    border: 1px solid #f7f7f7;
+    animation: slide-items-announcements 0.3s ease 0.2s backwards;
+    transition: 0.3s;
+  }
+
+  .item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    background: #f7f7f7;
+    margin-bottom: 10px;
+    border: 1px solid #f7f7f7;
+    animation: slide-items-announcements 0.3s ease 0.2s backwards;
+    transition: 0.3s;
+
+    .details {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      max-width: 70%;
+
+      h4 {
+        text-transform: capitalize;
+        border-bottom: unset;
+        transition: 0.3s;
+      }
+
+      div {
+        display: flex;
+        flex-wrap: wrap;
+
+        span {
+          padding: 0px 10px;
+          font-weight: 100;
+          color: #fff;
+          font-size: 16px;
+          transition: 0.3s;
+          margin-right: 10px;
+          margin-top: 10px;
+          white-space: pre;
+        }
+
+        span.tag {
+          background: #3aa4e5;
+        }
+
+        span.cost {
+          background: gainsboro;
+          color: #000;
+        }
+
+        span.server {
+          background: #ff9800;
+          color: #000;
+          text-transform: capitalize;
+        }
+
+        span.date {
+          background: #8bc34a;
+          padding-right: 0px;
+
+          span {
+            background: #689a2d;
+            margin: 0px;
+            margin-left: 5px;
+            padding: 0px 6px;
+          }
+        }
+      }
+    }
+
+    .background {
+      img {
+        height: 100px;
+        width: 200px;
+        object-fit: cover;
+        transition: 0.3s;
+      }
+    }
+  }
+
+  .item:last-child {
+    margin-bottom: 0px;
+  }
+
+  .item:hover {
+    cursor: pointer;
+    background: #ffffff;
+    border: 1px solid gainsboro;
+
+    .details {
+      h4 {
+        color: #3aa4e5;
+      }
+    }
+
+    .background {
+      img {
+        height: 200px;
+        width: 200px;
+      }
+    }
+  }
+
+  h4 {
+    font-family: "Montserrat";
+    font-size: 24px;
+    font-weight: bold;
+    color: #525252;
+    border-bottom: 1px solid #dcdcdc33;
+  }
+}
+
+@keyframes slide-items-announcements {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
