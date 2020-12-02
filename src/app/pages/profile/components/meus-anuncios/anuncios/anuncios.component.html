@@ -1,0 +1,21 @@
+<div class="anuncios">
+	<div class="not-found" *ngIf="anuncios.length === 0">
+		<h4>Nenhum anúncio encontrado.</h4>
+	</div>
+	<div class="item" *ngFor="let anuncio of anuncios" (click)="goToItem(anuncio.uuid)">
+		<div class="details">
+			<h4>{{ anuncio.name }}</h4>
+			<div>
+				<span class="tag">{{ anuncio.type_ }}</span>
+				<span class="server">{{ anuncio.server }}</span>
+        <span class="cost">{{ anuncio.price | currency:'BRL' }}</span>
+        <span class="date">Criado em
+          <span>{{ anuncio.created_at | date: 'dd/MM/yyyy' }}</span>
+        </span>
+			</div>
+    </div>
+		<div class="background">
+			<img src="{{ anuncio.image }}">
+		</div>
+	</div>
+</div>
