@@ -62,4 +62,8 @@ export class ProductComponent implements OnInit {
     return this.session.isLogged;
   }
 
+  public desabilitaCompra(salesmanUuid : any): boolean {
+    return salesmanUuid === this.session.getUserId();
+  }
+
 }
