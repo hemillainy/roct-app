@@ -21,7 +21,6 @@ export class MinhasVendasComponent implements OnInit {
   public data = {
     page: 1,
     vendas: [],
-    anuncios: [],
   }
 
   constructor(
@@ -43,8 +42,8 @@ export class MinhasVendasComponent implements OnInit {
         if (!this.data.page) {
           this.data.page = 1;
         }
+
         this.getMySales();
-        this.getMyAnnouncements();
       }
     );
     this.router.navigate([], { queryParams: { page: this.data.page }, queryParamsHandling: 'merge' });
@@ -79,15 +78,6 @@ export class MinhasVendasComponent implements OnInit {
         const mapped_status = this._mapeiaStatus(this.filter.status);
         this.data.vendas = this.data.vendas.filter(venda => venda.status === mapped_status);
       }
-    });
-  }
-
-  private getMyAnnouncements(): void {
-    this.ctrlUser.getMyAnnouncements({
-      page: this.data.page,
-      per_page: 100,
-    }).then(res => {
-      this.data.anuncios = res.data.data.filter(anuncio => anuncio.available);
     });
   }
 
