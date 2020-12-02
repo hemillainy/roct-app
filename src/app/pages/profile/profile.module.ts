@@ -13,6 +13,8 @@ import { ComprasComponent } from './components/minhas-compras/compras/compras.co
 import { CriarAnuncioComponent } from './components/criar-anuncio/criar-anuncio.component';
 import { MinhasVendasModule } from './components/minhas-vendas/minhas-vendas.module';
 import { ConsultaAnuncioComponent } from './components/consulta-anuncio/consulta-anuncio.component';
+import { MeusAnunciosComponent } from './components/meus-anuncios/meus-anuncios.component';
+import { AnunciosComponent } from './components/meus-anuncios/anuncios/anuncios.component';
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import { ConsultaAnuncioComponent } from './components/consulta-anuncio/consulta
     ComprasComponent,
     CriarAnuncioComponent,
     ConsultaAnuncioComponent,
+    MeusAnunciosComponent,
+    AnunciosComponent,
   ],
   imports: [
     CommonModule,
