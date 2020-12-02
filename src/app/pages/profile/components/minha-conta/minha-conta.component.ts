@@ -58,8 +58,11 @@ export class MinhaContaComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.ctrlSession.getUser() !== undefined) {
-      this.data = this.ctrlSession.getUser();
+    const userId = this.ctrlSession.getUserId();
+    if (userId !== undefined) {
+      this.ctrlUser.getUser(userId).then(res => {
+        this.data = res.data
+      });
     } else {
       console.log('Erro ao recuperar o usuário da sessão');
     }
@@ -83,19 +86,19 @@ export class MinhaContaComponent implements OnInit {
   }
 
   public resetChanges(): void {
-    this.data = Object.assign({}, this.ctrlSession.getUser());
+    this.data = Object.assign({}, this.ctrlUser.getUser(this.data.id + ""));
     this.isEditando = false;
     this.initiateErrors();
   }
 
   public submit(): void {
     this.validateAll();
-    if(this.isValid()) {
+    if (this.isValid()) {
       this.resetStatus();
       this.status.loading = true;
       this.ctrlUser.update(this.data)
         .then(res => {
-          this.ctrlSession.setUser(res.data);
+          this.ctrlSession.setUserId(res.data.id);
           setTimeout(() => {
             this.status.loading = false
             this.isEditando = false;
@@ -114,7 +117,7 @@ export class MinhaContaComponent implements OnInit {
       setTimeout(() => {
         this.resetStatus();
       }, 2500);
-      
+
     }
   }
 
@@ -127,8 +130,8 @@ export class MinhaContaComponent implements OnInit {
   }
 
   isValid(): boolean {
-    for(const e in this.errors) {
-      if(this.errors[e]) {
+    for (const e in this.errors) {
+      if (this.errors[e]) {
         return false;
       }
     }
@@ -136,17 +139,17 @@ export class MinhaContaComponent implements OnInit {
   }
 
   private validateAll(): void {
-    for(const e in this.errors) {
+    for (const e in this.errors) {
       this.validate(e)
     }
   }
 
   validate(property: string): void {
-    if(!this.data[property]) {
+    if (!this.data[property]) {
       this.errors[property] = true;
     } else {
-        this.errors[property] = false;
-      }
+      this.errors[property] = false;
+    }
   }
 
 }

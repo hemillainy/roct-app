@@ -64,26 +64,32 @@ export class TransformaContaComponent implements OnInit {
   }
 
   public submit(): void {
-    this.resetStatus();
-    this.status.loading = true;
-    const userUpgrade = Object.assign({}, this.ctrlSession.getUser());
-    userUpgrade.isSalesman = true;
-    this.ctrlUser.upgradeAccount(userUpgrade)
-      .then(res => {
-        this.status.loading = false;
-        this.status.success = true;
-        this.ctrlSession.setUser(res.data);
-        setTimeout(() => {
-          this.status.sucess = false;
-          this.router.navigate(['/'])
-        }, 2000);
-      }).catch(err => {
-        this.status.loading = false;
-        this.status.error = true;
-        setTimeout(() => {
-          this.status.error = false;
-        }, 3500);
-      });
+    (async () => {
+      this.resetStatus();
+      this.status.loading = true;
+
+      const userId = this.ctrlSession.getUserId();
+      const userInfo = await this.ctrlUser.getUser(userId).then(res => res.data);
+      const userUpgrade = Object.assign({}, userInfo);
+      userUpgrade.isSalesman = true;
+      this.ctrlUser.upgradeAccount(userUpgrade)
+        .then(res => {
+          this.status.loading = false;
+          this.status.success = true;
+          this.ctrlSession.setUserId(res.data.id);
+          setTimeout(() => {
+            this.status.sucess = false;
+            this.router.navigate(['/'])
+          }, 2000);
+        }).catch(err => {
+          this.status.loading = false;
+          this.status.error = true;
+          setTimeout(() => {
+            this.status.error = false;
+          }, 3500);
+        });
+    })();
+
   }
 
 }

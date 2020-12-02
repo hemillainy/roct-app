@@ -15,13 +15,8 @@ export class SessionService {
     return localStorage.getItem('userId');
   }
 
-  public setUser(user: any): void {
-    localStorage.setItem('userId', user.id);
-    localStorage.setItem('User', JSON.stringify(user))
-  }
-
-  public getUser(): any {
-    return JSON.parse(localStorage.getItem('User'));
+  public setUserId(id: any): void {
+    localStorage.setItem('userId', id);
   }
 
   public setToken(token: string): void {

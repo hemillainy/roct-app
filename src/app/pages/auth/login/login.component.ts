@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
     this.ctrlAuth.auth(this.data)
       .then(res => {
         this.session.logIn(res.data.token);
-        this.session.setUser(res.data.user);
+        this.session.setUserId(res.data.user.id);
         this.router.navigate([this.session.getPreviousPage()]);
       }).catch(err => {
         this.status.loading = false;
