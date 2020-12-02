@@ -25,6 +25,10 @@ export class UserService {
   public create(data: any): Promise<any> {
     return axios.post(this.END_POINT + '/users', data);
   }
+  
+  public getUser(id: string): Promise<any> {
+    return axios.get(this.END_POINT + `/users/${id}`, this.getConfig());
+  }
 
   public update(data: any): Promise<any> {
     return axios.put(this.END_POINT + `/users/${this.session.getUserId()}`, data, this.getConfig());

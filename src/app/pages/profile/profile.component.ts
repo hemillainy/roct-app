@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SessionService } from 'src/app/controllers/session/session.service';
+import { UserService } from 'src/app/controllers/user/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -20,6 +21,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private ctrlUser: UserService,
     private ctrlSession: SessionService,
   ) { }
 
@@ -35,7 +37,14 @@ export class ProfileComponent implements OnInit {
         }
       );
       this.router.navigate([], { queryParams: { command: this.component.command }, queryParamsHandling: 'merge' });
-      this.renderizaTornarVendedor = this.ctrlSession.getUser() !== undefined && !this.ctrlSession.getUser().isSalesman;
+      const userId = this.ctrlSession.getUserId();
+
+      
+      this.ctrlUser.getUser(userId).then(res => {
+        const user = res.data;
+        this.renderizaTornarVendedor = user !== undefined && !user.isSalesman;
+
+      });
     } else {
       this.router.navigate(['/']);
     }
