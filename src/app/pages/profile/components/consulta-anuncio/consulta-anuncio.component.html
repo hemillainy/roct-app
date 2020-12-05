@@ -6,7 +6,10 @@
     <div class="loading" *ngIf="status.loaded">
       <div class="loader"></div>
     </div>
-    <div class="consulta-anuncio-container" *ngIf="!status.loaded && data?.announcement">
+    <div
+      class="consulta-anuncio-container"
+      *ngIf="!status.loaded && data?.announcement"
+    >
       <div class="background">
         <img src="{{ data?.announcement.image }}" />
       </div>
@@ -22,46 +25,60 @@
             </span>
           </span>
           <span class="status {{ data?.status }}">{{ data?.status }}</span>
-          <span class="shopper" *ngIf="
+          <span
+            class="shopper"
+            *ngIf="
               data?.status === 'Item pago, aguardando entrega' ||
               data?.status === 'Item entregue, aguardando confirmação'
-            ">
+            "
+          >
             {{ type === "sales" ? "Comprador" : "Vendedor" }}
             <span>
               {{ type === "sales" ? data?.buyer.name : data?.salesman.name }}
             </span>
           </span>
-          <span class="nickname" *ngIf="
+          <span
+            class="nickname"
+            *ngIf="
               data?.status === 'Item pago, aguardando entrega' ||
               data?.status === 'Item entregue, aguardando confirmação'
-            ">
+            "
+          >
             Nick
             <span>
               {{ data?.nick_game }}
             </span>
           </span>
-          <div class="description">
-            {{ data?.announcement.description }}
-          </div>
+        </div>
+        <div class="description">
+          {{ data?.announcement.description }}
         </div>
         <div class="consulta-anuncio-action-buttons">
           <div class="price">
             {{ data?.announcement.price | currency: "BRL" }}
           </div>
-          <a href="https://api.whatsapp.com/send?phone={{
+          <a
+            href="https://api.whatsapp.com/send?phone={{
               data[type === 'sales' ? 'buyer' : 'salesman'].phone
-            }}" target="_blank">
+            }}"
+            target="_blank"
+          >
             <p>Fale com o {{ type === "sales" ? "comprador" : "vendedor" }}</p>
             <img src="./assets/images/whatsapp.svg" />
           </a>
-          <button *ngIf="
+          <button
+            *ngIf="
               (type === 'sales' &&
                 !data?.salesman_delivery_confirmation &&
-                (data?.status === 'Item pago, aguardando entrega' || data?.status === 'Item entregue, aguardando confirmação')) ||
+                (data?.status === 'Item pago, aguardando entrega' ||
+                  data?.status === 'Item entregue, aguardando confirmação')) ||
               (type === 'purchases' &&
                 !data?.buyer_delivery_confirmation &&
-                (data?.status === 'Item pago, aguardando entrega' || data?.status === 'Item entregue, aguardando confirmação'))
-            " (click)="confirmDelivery()">
+                (data?.status === 'Item pago, aguardando entrega' ||
+                  data?.status === 'Item entregue, aguardando confirmação'))
+            "
+            (click)="confirmDelivery()"
+          >
             Confirmar {{ type === "sales" ? "entrega" : "recebimento" }}
           </button>
         </div>

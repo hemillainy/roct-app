@@ -34,7 +34,14 @@
         border-bottom: unset;
         transition: 0.3s;
       }
-
+      .background {
+        img {
+          width: 300px;
+          max-height: 546px;
+          object-fit: cover;
+          transition: 0.3s;
+        }
+      }
       .details {
         margin-left: 15px;
 
@@ -134,14 +141,7 @@
             background: #4caf50;
           }
         }
-        .background {
-          img {
-            width: 300px;
-            max-height: 546px;
-            object-fit: cover;
-            transition: 0.3s;
-          }
-        }
+
         .consulta-anuncio-action-buttons {
           display: flex;
           align-items: center;
