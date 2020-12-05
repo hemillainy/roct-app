@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import '../../../utils/axiosInterceptors';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +23,17 @@ export class SessionService {
     localStorage.setItem('Authorization', token);
   }
 
-  public logIn(token: string): void {
-    localStorage.setItem('Authorization', token);
+  public setRefreshToken(token: string): void {
+    localStorage.setItem('refreshToken', token);
+  }
+
+  public getRefreshToken(): string {
+    return localStorage.getItem('refreshToken');
+  }
+
+  public logIn(token: string, refreshToken: string): void {
+    this.setToken(token);
+    this.setRefreshToken(refreshToken);
     this.isLogged = true;
   }
 
