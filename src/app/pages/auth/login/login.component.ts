@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
     this.status.loading = true;
     this.ctrlAuth.auth(this.data)
       .then(res => {
-        this.session.logIn(res.data.token);
+        this.session.logIn(res.data.token, res.data.refresh_token);
         this.session.setUserId(res.data.user.id);
         this.router.navigate([this.session.getPreviousPage()]);
       }).catch(err => {

@@ -16,9 +16,10 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const auth = localStorage.getItem('Authorization');
+    const auth = this.session.getToken();
+    const refreshToken = this.session.getRefreshToken();
     if (auth && auth !== 'undefined') {
-      this.session.logIn(auth);
+      this.session.logIn(auth, refreshToken);
     } else {
       this.session.logOut();
     }
