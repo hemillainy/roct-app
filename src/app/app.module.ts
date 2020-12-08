@@ -2,8 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
-import { NgAdblockDetectModule } from 'ng-adblock-detect';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './pages/home/home.module';
@@ -28,7 +26,6 @@ import { AdvertsModule } from './pages/adverts/adverts.module';
     AuthModule,
     ProfileModule,
     AdvertsModule,
-    NgAdblockDetectModule
   ],
   providers: [
     SessionService,
