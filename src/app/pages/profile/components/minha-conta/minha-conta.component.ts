@@ -86,7 +86,9 @@ export class MinhaContaComponent implements OnInit {
   }
 
   public resetChanges(): void {
-    this.data = Object.assign({}, this.ctrlUser.getUser(this.data.id + ""));
+    this.ctrlUser.getUser(this.ctrlSession.getUserId()).then((res) => {
+      this.data =  res.data;
+    });
     this.isEditando = false;
     this.initiateErrors();
   }
