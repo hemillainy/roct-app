@@ -20,7 +20,7 @@
         </div>
         <div class="item">
           <label for="email">Email</label>
-          <input name="email" [(ngModel)]="data.email" type="text" required [disabled]="!isEditando" (ngModelChange)="validate('email')">
+          <input name="email" [(ngModel)]="data.email" type="text" [disabled]="true" (ngModelChange)="validate('email')">
           <span class="required" *ngIf="errors['email']">
             Campo obrigatório *
           </span>
