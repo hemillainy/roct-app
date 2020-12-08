@@ -24,10 +24,5 @@ export class AppComponent implements OnInit {
       this.session.logOut();
     }
   }
-
-  detected(isDetected: boolean) {
-    if(isDetected) {
-      alert("Desligue o adblock em nosso site para que ele funcione corretamente.")
-    }
-  }
+  
 }
