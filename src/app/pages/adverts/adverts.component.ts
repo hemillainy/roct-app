@@ -20,7 +20,8 @@ export class AdvertsComponent implements OnInit {
     game: '',
     type: '',
     sort: '',
-    text: ''
+    text: '',
+    search: ''
   };
 
   public filtersData = {
@@ -133,7 +134,8 @@ export class AdvertsComponent implements OnInit {
       game: '',
       type: '',
       sort: '',
-      text: this.filter.text
+      text: '',
+      search: ''
     };
     this.search();
   }
