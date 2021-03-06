@@ -150,7 +150,7 @@ export class AdvertsComponent implements OnInit {
     this.getItems();
     this.router.navigate([], {
       queryParams: {
-        ...this.filter
+        ...this.filter, search: this.filter.text
       }, queryParamsHandling: 'merge'
     });
     this.filter.filtered = this.clearFilter();
