@@ -9,7 +9,7 @@
 				<span class="tag">{{ venda.announcement.type_ }}</span>
 				<span class="server">{{ venda.announcement.server }}</span>
 				<span class="cost">{{ venda.announcement.price | currency:'BRL' }}</span>
-				<span class="status {{ venda.status }}">{{ venda.status }}</span>
+				<span class="status {{ mapeiaStatus(venda.status) }}">{{ venda.status }}</span>
 				<span class="date" *ngIf="venda.date && venda.status !== 'Disponivel'">
 					Data da Venda
 					<span>
