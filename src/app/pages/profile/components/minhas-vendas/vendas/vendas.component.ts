@@ -23,4 +23,25 @@ export class VendasComponent implements OnInit {
     this.router.navigate([], { queryParams: { command: value, id, type }, queryParamsHandling: 'merge' });
   }
 
+  public mapeiaStatus(status: string): string {
+    debugger;
+    let mapeado = '';
+    switch(status) {
+      case 'Iniciada':
+        mapeado = 'Iniciada';
+        break;
+      case 'Item pago, aguardando entrega':
+        mapeado = 'Paga';
+        break;
+      case 'Item entregue, aguardando confirmação':
+        mapeado = 'Entregue';
+        break;
+      case 'Finalizada':
+        mapeado = 'Finalizada';
+        break;
+    }
+
+    return mapeado;
+  }
+
 }

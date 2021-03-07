@@ -94,16 +94,20 @@
           background: gray;
         }
 
-        span.status.Finalizada {
-          background: #009688;
+        span.status.Iniciada {
+          background: gray;
+        }
+
+        span.status.Paga {
+          background: #4caf50;
         }
 
         span.status.Entregue {
           background: #ff5722;
         }
 
-        span.status.Paga {
-          background: #4caf50;
+        span.status.Finalizada {
+          background: #009688;
         }
       }
     }

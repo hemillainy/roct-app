@@ -67,16 +67,7 @@
             <img src="./assets/images/whatsapp.svg" />
           </a>
           <button
-            *ngIf="
-              (type === 'sales' &&
-                !data?.salesman_delivery_confirmation &&
-                (data?.status === 'Item pago, aguardando entrega' ||
-                  data?.status === 'Item entregue, aguardando confirmação')) ||
-              (type === 'purchases' &&
-                !data?.buyer_delivery_confirmation &&
-                (data?.status === 'Item pago, aguardando entrega' ||
-                  data?.status === 'Item entregue, aguardando confirmação'))
-            "
+            *ngIf="renderConfirmationButton()"
             (click)="confirmDelivery()"
           >
             Confirmar {{ type === "sales" ? "entrega" : "recebimento" }}
