@@ -63,5 +63,27 @@ export class ConsultaAnuncioComponent implements OnInit {
     });
   }
 
+  //Se o usuário vendedor confirmar entrega, o status deve ir para Item entregue, aguardando confirmação
+  //Se o usuário comprador confirmar recebimento, o status da compra deve ir direto para Finalizada e 
+  //o vendedor não precisa confirmar nada.
+  public renderConfirmationButton(): boolean {   
+    if(this.data.status === 'Finalizada') {
+      return false;
+    }
+    else if(this.type === 'sales' && this.data.salesman_delivery_confirmation) {
+      return false;
+    }
+    else if(this.type === 'sales' && this.data.buyer_delivery_confirmation) {
+      return false;
+    }
+    else if(this.type === 'sales' && this.data.status === 'Item entregue, aguardando confirmação') {
+      return false;
+    }
+    else if(this.type === 'purchases' && this.data.buyer_delivery_confirmation) {
+      return false;
+    }
 
+    return true;
+  }
+  
 }
