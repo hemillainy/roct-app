@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ItemsService } from 'src/app/controllers/items/items.service';
+import { SessionService } from 'src/app/controllers/session/session.service';
 import { translateValue } from 'src/utils';
 
 @Component({
@@ -15,6 +16,7 @@ export class ItemsComponent implements OnInit {
   constructor(
     private router: Router,
     private ctrlItems: ItemsService,
+    private ctrlSession: SessionService
   ) {
     this.items = [];
   }
@@ -35,6 +37,7 @@ export class ItemsComponent implements OnInit {
   }
 
   public goToItem(itemId: any): void {
+    this.ctrlSession.setPreviousPage(this.router.url);
     this.router.navigate([`/item/${itemId}`]);
   }
 
