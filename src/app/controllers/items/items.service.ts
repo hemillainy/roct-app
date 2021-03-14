@@ -38,6 +38,10 @@ export class ItemsService {
     return axios.post(`${this.END_POINT}/announcements/add`, data,  this.getConfig());
   }
 
+  public delete(id: any): Promise<any> {
+    return axios.delete(`${this.END_POINT}/announcements/${id}`,  this.getConfig());
+  }
+
   public getItemsTypes(): Promise<any> {
     return axios.get(`${this.END_POINT}/announcements/types`,  this.getConfig());
   }

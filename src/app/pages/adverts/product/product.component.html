@@ -31,12 +31,21 @@
         </div>
         <div class="action">
           <div class="price">{{ data.price | currency:'BRL' }}</div>
-          <button (click)="goToCheckout(data.uuid)" [disabled]="desabilitaCompra(data.salesman.id)">
+          <button (click)="goToCheckout(data.uuid)" *ngIf="enableShop(data.salesman.id)">
             Comprar
             <span class="material-icons">shopping_cart</span>
+          </button>
+          <button class="warning" (click)="this.deleteProduct(data.uuid)" *ngIf="enableDeletion(data.salesman.id)">
+            Excluir
+            <span class="material-icons">delete</span>
           </button>
         </div>
       </div>
     </div>
+  </div>
+  <div class="alert" *ngIf="status.show" @fadeOut>
+    <p [ngClass]="[status.success ? 'success' : 'error']">
+      {{ status.message }}
+    </p>
   </div>
 </div>

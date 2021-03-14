@@ -1,18 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ItemsService } from 'src/app/controllers/items/items.service';
+import { animate, style, transition, trigger } from '@angular/animations';
 import { SessionService } from 'src/app/controllers/session/session.service';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  styleUrls: ['./product.component.scss'],
+  animations: [
+    trigger('fadeOut', [
+      transition(':enter', [
+        style({}),
+        animate('250ms', style({})),
+      ]),
+      transition(':leave', [
+        animate('250ms ease-in-out', style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class ProductComponent implements OnInit {
 
   public id: string;
   public data: any;
-  public status = { loaded: false, error: false };
+  public status = { loaded: false, error: false, success: false, show: false, message: '' };
 
   constructor(
     private ctrlItems: ItemsService,
@@ -62,8 +74,36 @@ export class ProductComponent implements OnInit {
     return this.session.isLogged;
   }
 
-  public desabilitaCompra(salesmanId : any): boolean {
+  public enableShop(salesmanId : any): boolean {
+    return salesmanId !== parseInt(this.session.getUserId(), 10);
+  }
+
+  public enableDeletion(salesmanId : any): boolean {
     return salesmanId === parseInt(this.session.getUserId(), 10);
+  }
+
+  public resetStatus() : void {
+    this.status = { loaded: false, error: false, success: false, show: false, message: '' };
+  }
+
+  private deleteProduct(uuid: any): void {
+    this.ctrlItems.delete(uuid)
+      .then(res => {
+        this.status.success = true;
+        this.status.message = 'Anúncio excluído com sucesso!';
+        this.status.show = true;
+        setTimeout(() => {
+          this.resetStatus();
+          this.router.navigate([this.session.getPreviousPage()]);
+        }, 2000);
+      }).catch(err => {
+        this.status.error = true;
+        this.status.message = 'Erro ao deletar anúncio: ' + err.data.msg;
+        this.status.show = true;
+        setTimeout(() => {
+          this.resetStatus();
+        }, 2000);
+      });
   }
 
 }
