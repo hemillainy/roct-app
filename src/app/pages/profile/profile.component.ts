@@ -14,9 +14,10 @@ export class ProfileComponent implements OnInit {
   private subs: Subscription;
   public renderizaTornarVendedor = undefined;
   public component = {
-    pages: ['account', 'password', 'change-type', 'purchases', 'advertise', 'sales', "status-announcement", 'announcements', 'estatisticas'],
+    pages: ['account', 'password', 'change-type', 'purchases', 'advertise', 'sales', "status-announcement", 'announcements', 'estatisticas', 'gerenciamento-usuarios'],
     command: 'account'
   };
+  public isSuper = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -43,6 +44,7 @@ export class ProfileComponent implements OnInit {
       this.ctrlUser.getUser(userId).then(res => {
         const user = res.data;
         this.renderizaTornarVendedor = user !== undefined && !user.isSalesman;
+        this.isSuper = user && user.isSuper;
 
       });
     } else {

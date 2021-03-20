@@ -8,31 +8,35 @@
             <span class="material-icons">account_circle</span>
             Minha Conta
           </li>
-          <li [class.active]="component.command === 'estatisticas'" (click)="setCommand('estatisticas')">
-            <span class="material-icons">account_circle</span>
+          <li *ngIf="isSuper" [class.active]="component.command === 'estatisticas'" (click)="setCommand('estatisticas')">
+            <span class="material-icons">dynamic_feed</span>
             Estatísticas
+          </li>
+          <li *ngIf="isSuper" [class.active]="component.command === 'gerenciamento-usuarios'" (click)="setCommand('gerenciamento-usuarios')">
+            <span class="material-icons">manage_accounts</span>
+            Gerenciamento de usuários
           </li>
           <li [class.active]="component.command === 'password'" (click)="setCommand('password')">
             <span class="material-icons">security</span>
             Alterar Senha
           </li>
-          <li [class.active]="component.command === 'purchases'" (click)="setCommand('purchases')">
+          <li *ngIf="!isSuper" [class.active]="component.command === 'purchases'" (click)="setCommand('purchases')">
             <span class="material-icons">shopping_basket</span>
             Minhas Compras
           </li>
-          <li *ngIf="this.renderizaTornarVendedor" [class.active]="component.command === 'change-type'" (click)="setCommand('change-type')">
+          <li *ngIf="this.renderizaTornarVendedor && !isSuper" [class.active]="component.command === 'change-type'" (click)="setCommand('change-type')">
             <span class="material-icons">perm_identityd</span>
             Tornar-se um Vendedor
           </li>
-          <li *ngIf="!this.renderizaTornarVendedor" [class.active]="component.command === 'advertise'" (click)="setCommand('advertise')">
+          <li *ngIf="!this.renderizaTornarVendedor && !isSuper" [class.active]="component.command === 'advertise'" (click)="setCommand('advertise')">
             <span class="material-icons">note_add</span>
             Criar Anúncio
           </li>
-          <li *ngIf="!this.renderizaTornarVendedor" [class.active]="component.command === 'announcements'" (click)="setCommand('announcements')">
+          <li *ngIf="!this.renderizaTornarVendedor && !isSuper" [class.active]="component.command === 'announcements'" (click)="setCommand('announcements')">
             <span class="material-icons">receipt</span>
             Meus Anúncios
           </li>
-          <li *ngIf="!this.renderizaTornarVendedor" [class.active]="component.command === 'sales'" (click)="setCommand('sales')">
+          <li *ngIf="!this.renderizaTornarVendedor && !isSuper" [class.active]="component.command === 'sales'" (click)="setCommand('sales')">
             <span class="material-icons">receipt</span>
             Minhas Vendas
           </li>
@@ -53,6 +57,7 @@
           <app-minhas-vendas *ngIf="component.command === 'sales'"></app-minhas-vendas>
           <app-consulta-anuncio *ngIf="component.command === 'status-announcement'"></app-consulta-anuncio>
           <app-estatisticas *ngIf="component.command === 'estatisticas'"></app-estatisticas>
+          <app-gerenciamento-usuarios *ngIf="component.command === 'gerenciamento-usuarios'"></app-gerenciamento-usuarios>
         </div>
       </div>
     </div>
