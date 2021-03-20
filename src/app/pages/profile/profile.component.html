@@ -8,6 +8,10 @@
             <span class="material-icons">account_circle</span>
             Minha Conta
           </li>
+          <li [class.active]="component.command === 'estatisticas'" (click)="setCommand('estatisticas')">
+            <span class="material-icons">account_circle</span>
+            Estatísticas
+          </li>
           <li [class.active]="component.command === 'password'" (click)="setCommand('password')">
             <span class="material-icons">security</span>
             Alterar Senha
@@ -48,6 +52,7 @@
           <app-meus-anuncios *ngIf="component.command === 'announcements'"></app-meus-anuncios>
           <app-minhas-vendas *ngIf="component.command === 'sales'"></app-minhas-vendas>
           <app-consulta-anuncio *ngIf="component.command === 'status-announcement'"></app-consulta-anuncio>
+          <app-estatisticas *ngIf="component.command === 'estatisticas'"></app-estatisticas>
         </div>
       </div>
     </div>

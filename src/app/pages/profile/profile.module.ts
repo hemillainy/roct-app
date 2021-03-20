@@ -15,6 +15,8 @@ import { MinhasVendasModule } from './components/minhas-vendas/minhas-vendas.mod
 import { ConsultaAnuncioComponent } from './components/consulta-anuncio/consulta-anuncio.component';
 import { MeusAnunciosComponent } from './components/meus-anuncios/meus-anuncios.component';
 import { AnunciosComponent } from './components/meus-anuncios/anuncios/anuncios.component';
+import { EstatisticasComponent } from './components/estatisticas/estatisticas.component';
+import { IndicadorComponent } from './components/estatisticas/indicador/indicador.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { AnunciosComponent } from './components/meus-anuncios/anuncios/anuncios.
     ConsultaAnuncioComponent,
     MeusAnunciosComponent,
     AnunciosComponent,
+    EstatisticasComponent,
+    IndicadorComponent,
   ],
   imports: [
     CommonModule,

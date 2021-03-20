@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
   private subs: Subscription;
   public renderizaTornarVendedor = undefined;
   public component = {
-    pages: ['account', 'password', 'change-type', 'purchases', 'advertise', 'sales', "status-announcement", 'announcements'],
+    pages: ['account', 'password', 'change-type', 'purchases', 'advertise', 'sales', "status-announcement", 'announcements', 'estatisticas'],
     command: 'account'
   };
 
