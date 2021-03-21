@@ -1,3 +1,12 @@
-<div *ngFor="let indicador of indicadores">
-  <app-indicador [indicador]="indicador" ></app-indicador>
+<div class="estatisticas">
+  <div class="content">
+    <header class="header">
+      <h4>Dashboard</h4>
+    </header>
+    <div class="indicadores-estatistica">
+      <div class="indicador" *ngFor="let indicador of indicadores">
+        <app-indicador [indicador]="indicador" ></app-indicador>
+      </div>
+    </div>
+  </div>
 </div>
