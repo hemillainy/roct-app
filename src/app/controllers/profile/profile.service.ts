@@ -17,13 +17,10 @@ export class ProfileService {
     this.END_POINT = environment.END_POINT_API;
   }
 
-  compras = [
-    { id: 1, item: { nome: 'Sedenta', valor: '3200' }, dt: '01/01/2020', vendedor: { username: 'Sylas' } },
-    { id: 2, item: { nome: 'Sombras gêmeas', valor: '1800' }, dt: '01/01/2020', vendedor: { username: 'Morgana' } }
-  ];
-
-  getCompras() {
-    return this.compras;
+  private getConfig(): any {
+    const token = `Bearer ${this.session.getToken()}`;
+    axios.defaults.headers.common.Authorization = token;
+    return { headers: { Authorization: token } };
   }
 
   // public uploadImage(image: File): Observable<Response> {
@@ -33,6 +30,10 @@ export class ProfileService {
 
   //   return this.http.post('/api/v1/image-upload', formData);
   // }
+
+  getIndicadores() {
+    return axios.get(this.END_POINT + '/dashboard/metrics', this.getConfig());
+  }
 
 }
 
