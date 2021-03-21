@@ -30,6 +30,26 @@ export class UserService {
     return axios.get(this.END_POINT + `/users/${id}`, this.getConfig());
   }
 
+  public blockUser(id: string): Promise<any> {
+    return axios.put(this.END_POINT + `/dashboard/limit-user/${id}`, this.getConfig());
+  }
+
+  public getUsers(filters: {
+    name?: string;
+    cpf?: string;
+    email?: string;
+    limited?: boolean;
+    page: number;
+    per_page: number;
+  }): Promise<any> {
+
+    const axiosConfig = filters ?
+      {...this.getConfig(), params: {...filters}}
+      : this.getConfig();
+
+    return axios.get(this.END_POINT + '/users', axiosConfig);
+  }
+
   public update(data: any): Promise<any> {
     return axios.put(this.END_POINT + `/users/${this.session.getUserId()}`, data, this.getConfig());
   }
