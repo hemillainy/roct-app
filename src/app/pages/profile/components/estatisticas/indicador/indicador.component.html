@@ -1,3 +1,9 @@
-<p>
-{{ indicador | json }}
-</p>
+<div class="card card-size text-white bg-{{ indicador.class }} mb-3">
+  <div class="card-header">
+      <h4>{{ indicador.label }}</h4>
+      <span class="material-icons">{{ indicador.icon }}</span>
+  </div>
+  <div class="card-body">
+    <h1 class="card-title">{{ indicador.value }}</h1>
+  </div>
+</div>

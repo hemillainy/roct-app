@@ -19,23 +19,33 @@ export class EstatisticasComponent implements OnInit {
    criarIndicadores = (indicadores) => [
     {
      value: indicadores.total_users,
-     label: 'Total de usuários'
+     label: 'Total de usuários',
+     icon: 'account_circle',
+     class: 'info'
     },
     {
       value: indicadores.total_salesman,
-      label: 'Total de vendedores'
+      label: 'Total de vendedores',
+      icon: 'people',
+      class: 'secondary'
      },
      {
       value: indicadores.total_purchases,
-      label: 'Número de vendas'
+      label: 'Número de vendas',
+      icon: 'shop_two',
+      class: 'danger'
      },
      {
-      value: indicadores.purchases_value,
-      label: 'Valor em vendas'
+      value: this.formatMoney(indicadores.purchases_value),
+      label: 'Valor em vendas',
+      icon: 'attach_money',
+      class: 'success'
      },
      {
       value: indicadores.total_items,
-      label: 'Total de itens anunciados'
+      label: 'Total de itens anunciados',
+      icon: 'announcement',
+      class: 'dark'
      }
   ];
 
@@ -44,6 +54,10 @@ export class EstatisticasComponent implements OnInit {
       console.log(data);
       this.indicadores = this.criarIndicadores(data);
     });
+  }
+
+  private formatMoney(label: string) : string {
+    return 'R$ ' + label;
   }
 
 }
