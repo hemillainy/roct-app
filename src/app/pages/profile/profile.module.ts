@@ -18,7 +18,7 @@ import { AnunciosComponent } from './components/meus-anuncios/anuncios/anuncios.
 import { EstatisticasComponent } from './components/estatisticas/estatisticas.component';
 import { IndicadorComponent } from './components/estatisticas/indicador/indicador.component';
 import { GerenciamentoUsuariosComponent } from './components/gerenciamento-usuarios/gerenciamento-usuarios.component';
-
+import * as Material from "@angular/material";
 
 @NgModule({
   declarations: [
@@ -42,6 +42,13 @@ import { GerenciamentoUsuariosComponent } from './components/gerenciamento-usuar
     FormsModule,
     NgxMaskModule.forRoot(),
     MinhasVendasModule,
+    Material.MatTableModule,
+    Material.MatIconModule,
+    Material.MatPaginatorModule,
+    Material.MatSortModule,
+    Material.MatButtonModule,
+    Material.MatInputModule,
+    Material.MatProgressBarModule
   ],
   exports: [
     ProfileComponent

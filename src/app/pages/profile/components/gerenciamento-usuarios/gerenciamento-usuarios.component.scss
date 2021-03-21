@@ -1,0 +1,72 @@
+.user-management {
+  header {
+    background: #00000080;
+    padding: 30px;
+    height: 100px;
+
+    h2 {
+      font-weight: bold;
+      color: #fff;
+    }
+  }
+
+  .user-management-content {
+    padding-top: 60px;
+
+    section {
+      padding: 10px 15px;
+      background: gray;
+      margin-bottom: 20px;
+
+      h5 {
+        font-weight: 300;
+        color: #fff;
+        font-size: 20px;
+        margin: 0px;
+      }
+    }
+
+    table {
+      width: 100%;
+    }
+
+    button.block_user {
+      background: transparent;
+      border: unset;
+      border-radius: unset;
+      outline: none;
+      padding: 10px;
+
+      span {
+        width: unset;
+        color: #f44336;
+        padding: 0px;
+        opacity: 1;
+      }
+
+      span.active {
+        width: unset;
+        color: green;
+        padding: 0px;
+        opacity: 1;
+      }
+    }
+
+    .error-alert {
+      position: fixed;
+      bottom: 0px;
+      right: 0px;
+      animation: slide-error-login 0.4s ease backwards;
+
+      p {
+        padding: 20px;
+        background: #fff;
+        margin: 30px;
+        color: #000;
+        max-width: 200px;
+        border-top: 10px solid #f44336;
+        box-shadow: 0 6px 10px -8px #00000080;
+      }
+    }
+  }
+}
