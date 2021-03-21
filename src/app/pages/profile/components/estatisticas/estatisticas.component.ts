@@ -31,6 +31,7 @@ export class EstatisticasComponent implements OnInit {
      },
      {
       value: indicadores.purchases_value,
+      isCurrency: true,
       label: 'Valor em vendas'
      },
      {

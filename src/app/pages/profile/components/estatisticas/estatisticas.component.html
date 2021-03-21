@@ -1,3 +1,22 @@
-<div *ngFor="let indicador of indicadores">
-  <app-indicador [indicador]="indicador" ></app-indicador>
+<div class="estatisticas">
+  <header>
+    <h2>Estatísticas</h2>
+  </header>
+  <div class="content">
+    <div class="indicadores">
+      <div *ngFor="let indicador of indicadores" class="card">
+        <h4>
+            <b *ngIf="indicador.isCurrency">
+                {{ indicador.value | currency:'BRL' }}
+            </b>
+            <b *ngIf="!indicador.isCurrency">
+              {{ indicador.value }}
+          </b>
+        </h4>
+        <div class="container">
+        {{indicador.label}}
+      </div>
+    </div>
+    </div>
+  </div>
 </div>
