@@ -16,9 +16,7 @@ import { ConsultaAnuncioComponent } from './components/consulta-anuncio/consulta
 import { MeusAnunciosComponent } from './components/meus-anuncios/meus-anuncios.component';
 import { AnunciosComponent } from './components/meus-anuncios/anuncios/anuncios.component';
 import { EstatisticasComponent } from './components/estatisticas/estatisticas.component';
-import { IndicadorComponent } from './components/estatisticas/indicador/indicador.component';
 import { GerenciamentoUsuariosComponent } from './components/gerenciamento-usuarios/gerenciamento-usuarios.component';
-
 
 @NgModule({
   declarations: [
@@ -33,7 +31,6 @@ import { GerenciamentoUsuariosComponent } from './components/gerenciamento-usuar
     MeusAnunciosComponent,
     AnunciosComponent,
     EstatisticasComponent,
-    IndicadorComponent,
     GerenciamentoUsuariosComponent,
   ],
   imports: [
@@ -47,4 +44,5 @@ import { GerenciamentoUsuariosComponent } from './components/gerenciamento-usuar
     ProfileComponent
   ]
 })
+
 export class ProfileModule { }
