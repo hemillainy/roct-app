@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit {
     command: 'account'
   };
   public isSuper = false;
+  public isLimited = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -45,7 +46,7 @@ export class ProfileComponent implements OnInit {
         const user = res.data;
         this.renderizaTornarVendedor = user !== undefined && !user.isSalesman;
         this.isSuper = user && user.isSuper;
-
+        this.isLimited = user && user.limited;
       });
     } else {
       this.router.navigate(['/']);
