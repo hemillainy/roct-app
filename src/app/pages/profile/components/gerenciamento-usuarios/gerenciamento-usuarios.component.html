@@ -29,7 +29,7 @@
           <ng-container matColumnDef="user_limited">
             <th mat-header-cell *matHeaderCellDef>Limitar usuário</th>
             <td mat-cell *matCellDef="let element">
-              <button class="block_user" (click)="blockUser(element.id)">
+              <button class="block_user" (click)="restricUser(element.id, !element.user_limited)">
                 <span class="material-icons" [class.active]="element.user_limited" >{{element.user_limited ? "lock_open" : "lock"}}</span>
               </button>
             </td>

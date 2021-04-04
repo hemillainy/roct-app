@@ -49,11 +49,25 @@ export class GerenciamentoUsuariosComponent implements OnInit {
     });
   }
 
-  blockUser(id: number) {
-    this.ctrlUser.blockUser(id + "").then(() => {
+  restricUser(id: number, limit: boolean) {
+    limit ? this.blockUser(id) : this.unlockUser(id);
+  }
+
+  private blockUser(id: number) {
+    this.ctrlUser.unlockUser(id + "").then(() => {
       this.dataSource.data = this.dataSource.data.map((item) => {
         return item.id === id
-          ? { ...item, user_limited: !item.limited, limited: !item.limited }
+          ? { ...item, user_limited: true, limited: true }
+          : item;
+      });
+    });
+  }
+
+  private unlockUser(id: number) {
+    this.ctrlUser.unlockUser(id + "").then(() => {
+      this.dataSource.data = this.dataSource.data.map((item) => {
+        return item.id === id
+          ? { ...item, user_limited: false, limited: false }
           : item;
       });
     });

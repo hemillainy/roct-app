@@ -34,6 +34,10 @@ export class UserService {
     return axios.put(this.END_POINT + `/dashboard/limit-user/${id}`, this.getConfig());
   }
 
+  public unlockUser(id: string): Promise<any> {
+    return axios.put(this.END_POINT + `/dashboard/unlimit-user/${id}`, this.getConfig());
+  }
+
   public getUsers(filters: {
     name?: string;
     cpf?: string;
