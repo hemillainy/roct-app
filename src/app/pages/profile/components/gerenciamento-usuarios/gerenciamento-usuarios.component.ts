@@ -54,7 +54,7 @@ export class GerenciamentoUsuariosComponent implements OnInit {
   }
 
   private blockUser(id: number) {
-    this.ctrlUser.unlockUser(id + "").then(() => {
+    this.ctrlUser.blockUser(id + "").then(() => {
       this.dataSource.data = this.dataSource.data.map((item) => {
         return item.id === id
           ? { ...item, user_limited: true, limited: true }
