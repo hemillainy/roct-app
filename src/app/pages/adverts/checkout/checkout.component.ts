@@ -107,24 +107,24 @@ export class CheckoutComponent implements OnInit {
 
   public pay(): void {
     // if (!this.hasMissingFields() && this.nickname) {
-    this.ctrlCheckout
-      .pay(this.mountData())
-      .then((res) => {
-        const updateStatus = { id: res.data.uuid }
-        this.ctrlCheckout.updateStatusPurchase(updateStatus)
-        this.payed = true
-        this.step = 2
-        this.activateAlert('success', 'Compra efetuada com sucesso!')
-        setTimeout(() => {
-          this.resetValidation()
-        }, 3500)
-      })
-      .catch((err) => {
-        this.activateAlert('error', err.message)
-        setTimeout(() => {
-          this.resetValidation()
-        }, 3500)
-      })
+    // this.ctrlCheckout
+    //   .pay(this.mountData())
+    //   .then((res) => {
+    // const updateStatus = { id: res.data.uuid }
+    // this.ctrlCheckout.updateStatusPurchase(updateStatus)
+    this.payed = true
+    this.step = 2
+    this.activateAlert('success', 'Compra efetuada com sucesso!')
+    setTimeout(() => {
+      this.resetValidation()
+    }, 3500)
+    // })
+    // .catch((err) => {
+    //   this.activateAlert('error', err.message)
+    //   setTimeout(() => {
+    //     this.resetValidation()
+    //   }, 3500)
+    // })
     // } else {
     //   this.activateAlert(
     //     'error',
