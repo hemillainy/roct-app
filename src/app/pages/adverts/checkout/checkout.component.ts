@@ -1,75 +1,75 @@
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { ItemsService } from "src/app/controllers/items/items.service";
-import { SessionService } from "src/app/controllers/session/session.service";
-import { CheckoutService } from "src/app/controllers/checkout/checkout.service";
+import { Component, OnInit } from '@angular/core'
+import { ActivatedRoute, Router } from '@angular/router'
+import { ItemsService } from 'src/app/controllers/items/items.service'
+import { SessionService } from 'src/app/controllers/session/session.service'
+import { CheckoutService } from 'src/app/controllers/checkout/checkout.service'
 
 @Component({
-  selector: "app-checkout",
-  templateUrl: "./checkout.component.html",
-  styleUrls: ["./checkout.component.scss"],
+  selector: 'app-checkout',
+  templateUrl: './checkout.component.html',
+  styleUrls: ['./checkout.component.scss'],
 })
 export class CheckoutComponent implements OnInit {
-  public id: string;
-  public step = 0;
-  public data: any;
-  public payed: boolean;
-  public nickname = undefined;
-  public status = { loaded: false, error: false };
-  public validation = { error: false, success: false, message: undefined };
+  public id: string
+  public step = 0
+  public data: any
+  public payed: boolean
+  public nickname = undefined
+  public status = { loaded: false, error: false }
+  public validation = { error: false, success: false, message: undefined }
   public method = {
-    type: "",
+    type: '',
     number: undefined,
     name: undefined,
     security_code: undefined,
     validity: undefined,
     cpf: undefined,
-  };
-  public payment = {};
+  }
+  public payment = {}
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private ctrlItems: ItemsService,
     private session: SessionService,
-    private ctrlCheckout: CheckoutService
+    private ctrlCheckout: CheckoutService,
   ) {}
 
   ngOnInit() {
     if (this.session.isLogged) {
       this.route.paramMap.subscribe((paramMap) => {
-        this.id = paramMap.get("id");
-      });
-      this.getItem();
+        this.id = paramMap.get('id')
+      })
+      this.getItem()
     } else {
-      this.router.navigate(["/item"]);
+      this.router.navigate(['/item'])
     }
-    this.payed = false;
+    this.payed = false
   }
 
   private getItem(): void {
-    this.status.error = false;
-    this.status.loaded = false;
+    this.status.error = false
+    this.status.loaded = false
     this.ctrlItems
       .getItem(this.id)
       .then((res) => {
         const data = {
           value: res.data.price,
           buyer: this.session.getUserId(),
-        };
+        }
         this.ctrlCheckout
           .getPaymentLink(data)
-          .then((res) => (this.payment = res.data));
+          .then((res) => (this.payment = res.data))
 
         setTimeout(() => {
-          this.data = res.data;
-          this.status.loaded = true;
-        }, 400);
+          this.data = res.data
+          this.status.loaded = true
+        }, 400)
       })
       .catch((err) => {
-        this.status.loaded = true;
-        this.status.error = true;
-      });
+        this.status.loaded = true
+        this.status.error = true
+      })
   }
 
   private hasMissingFields(): boolean {
@@ -78,30 +78,30 @@ export class CheckoutComponent implements OnInit {
       !this.method.name ||
       !this.method.security_code ||
       !this.method.validity
-    );
+    )
   }
 
   public validatePayment(): void {
-    if (!this.hasMissingFields()) {
-      this.changePanel("confirmation");
-    } else {
-      this.activateAlert(
-        "error",
-        "Preencha todos os campos para poder prosseguir!"
-      );
-      setTimeout(() => {
-        this.resetValidation();
-      }, 3500);
-    }
+    // if (!this.hasMissingFields()) {
+    this.changePanel('confirmation')
+    // } else {
+    //   this.activateAlert(
+    //     "error",
+    //     "Preencha todos os campos para poder prosseguir!"
+    //   );
+    //   setTimeout(() => {
+    //     this.resetValidation();
+    //   }, 3500);
+    // }
   }
 
   private changePanel(panel: String): void {
     if (!this.payed) {
-      panel === "payment"
+      panel === 'payment'
         ? (this.step = 0)
-        : panel === "confirmation"
+        : panel === 'confirmation'
         ? (this.step = 1)
-        : (this.step = 2);
+        : (this.step = 2)
     }
   }
 
@@ -110,29 +110,29 @@ export class CheckoutComponent implements OnInit {
       this.ctrlCheckout
         .pay(this.mountData())
         .then((res) => {
-          const updateStatus = { id: res.data.uuid };
-          this.ctrlCheckout.updateStatusPurchase(updateStatus);
-          this.payed = true;
-          this.step = 2;
-          this.activateAlert("success", "Compra efetuada com sucesso!");
+          const updateStatus = { id: res.data.uuid }
+          this.ctrlCheckout.updateStatusPurchase(updateStatus)
+          this.payed = true
+          this.step = 2
+          this.activateAlert('success', 'Compra efetuada com sucesso!')
           setTimeout(() => {
-            this.resetValidation();
-          }, 3500);
+            this.resetValidation()
+          }, 3500)
         })
         .catch((err) => {
-          this.activateAlert("error", err.message);
+          this.activateAlert('error', err.message)
           setTimeout(() => {
-            this.resetValidation();
-          }, 3500);
-        });
+            this.resetValidation()
+          }, 3500)
+        })
     } else {
       this.activateAlert(
-        "error",
-        "Preencha todos os campos para poder prosseguir!"
-      );
+        'error',
+        'Preencha todos os campos para poder prosseguir!',
+      )
       setTimeout(() => {
-        this.resetValidation();
-      }, 3500);
+        this.resetValidation()
+      }, 3500)
     }
   }
 
@@ -148,25 +148,25 @@ export class CheckoutComponent implements OnInit {
       salesman_uuid: this.data.salesman.id,
       buyer_uuid: this.session.getUserId(),
       nick_game: this.nickname,
-    };
-    return data;
+    }
+    return data
   }
 
   private activateAlert(mode: String, msg: String): void {
-    if (mode === "error") {
-      this.validation.error = true;
-      this.validation.message = msg;
-    } else if (mode === "success") {
-      this.validation.success = true;
-      this.validation.message = msg;
+    if (mode === 'error') {
+      this.validation.error = true
+      this.validation.message = msg
+    } else if (mode === 'success') {
+      this.validation.success = true
+      this.validation.message = msg
     }
   }
 
   private resetValidation(): void {
-    this.validation = { error: false, success: false, message: undefined };
+    this.validation = { error: false, success: false, message: undefined }
   }
 
   public goToItems(): void {
-    this.router.navigate(["/item"]);
+    this.router.navigate(['/item'])
   }
 }
